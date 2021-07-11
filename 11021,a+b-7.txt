@@ -1,0 +1,7 @@
+T = int(input())
+y=0
+for x in range(T):
+    y +=1
+    a,b = map(int, input().split())
+    z=a+b
+    print('Case #'+str(y)+': '+str(z))
