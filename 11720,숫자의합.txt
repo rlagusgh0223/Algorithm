@@ -1,0 +1,11 @@
+"""
+sum=0
+inp=int(input())#처음 몇개 입력할건지 숫자
+num=input()#입력 하는 숫자
+for each in num:
+    sum+=int(each)
+print(sum)
+"""
+input()
+print(sum(map(int,input())))
+#사실상 위의 코드들로는 수 몇개를 입력할지 미리 알려주는건 의미 없다
