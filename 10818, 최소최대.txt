@@ -1,0 +1,17 @@
+import sys #input으로 받으면 시간이 오래걸리므로 stdin.readline을 쓴다
+N = int(input())
+number = list(map(int,sys.stdin.readline().split()))
+max=number[0]
+min=number[0]
+for i in number[1:]: # 0은 어차피 계산되어 있으므려 군디 0부터 시작 안해도 됨
+    if i > max:
+        max = i
+    elif i < min:
+        min = i
+print(min, max)
+"""
+#모범답안??
+import sys 
+a, *b = map(int, sys.stdin.read().split())
+print(min(b), max(b))
+"""

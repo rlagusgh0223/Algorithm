@@ -1,0 +1,22 @@
+a = ['SUN','MON','TUE','WED','THU','FRI','SAT'] #요일리스트
+b = [31,28,31,30,31,30,31,31,30,31,30,31] #월 리스트
+
+x, y = map(int, input().split()) #월과 일 입력
+day = 0
+for i in range(0,x-1): #리스트는 0부터 시작하기 때문에 범위는 0에서 x-1
+    day += b[i] #day를 다 더해서 7로 나누면 요일이 나옴
+
+day = (day + y)%7
+print(a[day])
+
+#모범답안
+x, y = map(int, input().split())
+for i in range(1, x):
+    if i in [1, 3, 5, 7, 8, 10, 12]:
+        y += 31
+    elif i == 2:
+        y += 28
+    else:
+        y += 30
+day_week = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
+print(day_week[y % 7])

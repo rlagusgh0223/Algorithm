@@ -1,0 +1,8 @@
+N = int(input())
+for i in range(0,N):
+    for j in range(0,i+1):
+        print('*',end='')
+    print('')
+
+#모범답안 for i in range(1,int(input())+1): print('*'*i)
+#문자열도 곱할 수 있나보다
