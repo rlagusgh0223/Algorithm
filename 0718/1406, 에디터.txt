@@ -1,0 +1,17 @@
+import sys
+left = list(sys.stdin.readline().rstrip())
+right=[]
+
+score=int(input())
+for i in range(score):
+    x = sys.stdin.readline().rstrip()
+    if x[0] == 'L' and left != []:
+        right.append(left.pop())
+    elif x[0] == 'D' and right != []:
+        left.append(right.pop())
+    elif x[0] == 'B' and left != []:
+        left.pop()
+    elif x[0] == 'P':
+        left.append(x[2])
+
+print(''.join(left+list(reversed(right))))
