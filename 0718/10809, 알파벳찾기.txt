@@ -1,0 +1,18 @@
+s =input()
+lst = [-1]*26
+n=0
+for i in s:
+    if (lst[ord(i)-97] == -1):
+        lst[ord(i)-97] = n
+    n+=1
+
+for i in lst:
+    print(i, end=' ')
+
+
+#####################
+모범답안
+string = input()
+alphabet = "abcdefghijklmnopqrstuvwxyz"
+for i in alphabet:
+    print(string.find(i), end = ' ')

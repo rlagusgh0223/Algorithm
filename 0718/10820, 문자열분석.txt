@@ -1,0 +1,34 @@
+import sys
+
+while True:
+    s = sys.stdin.readline().rstrip('\n')
+    up, lo, nu, sp = 0, 0, 0, 0
+
+    if not s:
+        break
+    for i in s:
+        if i.islower():#소문자 검사
+            lo += 1
+        elif i.isupper():#대문자 검사
+            up += 1
+        elif i.isdigit(): #숫자검사
+            nu += 1
+        elif i.isspace():#공백검사
+            sp += 1
+    print(lo,up,nu,sp)
+
+
+#모범답안
+import sys
+for x in sys.stdin:
+    res = [0,0,0,0]
+    for c in x:
+        if 'a'<=c and c<='z':
+            res[0]+=1
+        elif 'A'<=c and c<='Z':
+            res[1]+=1
+        elif '0'<=c and c<='9':
+            res[2]+=1
+        elif c == ' ':
+            res[3]+=1
+    print(*res)

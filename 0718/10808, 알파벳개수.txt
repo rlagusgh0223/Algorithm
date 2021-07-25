@@ -1,0 +1,69 @@
+"""
+import sys
+alpha = list(sys.stdin.readline().rstrip())
+x = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+for i in range(len(alpha)):
+    if alpha[i] == 'a':
+        x[0] += 1
+    elif alpha[i] == 'b':
+        x[1] += 1
+    elif alpha[i] == 'c':
+        x[2] += 1
+    elif alpha[i] == 'd':
+        x[3] += 1
+    elif alpha[i] == 'e':
+        x[4] += 1
+    elif alpha[i] == 'f':
+        x[5] += 1
+    elif alpha[i] == 'g':
+        x[6] += 1
+    elif alpha[i] == 'h':
+        x[7] += 1
+    elif alpha[i] == 'i':
+        x[8] += 1
+    elif alpha[i] == 'j':
+        x[9] += 1
+    elif alpha[i] == 'k':
+        x[10] += 1
+    elif alpha[i] == 'l':
+        x[11] += 1
+    elif alpha[i] == 'm':
+        x[12] += 1
+    elif alpha[i] == 'n':
+        x[13] += 1
+    elif alpha[i] == 'o':
+        x[14] += 1
+    elif alpha[i] == 'p':
+        x[15] += 1
+    elif alpha[i] == 'q':
+        x[16] += 1
+    elif alpha[i] == 'r':
+        x[17] += 1
+    elif alpha[i] == 's':
+        x[18] += 1
+    elif alpha[i] == 't':
+        x[19] += 1
+    elif alpha[i] == 'u':
+        x[20] += 1
+    elif alpha[i] == 'v':
+        x[21] += 1
+    elif alpha[i] == 'w':
+        x[22] += 1
+    elif alpha[i] == 'x':
+        x[23] += 1
+    elif alpha[i] == 'y':
+        x[24] += 1
+    elif alpha[i] == 'z':
+        x[25] += 1
+
+for i in range(26):
+    print(x[i], end=' ')
+
+"""
+s =input()
+lst = [0]*26
+for i in s:
+    lst[ord(i)-97]+=1#ord는 문자를 숫자로 바꿔주는 함수이므로 a의 아스키
+                            #코드인 97을 빼주어 lst배열의 index와 맞췄음
+for i in lst:
+    print(i, end=' ')
