@@ -1,0 +1,26 @@
+"""
+import sys
+A, B = map(int,sys.stdin.readline().split())
+
+gcd1=max(A,B)
+gcd2=min(A,B)
+
+while True:
+    if gcd2==0:
+        break
+    else:
+        x = gcd1%gcd2
+        gcd1 = gcd2
+        gcd2 = x
+
+for i in range(gcd1):
+    print(1,end='')
+"""
+#내장함수 math모듈에서 gcd는 최대공약수
+import sys
+from math import gcd
+A,B = sys.stdin.readline().split()
+x = gcd(int(A),int(B))
+
+for i in range(x):
+    print(1,end='')

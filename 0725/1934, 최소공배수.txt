@@ -1,0 +1,8 @@
+import sys
+from math import gcd
+cnt = int(input())
+
+for i in range(cnt):
+    A, B = map(int,sys.stdin.readline().split())
+    x = (A*B)/gcd(A,B)
+    print(int(x))
