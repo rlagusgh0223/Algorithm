@@ -1,0 +1,22 @@
+import sys
+x=int(input())
+
+for i in range(x):
+    s = sys.stdin.readline().rstrip()
+    n=0
+    lst=[]
+    for j in s:
+        if j=='(':
+            lst.append(s)
+        elif j==')' :
+            if len(lst)==0:
+                print('NO')
+                n=1
+                break
+            elif len(lst)!=0:
+                lst.pop()
+
+    if len(lst)!=0:
+        print('NO')
+    elif len(lst)==0 and n==0:
+        print('YES')

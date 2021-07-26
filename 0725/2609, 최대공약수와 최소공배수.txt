@@ -1,0 +1,7 @@
+import sys
+from math import gcd
+
+X, Y = map(int, sys.stdin.readline().split())
+
+print(int(gcd(X,Y)))
+print(int((X*Y)/gcd(X,Y)))
