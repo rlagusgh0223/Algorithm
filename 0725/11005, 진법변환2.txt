@@ -1,0 +1,25 @@
+import sys
+N, B = map(int,sys.stdin.readline().split())
+s=[]
+x=2
+y=1
+while True:
+    if x<y:
+        if x == 0:
+            break
+        elif x >= 10:
+            s.append(chr(x+55))
+        else:
+            s.append(x)
+        break
+    else:
+        x = int(N/B)
+        y = int(N%B)
+        if y >= 10:
+            s.append(chr(y+55))
+        else:
+            s.append(y)
+        N=x
+
+for i in range(len(s)):
+    print(s.pop(), end='')
