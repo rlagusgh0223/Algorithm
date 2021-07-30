@@ -1,0 +1,15 @@
+import sys
+input()
+m = list(sys.stdin.readline().split())
+x = 0
+
+for i in range(len(m)):
+    flag = False
+    if int(m[i])>1:
+        flag = True
+        for j in range(2,int(m[i]),1):
+            if int(m[i])%j == 0:
+                flag = False
+    if flag == True:
+        x+=1    
+print(x)
