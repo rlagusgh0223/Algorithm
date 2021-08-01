@@ -1,0 +1,21 @@
+import sys
+N, B = sys.stdin.readline().split()
+stack=list(map(str,N))
+ans=0
+
+for i in range(len(N)):
+    #B진수 N을 10진수로 바꾸려면 B^i를 곱하면서 더해야 된다
+    #3진법 수 102 = 1*3^2+0*3^1+2*3^0
+
+    num = stack.pop()
+    #스택에 있는 값 num으로 옮기기(pop을 이용해야 뒤에서부터 받을 수 있음. 자승을 순차적으로 올리기 위해)
+
+    if '0'<=num and num<='9':
+        num = int(num) #num에 있는 str을 int로 바꿈
+    else:
+        num = ord(num)-55 #num에 있는 값을 아스키코드에 숫자로 바꿔 계산
+
+    num = num*(int(B)**i)
+    ans += num
+
+print(ans)
