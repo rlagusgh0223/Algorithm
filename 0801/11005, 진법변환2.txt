@@ -1,0 +1,26 @@
+import sys
+N, B = map(int,sys.stdin.readline().split())
+#10진법수 N을 B진법으로 바꾸려면 N이 0이 될 때까지 나머지를 계속해서 구하면 된다
+s=[]#스택으로 작성
+x=2
+y=1
+while True:
+    if x<y: #x가 y보다 작을때, 즉 마지막
+        if x == 0:
+            break
+        elif x >= 10:
+            s.append(chr(x+55))
+        else:
+            s.append(x)
+        break
+    else:#x가 y보다 크다면, 즉 아직 나눌 수 있다면 여기
+        x = int(N/B) #N을 진법수로 나눈 몫
+        y = int(N%B) #N을 진법수로 나눈 나머지
+        if y >= 10:
+            s.append(chr(y+55)) #숫자를 문자로 변환
+        else:
+            s.append(y)
+        N=x #N값을 나눈 값의 몫으로 바꿈
+
+for i in range(len(s)): #s에 있는값을 역으로 계산해야 하므로 스택 이용
+    print(s.pop(), end='')
