@@ -1,0 +1,35 @@
+"""
+T = int(input())
+
+def s(n):
+    if n==1:
+        return 1
+    elif n==2:
+        return 2
+    elif n==3:
+        return 4
+    else:
+        return s(n-1)+s(n-2)+s(n-3)
+
+for i in range(T):
+    n = int(input())
+    print(s(n))
+    
+"""
+##아래건 아직 안됨
+T = int(input())
+
+s=[1,2,3]
+
+for i in range(T):
+    n = int(input())
+    if n<=3:
+        print(s[i])
+        #반드시 한번은 더해야 한다고 했으니까 1은 제외
+        #2는 1+1
+        #3은 1+1+1, 1+2, 2+1
+    else:
+        s.append(s[n-1]+s[n-2]+s[n-3])#백준이 알려준 식
+    
+for i in range(T):
+    print(s[i-1])
