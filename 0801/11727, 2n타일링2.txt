@@ -1,0 +1,15 @@
+n = int(input())
+
+#s = [0 for i in range(n+1)]#앞에선 이걸로 됐는데 이번건 런타임에러가 뜸
+#s[1] = 1
+#s[2] = 3
+s = [0, 1, 3] #<- 이걸로만 하면 에러 뜬다.
+#s[i]=를 s.append()로 해야 에러가 뜨지 않는다.
+
+if n<=2: #앞 문제에서는 3까지였는데 여기선 왜 2인거지?
+    print(s[n])
+    
+else:
+    for i in range(3,n+1):
+        s.append(2*s[i-2] + s[i-1])
+    print(s[i]%10007)
