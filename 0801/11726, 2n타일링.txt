@@ -1,0 +1,12 @@
+n = int(input())
+
+s = [0 for i in range(n+1)]#s 리스트에 0을 n만큼 넣는다
+
+if n<=3: 
+    print(n)
+else:#s[0]=0, s[1]=1, s[2]=2이고 그 다음부터는 백준 수식 이용한
+    s[1] = 1
+    s[2] = 2
+    for i in range(3,n+1):
+        s[i] = s[i-1] + s[i-2]
+    print(s[i]%10007)#이건 왜 10007로 나눈거지?
