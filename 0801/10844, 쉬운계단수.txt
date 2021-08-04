@@ -1,0 +1,25 @@
+N = int(input())
+
+d = [[0 for _ in range(10)]for _ in range(101)]
+#백준 답에 나온 부분인데 백준은 d[101][10]이 나왔음
+#근데 여기선 에러 떠서 인터넷 보니 이런식으로
+#for문을 이용한게 나와서 사용해보니 됐음
+#나머지는 백준코드
+mod = 1000000000
+
+for i in range(1,10):
+    d[1][i] = 1
+for i in range(2,N+1):
+    for j in range(0,10):
+        d[i][j] = 0
+        if j-1 >= 0:
+            d[i][j] += d[i-1][j-1]
+        if j+1 <= 9:
+            d[i][j] += d[i-1][j+1]
+        d[i][j] %= mod
+
+ans = 0
+for i in range(0,10):
+    ans += d[N][i]
+ans %= mod
+print(ans)
