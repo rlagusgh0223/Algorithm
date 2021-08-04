@@ -1,0 +1,10 @@
+n = int(input())
+#백준 코드를 보면서 짜긴 했는데
+#어떻게 이루어지는건지는 모르겠다
+
+d = [1 for _ in range(91)]
+
+for i in range(3,n+1):
+    d[i] = d[i-1] + d[i-2]
+
+print(d[n])
