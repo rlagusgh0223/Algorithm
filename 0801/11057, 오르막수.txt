@@ -1,0 +1,26 @@
+n = int(input())
+
+d = [[0 for _ in range(10)] for _ in range(1001)]
+#왜 0을 집어넣는거지?
+#1에서 1000까지라고 문제에서 주어져서 range에 1001을 넣었다
+#10은 백준 코드에서 for문이 0에서 9까지여서 넣었다
+mod = 10007
+#10007로 나누라고 출력에 주어져있다
+#마지막에 ans를 mod로 나누니까 mod에 10007을 준다
+
+for i in range(10):
+    d[1][i] = 1
+
+for i in range(2, n+1):
+    for j in range(0, 10):
+        for k in range(0, j+1):
+            d[i][j] += d[i-1][k]
+            d[i][j] %= mod
+
+ans = 0
+
+for i in range(0,10):
+    ans += d[n][i]
+ans %= mod
+
+print(ans)
