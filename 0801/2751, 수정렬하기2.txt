@@ -1,0 +1,10 @@
+import sys
+N = int(sys.stdin.readline().rstrip()) #int(input())으로 하면 시간초과
+a = []
+for i in range(N):
+    a.append(int(sys.stdin.readline().rstrip())) # sorted는 리스트에 오름차순이니까 리스트 작성
+a.sort() # 오름차순 함수
+#a = sorted(a) #sorted함수도 파이썬에서 오름차순 함수
+for i in range(N):
+    print(a[i])
+#print(sorted(a, reverse=True)) # sorted(, reverse=True) : 내림차순
