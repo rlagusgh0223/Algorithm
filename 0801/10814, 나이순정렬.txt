@@ -1,0 +1,15 @@
+import sys
+N = int(sys.stdin.readline().rstrip())
+num=[]
+
+for i in range(N):
+    [a, b] = sys.stdin.readline().split()
+    num.append([int(a), b])
+
+num.sort(key = lambda a:(a[0]))
+#lambda는 쓰고 버릴 함수라는데 여기서 어떻게 쓰인지는 모르겠다
+#리스트 안에는 나이, 이름을 입력받은 값이 있지만
+#lambda안에 들어와서 a로 나이만 정렬
+
+for i in range(N):
+    print(num[i][0], num[i][1])
