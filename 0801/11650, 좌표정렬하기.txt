@@ -1,0 +1,14 @@
+import sys
+N = int(sys.stdin.readline().rstrip())
+num=[]
+#여기서는 이중 리스트를 써야 하니까 별도의 리스트를 작성하고
+#a,b라는 리스트를 받아서 입력하고 계산하는것 같다
+
+for i in range(N):
+    [a, b] = map(int,sys.stdin.readline().split())
+    num.append([a, b])
+
+num.sort()
+
+for i in range(N):
+    print(num[i][0], num[i][1])
