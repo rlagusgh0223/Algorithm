@@ -1,0 +1,14 @@
+import sys
+N = int(sys.stdin.readline().rstrip())
+num=[]
+
+for i in range(N):
+    [a, b, c, d] = sys.stdin.readline().split()
+    num.append([a, int(b), int(c), int(d)])
+
+num.sort(key = lambda x:(-int(x[1]), int(x[2]), -int(x[3]), x[0]))
+
+for i in range(N):
+    print(num[i][0])
+    #[i][0]으로 하면 이름만 나옴
+    #[i]1,2,3은 숫자만 나오는데 아마 그 다음 과목 점수인것 같음
