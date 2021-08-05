@@ -1,0 +1,12 @@
+import sys
+N = int(sys.stdin.readline().rstrip())
+num=[]
+
+for i in range(N):
+    [a, b] = map(int,sys.stdin.readline().split())
+    num.append([b, a])#y와 x의 역할이 바뀌었기 때문에 a, b 위치 바꿈
+
+num.sort()
+
+for i in range(N):
+    print(num[i][1], num[i][0])#a, b 위치 바꼈으니까 뒤에 0,1도 앞뒤로 바꿈
