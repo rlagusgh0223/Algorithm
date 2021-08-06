@@ -1,0 +1,39 @@
+#이게 된다는데 무슨 원리인지는 모르겠다
+import sys
+N = int(sys.stdin.readline().rstrip())
+
+value = dict()
+
+for _ in range(N):
+    tmp = int(sys.stdin.readline().rstrip())
+    if tmp in value:
+        value[tmp] += 1
+    else:
+        value[tmp] = 1
+
+print(sorted(value.items(), key=lambda x: (-x[1], x[0]))[0][0])
+#######################################
+#답은 나오는데 백준은 틀렸단다
+"""
+import sys
+N = int(sys.stdin.readline().rstrip())
+s = []
+num=0
+cnt=0
+
+for i in range(N):
+    s.append(int(sys.stdin.readline().rstrip()))
+
+s.sort()
+
+for i in range(1, N):
+    if s[i] == s[i-1]:
+        cnt += 1
+    else:
+        cnt = 0
+    if num < cnt:
+        num = cnt
+        ans = s[i]
+
+print(ans)
+"""
