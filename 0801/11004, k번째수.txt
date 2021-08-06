@@ -1,0 +1,7 @@
+import sys
+N, K = map(int,sys.stdin.readline().split())
+s = list(map(int,sys.stdin.readline().split()))
+
+s.sort()
+
+print(s[K-1])
