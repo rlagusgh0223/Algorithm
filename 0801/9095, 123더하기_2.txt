@@ -1,0 +1,14 @@
+T = int(input())
+
+for _ in range(T):
+    n = int(input())
+
+    s = [0 for i in range(n+3)]
+    s[1] = 1 # 1
+    s[2] = 2 # 1+1, 2
+    s[3] = 4 # 1+1+1, 1+2, 2+1, 2+2
+
+    for i in range(4,n+1):
+        s[i] = s[i-1] + s[i-2] + s[i-3] #1,2,3 더하기 점화식
+
+    print(s[n]%10007)
