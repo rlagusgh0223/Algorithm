@@ -1,0 +1,40 @@
+import sys
+T = int(sys.stdin.readline().rstrip())
+
+for _ in range(T):
+    n = int(sys.stdin.readline().rstrip())
+    dp = [[0 for i in range(n+1)]for j in range(T+1)]
+    for i in range(2):
+        s = list(map(int,sys.stdin.readline().split()))
+        #s는 list로 사용하는데, s=[map(int,sys.stdin.readline().split())]
+        #를 사용하면 오류남
+        #map을 리스트에 넣으려면 list()에 넣어야됨
+        for j in range(n):
+            dp[i][j] = s[j]
+            #print(dp[i][j],end=' ') # 제대로 입력되는지 확인
+        #print() #이게 있어야 행 구분
+        d[n][0] = max(dp[n-1][0], dp[n-1][1], dp[n-1][2])
+        d[n][1] = max(dp[n-1][0], dp[n-1][2]) + dp[n][0]
+        d[n][2] = max(dp[n-1][0], dp[n-1][1]) + dp[n][1]
+print(max(d[n][0],d[n][1],d[n][2]))
+
+"""
+X	O	X
+X	X	O
+----------------------------
+0	1	2
+A[i][j]
+  열행
+d[n][s] = 2 X n 스티커, s의 0,1,2는 상태를 나타냄
+d[n][0] = max(d[n-1][0], d[n-1][1], d[n-1][2])
+X		X	O	X
+X		X	X	O
+d[n][1] = max(d[n-1][0], d[n-1][2]) + A[n][1]
+O		X	X	n번열의 1행
+X		X	O
+d[n][2] = max(d[n-1][0], d[n-1][2]) + A[n][2]
+X		X	O	n번열의 2행
+O		X	X
+
+max(d[n][0],d[n][1],d[n][2])
+"""
