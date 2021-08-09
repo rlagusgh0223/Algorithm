@@ -1,0 +1,11 @@
+import sys
+N = int(sys.stdin.readline().rstrip())
+num = [0 for _ in range(N)]     #리스트 num에 주어진 점 만큼 0 입력
+for i in range(N):
+    x, y = map(int,sys.stdin.readline().split())    #좌표 x,y값 입력
+    num[i] = x, y       #리스트에 x, y를 입력. 리스트 하나에 x, y가 들어감
+    #x, y 순으로 입력이 되어 있으니까 x, y순으로 오름차순이 입력됨
+
+num.sort()  #오름차순
+for i in range(N):      #num만 출력하면 []로 붙어서 출력됨
+    print(num[i][0],num[i][1])      #num[i]를 하면 []가 나와서 오답이 됨
