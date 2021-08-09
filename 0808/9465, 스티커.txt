@@ -4,6 +4,7 @@ T = int(sys.stdin.readline().rstrip())
 for _ in range(T):
     n = int(sys.stdin.readline().rstrip())
     dp = [[0 for i in range(n+1)]for j in range(T+1)]
+    
     for i in range(2):
         s = list(map(int,sys.stdin.readline().split()))
         #s는 list로 사용하는데, s=[map(int,sys.stdin.readline().split())]
@@ -13,11 +14,21 @@ for _ in range(T):
             dp[i][j] = s[j]
             #print(dp[i][j],end=' ') # 제대로 입력되는지 확인
         #print() #이게 있어야 행 구분
-        d[n][0] = max(dp[n-1][0], dp[n-1][1], dp[n-1][2])
-        d[n][1] = max(dp[n-1][0], dp[n-1][2]) + dp[n][0]
-        d[n][2] = max(dp[n-1][0], dp[n-1][1]) + dp[n][1]
-print(max(d[n][0],d[n][1],d[n][2]))
 
+    #현재 스티커를 선택한 값의 최댓값은 왼쪽으로 대각선 아래
+    #(혹은 왼쪽으로 대각선 위)의 스티커를 선택했을 때의 최댓값,
+    #또는 그 바로 왼쪽의 스티커를 선택했을때의 최댓값이다.
+    #그래서 이 두 값을 다시 최댓값을 계산한 뒤 현재 스티커의 값을
+    #더해주면 현재 위치에서의 스티커 최댓값이 나온다.
+    dp[0][1] += dp[1][0]    #1행, 즉 두번째 값에서 앞에 대각선 값을  더한다
+    dp[1][1] += dp[0][0]    #어차피 1행은 0행이랑 더해야 최댓값이다.
+    #2행부터 시작해서 0행이나 1행 중 더 큰 값을 더한다
+    for i in range(2, n):
+        dp[0][i] += max(dp[1][i-1], dp[1][i-2])
+        dp[1][i] += max(dp[0][i-1], dp[0][i-2])
+    print(max(dp[0][n-1],dp[1][n-1]))
+
+아래는 백준 강의
 """
 X	O	X
 X	X	O
