@@ -1,0 +1,28 @@
+import sys
+n = int(sys.stdin.readline().rstrip())
+dp = [0 for _ in range(n+1)]
+d = [0 for _ in range(n+1)]
+for i in range(n):
+    dp[i] = int(sys.stdin.readline().rstrip())
+
+d[0] = dp[0]
+d[1] = dp[0] + dp[1]
+
+for i in range(2,n+1):
+    d[n] += max(dp[i]+d[i-1]+d[i-3] , d[i-1]+d[i-2], dp[i]+d[i-2]+d[i-3])
+print(d[n])
+"""
+d1 = dp1
+d2 = dp1+dp2
+d3 = dp1+dp2
+        dp1+dp3
+        dp2+dp3
+d4 = dp1+dp2+dp4 -> d2+dp4
+        dp2+dp3
+        dp1+dp3+dp4 -> d3+dp4
+d5 = dp1+dp2+dp4+dp5 -> d4+dp5
+        dp1+dp3+dp5 -> d3+dp5
+        dp1+dp4+dp5 -> 
+        dp2+dp3+dp5
+        dp2+dp4+dp5
+        """
