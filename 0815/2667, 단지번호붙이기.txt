@@ -1,0 +1,43 @@
+from collections import deque
+n = int(input())
+graph = [[0 for _ in range(n)] for _ in range(n)]
+visited = [[0 for _ in range(n)] for _ in range(n)]
+dr = [1,-1,0,0]
+dc = [0,0,1,-1]
+
+ans=[]
+sum1=0
+
+def BFS(i,j):
+    global sum1
+    q = deque()
+    q.append([i,j])
+    while len(q)!=0:
+        now=q.popleft()
+        r=now[0]
+        c=now[1]
+        for i in range(4):
+            nr = r+dr[i]
+            nc = c+dc[i]
+            if nr>=0 and nr<n and 0<=nc and nc<n:
+                if graph[nr][nc] == 1 and visited[nr][nc]==0:
+                    visited[nr][nc]=1
+                    sum1+=1
+                    q.append([nr,nc])
+
+for i in range(n):
+    str = input()
+    for j in range(len(str)):
+        graph[i][j]=int(str[j])
+        
+for i in range(n):
+    for j in range(n):
+        if graph[i][j] == 1 and visited[i][j]==0:
+            sum1=1
+            visited[i][j]=1
+            BFS(i,j)
+            ans.append(sum1)
+ans.sort()
+print(len(ans))
+for x in ans:
+    print(x)
