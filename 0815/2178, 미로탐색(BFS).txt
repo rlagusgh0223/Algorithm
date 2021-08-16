@@ -1,0 +1,53 @@
+from collections import deque
+n, m = map(int,input().split())
+
+distance = [[0 for _ in range(m)] for _ in range(n)]
+graph = [[0 for _ in range(m)] for _ in range(n)]
+dr = [-1,1,0,0]     #r,c 주변 체크를 위해 배열
+dc = [0,0,1,-1]
+
+
+for i in range(n):
+    li = input().rstrip() #띄어쓰기 없으니까 split, int 쓰지 않고 문자열로 받는다
+    for j in range(m):
+        graph[i][j] = int(li[j])    #graph에 입력받은 값 입력
+"""
+def printf():
+    for i in range(n):
+        for j in range(m):
+            print(distance[i][j], end = ' ')
+        print()
+    print()
+"""
+def BFS():
+    q = deque()     #queue선언
+    q.append([0,0])     #queue첫번째 값 입력
+    while len(q) != 0:      #DFS 1차 반복문
+        now = q.popleft()   #큐에 입력된 순서대로 now에 입력[a,b]값으로
+        r = now[0]  #now[0,1]중 0
+        c = now[1]  #now[0,1]중 1
+        for i in range(4):  #위에서 선언한 dr,dc가 4자리 배열이다
+            nr = r + dr[i]  #다음 r은 현재+다음배열
+            nc = c + dc[i]  #다음 c는 현재+다음배열
+            if nr>=0 and nr<n and nc>=0 and nc<m:   #0<=nr, nc<=n,m
+                if graph[nr][nc] == 1 and distance[nr][nc] == 0:
+                    distance[nr][nc] = distance[r][c]+1 #distance배열의  현재 값에 1씩 더한다.
+                    q.append([nr,nc])   #증가값 queue에 입력
+
+distance[0][0] = 1 #distance의 첫번째 값을 1로 줘서 BFS에서 if문 돌아가
+BFS()
+print(distance[n-1][m-1])   #distance마지막 값
+
+"""
+#distance BFS() 호출 전
+1 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+
+#distance BFS() 호출 후
+1 0 9 10 11 12 
+2 0 8 0 12 0 
+3 0 7 0 13 14 
+4 5 6 0 14 15
+"""
