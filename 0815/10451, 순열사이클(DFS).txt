@@ -1,0 +1,21 @@
+import sys
+sys.setrecursionlimit(2000)
+#최대 재귀를 늘려줘야 런타임 에러를 피할 수 있다
+
+def DFS(x):
+    check[x] = True             #방문체크
+    number = numbers[x]     #다음 방문 장소
+    if not check[number]:       #방문하지 않았을 경우
+        DFS(number)             #재귀함수
+
+for _ in range(int(input())):
+    N = int(input())
+    numbers = [0] + list(map(int,input().split()))
+    check = [True] + [False]*N          #방문여부 확인용
+    ans = 0
+
+    for i in range(1,N+1):
+        if not check[i]:                        #방문하지 않았다면
+            DFS(i)                                  #DFS실행
+            ans += 1                            #결과값 += 1
+    print(ans)
