@@ -1,0 +1,45 @@
+#런타임에러
+def next(A,P):
+    x = str(A)
+    ans = 0
+    for i in x:
+        ans += pow(int(i),P)    #pow(a,b) : a의 b제곱을 계산 후 반환
+    return ans
+
+#DFS로 들어가면서 해당하는 값에 count를 할당한다.
+#이렇게 계속해서 값을 구하다가 check가 0이 아닌 값을 만난다면
+#그 값부터는 반복된다는 뜻이므로 그 check의 count에 1을 뺀 값이 정답
+def DFS(A,P,count,check):
+    if check[A]!=0:
+        return check[A]-1
+    check[A] = count
+    y = next(A,P)
+    count += 1
+    return DFS(y,P,count,check)
+
+#check 나올 수 있는 최대값은 9^5+9^5+9^5+9^5이다
+check=[0 for _ in range(25000)]
+
+A, P = map(int, input().split())
+count = 1
+print(DFS(A,P,count,check))
+
+
+
+#############################
+import sys
+A, P = map(int, input().split())
+D = [A]
+
+while True:
+    n = D[-1]
+    ans = 0
+    for i in str(D[-1]):
+        ans += int(i)**P
+
+    if ans in D:
+        break
+
+    D.append(ans)
+
+print(D.index(ans))
