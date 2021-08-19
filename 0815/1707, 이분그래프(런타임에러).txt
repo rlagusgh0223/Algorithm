@@ -19,7 +19,6 @@ k = int(input())    #첫번째 줄 테스트 케이스 개수
 for i in range(k):
     v, e = map(int, input().split())    #그래프 정점의 개수v, 간선의 개수e
     graph = [[] for _ in range(v+1)]
-    print(graph)
     check = [0 for _ in range(v+1)]
     ans = 1
     for j in range(e):
