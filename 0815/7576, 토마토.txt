@@ -1,3 +1,49 @@
+#인터넷
+from collections import deque
+M, N = map(int,input().split())         #상자의 가로(M), 세로(N) 입력
+
+graph = [list(map(int,input().split())) for _ in range(N)]
+check = [[0 for _ in range(M)] for _ in range(N)]
+q = deque([])
+
+dc = [-1,1,0,0]
+dr = [0,0,-1,1]
+
+for i in range(N):
+    for j in range(M):
+        if graph[i][j] == 1:
+            q.append([i,j])
+            
+while q:
+    c,r = q.popleft()
+    for i in range(4):
+        nr = r+dr[i]
+        nc = c+dc[i]
+
+        if 0<=nr<M and 0<=nc<N:
+            if graph[nc][nr]==0:
+                q.append([nc,nr])
+                graph[nc][nr] = graph[c][r]+1
+
+ans = graph[0][0]
+endFlag = False
+for i in range(N):
+    for j in range(M):
+        if graph[i][j]!=0:
+            ans = max(graph[i][j], ans)
+        else:
+            print(-1)
+            endFlag = True
+            break
+
+    if endFlag:
+        break
+
+if not endFlag:
+    print(int(ans)-1)
+
+##########################################
+#백준방식
 from collections import deque
 M, N = map(int,input().split())         #상자의 가로(M), 세로(N) 입력
 graph = [[0 for _ in range(M)] for _ in range(N)]
