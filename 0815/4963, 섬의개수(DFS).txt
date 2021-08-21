@@ -1,0 +1,30 @@
+from collections import deque
+import sys
+sys.setrecursionlimit(2500)
+#최대 재귀를 늘려줘야 런타임 에러를 피할 수 있다
+
+m, n = map(int,input().split()) #행, 열 받기
+while m!=0 and n!=0:    #0 0을 입력할때까지 반복
+    visited = [[0 for _ in range(m)]for _ in range(n)]  #방문 횟수
+    graph = [list(map(int,input().split())) for _ in range(n)]   #그래프 작성
+    dr = [-1,-1,-1,0,0,1,1,1]
+    dc = [-1,0,1,-1,1,-1,0,1]
+
+    def DFS(r,c):
+        for i in range(8):      #상하좌우, 대각선 검사니까 8
+            nr = r+dr[i]
+            nc = c+dc[i]
+            if 0 <= nr < n and 0 <= nc < m: #표 안에 있다면
+                if graph[nr][nc] == 1 and visited[nr][nc] == 0: #육지이고 방문한 적이 없다면
+                    visited[nr][nc]=1 #방문표시
+                    DFS(nr,nc)  #재귀함수
+	                    
+    ans = 0
+    for i in range(n):
+        for j in range(m):
+            if graph[i][j]==1 and visited[i][j]==0:  #육지이고 방문한 적이 없다면
+                visited[i][j] = 1
+                DFS(i,j)
+                ans += 1
+    print(ans)
+    m, n = map(int,input().split()) #행, 열 받기 / 반복해서 수행하기 위해
