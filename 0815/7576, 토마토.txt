@@ -1,4 +1,3 @@
-#인터넷
 from collections import deque
 M, N = map(int,input().split())         #상자의 가로(M), 세로(N) 입력
 
@@ -9,86 +8,35 @@ q = deque([])
 dc = [-1,1,0,0]
 dr = [0,0,-1,1]
 
-for i in range(N):
+for i in range(N):          #상자(graph) 내에 썩은 토마토(1) 위치 q에 입력
     for j in range(M):
         if graph[i][j] == 1:
             q.append([i,j])
             
-while q:
+while q:                        #썩은 토마토가 있다면 BFS 실행
     c,r = q.popleft()
     for i in range(4):
         nr = r+dr[i]
         nc = c+dc[i]
 
         if 0<=nr<M and 0<=nc<N:
-            if graph[nc][nr]==0:
-                q.append([nc,nr])
-                graph[nc][nr] = graph[c][r]+1
+            if graph[nc][nr]==0:        #안 썩은 토마토가 있다면
+                q.append([nc,nr])           #위치 q에 입력
+                graph[nc][nr] = graph[c][r]+1   #전염
 
-ans = graph[0][0]
-endFlag = False
+ans = graph[0][0]   #ans 초기값으로 아무거나 줘도 된다
+endFlag = False         #하나라도 썩지 않는 경우가 있을때
 for i in range(N):
     for j in range(M):
-        if graph[i][j]!=0:
-            ans = max(graph[i][j], ans)
+        if graph[i][j]!=0:  #이미 나온 결과값 중 가장 큰 값, 즉 마지막으로
+            ans = max(graph[i][j], ans) #썩은 날 출력
         else:
-            print(-1)
-            endFlag = True
-            break
+            print(-1)           #하나라도 썩게 하지 못한다면
+            endFlag = True  #어차피 결과는 -1
+            break               #바로 검색 종료
 
     if endFlag:
         break
 
-if not endFlag:
+if not endFlag:             #모두 썩게 된다면 ans-1
     print(int(ans)-1)
-
-##########################################
-#백준방식
-from collections import deque
-M, N = map(int,input().split())         #상자의 가로(M), 세로(N) 입력
-graph = [[0 for _ in range(M)] for _ in range(N)]
-check = [[0 for _ in range(M)] for _ in range(N)]
-q = deque()
-
-for i in range(N):
-    lst = list(input().split())
-    for j in range(M):
-        graph[i][j] = lst[j]
-        check[i][j] = -1        #
-        if(graph[i][j] == '1'):   #
-            q.append([i,j])      #
-            check[i][j]=0       #
-
-#for i in range(N):
-#    print(graph[i])
-dr = [1,-1,0,0]
-dc = [0,0,-1,1]
-
-while len(q) != 0:
-    now = q.popleft()
-    c = now[0]      #세로
-    r = now[1]      #가로
-    for k in range(4):
-        nc = c+dc[k]
-        nr = r + dr[k]
-        if 0<=nr and nr<M and 0<=nc and nc<N:  #nr이 가로, nc가 세로
-            if graph[nc][nr]==0 and check[nc][nr]==-1:
-                print(check[nc][nr],end=' ')
-                check[nc][nr] = check[c][r]+1
-                q.append([nc,nr])
-
-
-ans = 0
-for i in range(N):
-    for j in range(M):
-        #print(check[i][j],end=' ')
-        if ans<check[i][j]:
-            ans = check[i][j]
-
-for i in range(N):
-    for j in range(M):
-        if graph[i][j] == 0 and check[i][j] == -1:
-            ans = -1
-            RFS
-
-print(ans)
