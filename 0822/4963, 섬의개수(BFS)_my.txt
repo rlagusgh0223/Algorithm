@@ -1,0 +1,35 @@
+from collections import deque
+while True:
+    m, n = map(int, input().split())
+    if m == 0 and n == 0:
+        break
+    else:
+        graph = [list(map(int,input().split())) for _ in range(n)]
+        check = [[0 for _ in range(m)] for _ in range(n)]
+        dr = [-1,1,0,0,-1,-1,1,1]
+        dc = [0,0,1,-1,-1,1,-1,1]
+
+        def BFS(i,j):
+            q = deque()
+            q.append([i,j])
+            while q:
+                now = q.popleft()
+                r = now[0]
+                c = now[1]
+                for i in range(8):
+                    nr = r+dr[i]
+                    nc = c+dc[i]
+                    if 0<=nr<n and 0<=nc<m:
+                        if graph[nr][nc]==1 and check[nr][nc]==0:
+                            check[nr][nc]=1
+                            q.append([nr,nc])
+
+        ans = 0
+        for i in range(n):
+            for j in range(m):
+                if graph[i][j]==1 and check[i][j]==0:
+                    check[i][j]=1
+                    BFS(i,j)
+                    ans+=1
+
+        print(ans)
