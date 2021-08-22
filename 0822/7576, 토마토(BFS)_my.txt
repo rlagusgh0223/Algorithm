@@ -1,0 +1,49 @@
+import sys
+from collections import deque
+
+M,N = map(int,sys.stdin.readline().split())
+
+graph = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
+
+dr = [-1,1,0,0]
+dc = [0,0,1,-1]
+q = deque()
+
+for i in range(N):
+    for j in range(M):
+        if graph[i][j] == 1:
+            q.append([i,j])
+
+while q:
+    r, c = q.popleft()
+    for i in range(4):
+        nr = r+dr[i]
+        nc = c+dc[i]
+        if 0<=nr<N and 0<=nc<M and graph[nr][nc] == 0:
+            graph[nr][nc] = graph[r][c]+1
+            q.append([nr,nc])
+
+endFlag = False
+ans = 0
+for i in range(N):
+    for j in range(M):
+        if graph[i][j]==0:
+            endFlag=True
+            print('-1')
+            break
+        elif ans<graph[i][j]:
+            ans=graph[i][j]
+    if endFlag==True:
+        break
+
+if endFlag==False:
+    print(ans-1)
+    
+        
+"""
+for i in range(N):
+    for j in range(M):
+        print(graph[i][j],end=' ' )
+    print()
+print()
+"""
