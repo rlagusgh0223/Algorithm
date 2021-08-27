@@ -15,11 +15,13 @@ def DFS():
 
 DFS()
 """
-from itertools import permutations
-import sys
-N, M = list(map(int,sys.stdin.readline().split()))
+from itertools import permutations	#순열
+#순열이란 몇 개를 골라 순서를 고려해 나열한 경우의 수
+#서로 다른 n개 중 r개를 골라 순서를 정해 나열하는 가짓수
+#순열에서 (A,B)와 (B,A)는 서로 다른것
 
-for i in permutations(N,M):
-    print(N. M)
-#print(list(map(' '.join, itertools.permutations(N,M))))
+N, M = map(int, input().split())    #N, M의 숫자 입력
+li = map(str, range(1, N+1))        #1부터 N까지 숫자를 문자로 받음
+print('\n'.join(list(map(' '.join,permutations(li, M)))))
+# permutations : li를 M개의 원소로 수열 만들기
 """

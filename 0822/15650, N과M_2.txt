@@ -1,0 +1,10 @@
+from itertools import combinations  #하나의 리스트에서 모든 조합 구하기
+#조합은 서로 다른 n개 중에거 r개를 취하여 조를 만들때
+# 하나하나의 조를 n개 중에서 r개 취한 조합이라고 한다.
+#순서를 고려하지 않기 때문에 같은 수 배열은 같은걸로 판단한다.
+#조합에서 (A,B)와 (B,A)는 같은것
+
+N, M = map(int, input().split())    #N, M의 숫자 입력
+p = combinations(range(1,N+1),M)
+for i in p:
+    print(*i)   #*를 안붙이면 (1,2,3,4)이런 식으로 나온다
