@@ -1,0 +1,46 @@
+import sys
+from collections import deque
+T = int(sys.stdin.readline())
+
+q = deque()
+dx = [-1,1,0,0]
+dy = [0,0,-1,1]
+
+def BFS(i,j):       #섬의개수를 세는 BFS와 같은 원리
+    q = deque()
+    q.append([i,j])     #배추가 있는 좌표 입력
+    while q:
+        y,x = q.popleft()   #배추 좌표 받음
+        for i in range(4):  #배추 사방 검사
+            nx = x+dx[i]
+            ny = y+dy[i]
+            if 0<=nx<M and 0<=ny<N:     #표 안에 있다면
+                if graph[ny][nx]==1:
+                    graph[ny][nx] = 2    #배추를 점검했다는 표시
+                    q.append([ny,nx])   #다음 좌표 검사
+
+def printf(N,M):
+    for i in range(N):
+        for j in range(M):
+            print(graph[i][j],end=' ')                  #그래프 확인
+        print()
+    print()
+
+
+
+for i in range(T):
+    M, N, K = map(int, sys.stdin.readline().split())    #가로, 세로, 1의 좌표
+    graph = [[0 for _ in range(M)] for _ in range(N)]   #어차피 1은 새로 입력하는거니까 0으로 그래프 채움
+    for j in range(K):                                  #graph에 1 입력
+        Y, X = map(int, sys.stdin.readline().split())
+        graph[X][Y] = 1
+
+    ans = 0
+    for i in range(N):
+        for j in range(M):
+            if graph[i][j]==1:
+                graph[i][j] = 2
+                BFS(i,j)
+                ans += 1
+      
+    print(ans)
