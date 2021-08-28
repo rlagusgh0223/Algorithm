@@ -1,0 +1,50 @@
+import sys
+from collections import deque
+
+#상하,좌우,앞뒤 3차원을 봐야 되니까 3개를 입력 받는다
+M,N,H = map(int,sys.stdin.readline().split())
+
+#리스트 값을 받고 세로, 앞뒤는 그대로 반복
+graph = [[list(map(int, sys.stdin.readline().split())) for _ in range(N)] for _ in range(H)]
+
+dr = [-1,1,0,0,0,0]
+dc = [0,0,1,-1,0,0]
+dh = [0,0,0,0,1,-1]
+q = deque()
+
+#익은 토마토 입력
+for k in range(H):
+    for i in range(N):
+        for j in range(M):
+            if graph[k][i][j] == 1:
+                q.append([k,i,j])
+
+#BFS(이전에 비해 위,아래층인 h가 추가됐다
+while q:
+    h, r, c = q.popleft()
+    for i in range(6):
+        nr = r+dr[i]
+        nc = c+dc[i]
+        nh = h+dh[i]
+        if 0<=nr<N and 0<=nc<M and 0<=nh<H and graph[nh][nr][nc] == 0:
+            graph[nh][nr][nc] = graph[h][r][c]+1
+            q.append([nh,nr,nc])
+
+endFlag = False
+ans = 0
+for i in range(N):
+    for j in range(M):
+        for k in range(H):
+            if graph[k][i][j]==0:
+                endFlag=True
+                print('-1')
+                break
+            elif ans<graph[k][i][j]:
+                ans=graph[k][i][j]
+        if endFlag == True:
+            break
+    if endFlag==True:
+        break
+
+if endFlag==False:
+    print(ans-1)
