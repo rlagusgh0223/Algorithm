@@ -1,0 +1,25 @@
+import sys
+N,M = map(int, sys.stdin.readline().split())
+
+def DFS(depth,idx):
+    if depth == M:
+        for i in range(M):
+            print(ans[i], end=' ')
+        print()
+        return
+    
+    #갈수록 큰 값이 나온다는 말은 앞에서 나온것과 같은 숫자는 나오지
+    #않는다는 말과 같다
+    #1,2 와 2,1이 같고
+    #1,3과 2,3 / 3,1과 3,2가 같다고 한다는 것
+    #즉, 출발값을 점점 증가시켜서 앞에 값(더 작은 값)이 안나오게 하는것이다
+    for i in range(idx,N+1): 
+        if visited[i] == 0:
+            visited[i]=1
+            ans[depth]=i
+            DFS(depth+1,i+1)
+            visited[i]=0
+
+visited = [0 for _ in range(N+1)]
+ans = [0 for _ in range(M)]
+DFS(0,1)
