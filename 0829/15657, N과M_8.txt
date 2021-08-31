@@ -1,0 +1,18 @@
+import sys
+#4번과 같은 유형
+
+def DFS(depth,idx):
+    if depth == M:
+        for i in range(M):
+            print(ans[i],end=' ')
+        print()
+        return
+    for i in range(idx,N+1):
+        ans[depth]=lst[i-1]
+        DFS(depth+1,i)
+
+N, M = map(int, sys.stdin.readline().split())
+lst = list(map(int, sys.stdin.readline().split()))
+lst.sort()
+ans = [0 for _ in range(M)]
+DFS(0,1)
