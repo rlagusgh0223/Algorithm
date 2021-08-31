@@ -1,0 +1,23 @@
+import sys
+#2번과 같은 유형
+
+def DFS(depth,idx):
+    if depth == M:
+        for i in range(M):
+            print(ans[i],end=' ')
+        print()
+        return
+    for i in range(idx,N+1):
+        if visited[i] == 0:
+            visited[i]=1
+            ans[depth]=lst[i-1]#이 부분만 바꼈음
+            #lst[i]로 하면 리스트 초과한다고 나옴
+            DFS(depth+1,i+1)
+            visited[i]=0
+
+N, M = map(int, sys.stdin.readline().split())
+lst = list(map(int, sys.stdin.readline().split()))
+lst.sort()
+visited = [0 for _ in range(N+1)]
+ans = [0 for _ in range(M)]
+DFS(0,1)
