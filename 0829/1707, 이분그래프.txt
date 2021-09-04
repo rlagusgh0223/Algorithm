@@ -1,0 +1,34 @@
+from collections import deque
+import sys  #
+
+def BFS(x):
+    check[x] = 1
+    q = deque()
+    q.append(x)
+    while q:#
+        now = q.popleft()
+        for i in graph[now]:
+            if check[i]==0:
+                check[i] = -check[now]
+                q.append(i)
+            else:
+                if check[i] == check[now]:
+                    return False
+    return True
+
+k = int(input())    #첫번째 줄 테스트 케이스 개수
+for i in range(k):
+    v, e = map(int, sys.stdin.readline().split())    #그래프 정점의 개수v, 간선의 개수e
+    graph = [[] for _ in range(v+1)]
+    check = [0]*(v+1)   #
+    ans = 1
+    for j in range(e):
+        a, b = map(int, sys.stdin.readline().split())
+        graph[a].append(b)
+        graph[b].append(a)
+    for k in range(1, v+1):
+        if check[k] == 0:#j였는데 k로 바뀌었다ㅣ
+            if not BFS(k):
+                ans = -1
+                break
+    print('YES' if ans==1 else 'NO')
