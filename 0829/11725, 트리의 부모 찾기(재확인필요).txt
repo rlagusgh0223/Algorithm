@@ -1,0 +1,26 @@
+import sys
+sys.setrecursionlimit(10**9)   #반복은 1000회로 되어 있으니까 늘려줬다
+
+N = int(sys.stdin.readline())   #노드의 개수
+
+Tree = [[]for _ in range(N+1)]  #트리
+
+Parents = [0 for _ in range(N+1)]   #부모 노드 저장
+
+#트리 구조 입력
+for _ in range(N-1):
+    a, b = map(int,sys.stdin.readline().split())
+    Tree[a].append(b)
+    Tree[b].append(a)
+
+def DFS(start, tree, parents):
+    #연결된 노드들로부터 parents[i]의 부모가 없으면 부모 설정해주고 DFS 돌린다
+    for i in tree[start]:
+        if parents[i] == 0:
+            parents[i] = start
+            DFS(i, tree, parents)
+
+DFS(1, Tree, Parents)
+
+for i in range(2, N+1):
+    print(Parents[i])
