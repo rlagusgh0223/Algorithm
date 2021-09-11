@@ -2,22 +2,21 @@ import sys
 #2번과 같은 유형
 
 def DFS(depth,idx):
-    if depth == M:
-        for i in range(M):
+    if depth == M:				#입력하기로 한 열까지 입력할경우
+        for i in range(M):			#ans리스트에 있던 모든 정수 한줄에 출력
             print(ans[i],end=' ')
         print()
         return
-    for i in range(idx,N+1):
+    for i in range(idx,N):			#idx는 인덱스값. lst에 있는 정수를 입력시키는 값
         if visited[i] == 0:
             visited[i]=1
-            ans[depth]=lst[i-1]#이 부분만 바꼈음
-            #lst[i]로 하면 리스트 초과한다고 나옴
+            ans[depth]=lst[i]			#ans에 lst의 값 입력
             DFS(depth+1,i+1)
             visited[i]=0
 
-N, M = map(int, sys.stdin.readline().split())
-lst = list(map(int, sys.stdin.readline().split()))
-lst.sort()
-visited = [0 for _ in range(N+1)]
-ans = [0 for _ in range(M)]
-DFS(0,1)
+N, M = map(int, sys.stdin.readline().split())	#사용할 정수의 개수와 열의 수 입력
+lst = list(map(int, sys.stdin.readline().split()))	#사용할 정수 입력
+lst.sort()					#사용할 정수 오름차순 정렬
+visited = [0 for _ in range(N+1)]		#정수 사용한적 있는지 표시할 리스트 작성
+ans = [0 for _ in range(M)]			#입력한 열까지 정수를 받기 위한 리스트
+DFS(0,0)					#DFS호출

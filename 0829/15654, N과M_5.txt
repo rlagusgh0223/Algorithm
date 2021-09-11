@@ -1,22 +1,22 @@
 import sys
 
 def DFS(depth):
-    if depth == M:
-        for i in range(M):
+    if depth == M:				#M의 마지막 즉, 열의 마지막에 올 경우
+        for i in range(M):			#지금까지 ans에 받은 정수 전부 한줄에 출력
             print(ans[i],end=' ')
         print()
-        return
-    for i in range(N):
-        if visited[i] == 0:
-            visited[i]=1
-            ans[depth]=lst[i]
-            DFS(depth+1)
-            visited[i]=0
+        return				#DFS 완전 종료
+    for i in range(N):				#입력받은 정수의 수 만큼 반복
+        if visited[i] == 0:			#해당 정수를 사용한적이 없다면
+            visited[i]=1			#해당 정수를 사용했다고 표시
+            ans[depth]=lst[i]			#사용하려고 입력한 정수 ans에 넘김
+            DFS(depth+1)			#다음 DFS시작
+            visited[i]=0			#사용한적 없다고 표시(다음 열에서 사용했다고 표시되지 않기 위해)
 
-N, M = map(int, sys.stdin.readline().split())
-lst = list(map(int, sys.stdin.readline().split()))
-lst.sort()
+N, M = map(int, sys.stdin.readline().split())	#두 정수 입력
+lst = list(map(int, sys.stdin.readline().split()))	#순열시킬 정수 리스트에 입력
+lst.sort()	#오름차순으로 정렬
 #print(lst)
-visited = [0 for _ in range(N+1)]
-ans = [0 for _ in range(M)]
+visited = [0 for _ in range(N+1)]		#방문했는지 체크할 리스트 N개 작성(입력받은 정수가 N개니까)
+ans = [0 for _ in range(M)]			#화면에 표시할 정수열에 맞춰 필요한 리스트 작성
 DFS(0)

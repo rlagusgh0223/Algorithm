@@ -2,17 +2,18 @@ import sys
 #3번과 같은 유형
 
 def DFS(depth):
-    if depth == M:
-        for i in range(M):
+    if depth == M:				#출력하기로 한 열의 마지막까지 도달하면
+        for i in range(M):			#ans리스트에 있는 모든 정수 한 줄에 출력
             print(ans[i],end=' ')
         print()
         return
-    for i in range(N):
-        ans[depth]=lst[i]
-        DFS(depth+1)
+    for i in range(N):				#입력하기로 한 정수의 갯수 맞는지	
+        ans[depth]=lst[i]			#lst에 있는 모든 정수 ans에 입력
+        DFS(depth+1)				#다음 DFS사용
 
-N, M = map(int, sys.stdin.readline().split())
-lst = list(map(int, sys.stdin.readline().split()))
-lst.sort()
-ans = [0 for _ in range(M)]
-DFS(0)
+N, M = map(int, sys.stdin.readline().split())	#입력할 정수의 수와 출력할 열의 개수 입력
+lst = list(map(int, sys.stdin.readline().split()))	#사용할 정수 입력
+lst.sort()					#정수 입력된 리스트 오름차순으로 정렬
+ans = [0 for _ in range(M)]			#출력할 정수의 리스트 작성
+					#이번 문제는 중복사용이 허락되므로 방문체크 필요없다
+DFS(0)					#DFS 사용
