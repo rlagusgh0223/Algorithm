@@ -1,26 +1,26 @@
 import sys
 
-def preorder(x):		#전위 순회(루트-왼쪽-오른쪽)
+def preorder(x):			#전위 순회(루트-왼쪽-오른쪽)
     if x != '.':
-        print(x, end=' ')	#입력 받는 모든 알파벳(값이 없을경우 .을 받는데 그 경우에는 if에서 거른다)
-        preorder(tree[x][0])	#왼쪽에 대한 재귀함수
-        preorder(tree[x][1])	#오른쪽에 대한 재귀함수
-def inorder(x):		#중위 순회(왼쪽-루트-오른쪽)
+        print(x, end='')		#입력 받는 모든 알파벳(값이 없을경우 .을 받는데 그 경우에는 if에서 거른다)
+        preorder(tree[x][0])		#왼쪽에 대한 재귀함수
+        preorder(tree[x][1])		#오른쪽에 대한 재귀함수
+def inorder(x):			#중위 순회(왼쪽-루트-오른쪽)
     if x != '.':
         inorder(tree[x][0])
-        print(x, end=' ')
+        print(x, end='')
         inorder(tree[x][1])
-def postorder(x):		#후위 순회(왼쪽-오른쪽-루트)
+def postorder(x):			#후위 순회(왼쪽-오른쪽-루트)
     if x != '.':
         postorder(tree[x][0])
         postorder(tree[x][1])
-        print(x, end=' ')
+        print(x, end='')
 
-tree = {}				#tree라는 딕셔너리
+tree = {}				#딕셔너리로 만들어서 해당 문자에 맞는 루트를 찾기 위해
 n = int(sys.stdin.readline().strip())	#노드의 개수(화면에 출력되는 알파벳 숫자라고 생각해도됨)
-for i in range(n):			#???
+for i in range(n):
     x, y, z = sys.stdin.readline().split()
-    tree[x] = [y,z]
+    tree[x] = [y,z]			#x는 루트, y,z는 루트 밑에 순회 돌 왼쪽, 오른쪽
 
 preorder('A')
 print()
