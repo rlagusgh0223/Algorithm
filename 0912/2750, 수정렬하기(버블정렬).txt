@@ -1,0 +1,16 @@
+#버블정렬 이용해서 수 정렬하기
+import sys
+
+n = int(sys.stdin.readline())       	#정렬할 정수의 개수 입력
+x = []                              		#정렬할 정수 받은 리스트 선언
+for i in range(n):                  	#리스트에 정렬할 정수 입력
+    x.append(int(sys.stdin.readline()))
+
+for i in range(len(x)-1):           	#마지막 수는 어차피 최고의 수니까 비교할 필요가 없다(n으로 해도 문제없음)
+    for j in range(len(x)-i-1):     	#마지막 수(이번 순환에서 가장 큰 값)의 인덱스가 점점 앞으로 나온다
+        if x[j] > x[j+1]:
+            x[j], x[j+1] = x[j+1],x[j]
+
+            
+for i in range(len(x)):
+    print(x[i])
