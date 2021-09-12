@@ -1,0 +1,17 @@
+#선택정렬 이용해서 수 정렬하기
+import sys
+
+n = int(sys.stdin.readline())   #정렬할 정수의 개수 입력
+x = []  #정렬할 정수 받은 리스트 선언
+for i in range(n):  #리스트에 정렬할 정수 입력
+    x.append(int(sys.stdin.readline()))
+
+for i in range(len(x)): #리스트의 길이만큼 순환
+    min_index = i    #비교 시작할 리스트의 인덱스 min에 입력
+    for j in range(i,len(x)):   #i부터 확인하기 위해 한번 더 순환
+        if x[min_index]>x[j]:   #x[min_index]가 x[j]보다 크다면 서로의 수 교환
+            min_index = j   #min_index에 j값을 입력해주어 계속 변동
+    x[i], x[min_index] = x[min_index],x[i]  #최종적으로 가장 작은 수가 있는 인덱스 입력
+            
+for i in range(len(x)):
+    print(x[i])
