@@ -1,0 +1,11 @@
+import sys
+
+n = int(sys.stdin.readline())       	#정렬할 정수의 개수 입력
+x = []                              		#정렬할 정수 받은 리스트 선언
+for i in range(n):                  	#리스트에 정렬할 정수 입력
+    x.append(int(sys.stdin.readline()))
+
+x.sort()
+
+for i in x:
+    print(i)
