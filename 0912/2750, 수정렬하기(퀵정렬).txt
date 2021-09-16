@@ -1,0 +1,59 @@
+#런타임에러
+import sys
+
+n = int(sys.stdin.readline())       	#정렬할 정수의 개수 입력
+x = []                              		#정렬할 정수 받은 리스트 선언
+for i in range(n):                  	#리스트에 정렬할 정수 입력
+    x.append(int(sys.stdin.readline()))
+
+def quick(x, start, end):
+    if start >= end:    #원소가 1개인 경우 종료
+        return
+    pivot = start    #피벗은 첫 번째 원소
+    left = start+1
+    right = end
+    while(left <= right):
+        #피벗보다 큰 데이터를 찾을 때까지 반복
+        while(left <= end and x[left] <= x[pivot]):
+            left += 1
+        #피벗보다 작은 데이터를 찾을 때까지 반복
+        while(right > start and x[right] >= x[pivot]):
+            right -= 1
+        if left>right:  #엇갈렸다면 작은 데이터와 피벗을 교체
+            x[right], x[pivot] = x[pivot], x[right]
+        else:   #엇갈리지 않았다면 작은 데이터와 큰 데이터를 교체
+            x[left], x[right] = x[right], x[left]
+    #분할 이후 왼쪽 부분과 오른쪽 부분에서 각각 정렬 수행
+    quick(x, start, right-1)
+    quick(x, right+1, end)
+
+quick(x, 0, len(x)-1)
+for i in x:
+    print(i)
+
+
+#답 맞춤
+import sys
+
+n = int(sys.stdin.readline())       	#정렬할 정수의 개수 입력
+x = []                              		#정렬할 정수 받은 리스트 선언
+for i in range(n):                  	#리스트에 정렬할 정수 입력
+    x.append(int(sys.stdin.readline()))
+
+def quick(x):
+    if len(x) <= 1:
+        return x
+    pivot = len(x) // 2
+    front_arr, pivot_arr, back_arr = [], [], []
+    for value in x:
+        if value < x[pivot]:
+            front_arr.append(value)
+        elif value > x[pivot]:
+            back_arr.append(value)
+        else:
+            pivot_arr.append(value)
+    return quick(front_arr) + quick(pivot_arr) + quick(back_arr)
+
+array = quick(x)
+for i in array:
+    print(i)
