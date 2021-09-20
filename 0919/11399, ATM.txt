@@ -1,0 +1,12 @@
+import sys
+n = int(sys.stdin.readline())   #몇 명이 있는지 입력
+man = list(map(int, sys.stdin.readline().split()))  #각 사람이 걸리는 시간 입력
+x = 0               #앞사람 시간까지 합해서 각 사람이 걸리는 시간 입력 변수
+minute = [0]*n      #위의 값 입력할 리스트
+man.sort()          #오름차순으로 빨리 끝나는 사람부터 정렬
+
+for i in range(n):
+    x += man[i]     #앞사람 시간까지 합친 실질적인 각 사람 시간 계산
+    minute[i] = x   #해당 값 리스트에 입력
+
+print(sum(minute))  #문제에서 원하는 답은 각 사람 실질적인 시간의 총합이므로 리스트의 모든 값 합산
