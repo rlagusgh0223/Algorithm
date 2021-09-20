@@ -1,0 +1,19 @@
+import sys
+n = int(sys.stdin.readline())   #회의가 몇번 잡혔는지 입력
+room =[[0,0]]*n     #입력된 회의만큼 이차원 리스트 생성
+num = 0     #회의계획을 순서대로 계산할때 사용하기 위한 변수
+cnt = 0     #해당되는 회의 카운트(처음 값은 자동으로 포함되므로 1에서부터 시작)
+now = 0     #카운트된 회의를 리스트에 표시할 변수
+
+for i in range(n):      #회의시간 입력
+    room[i] = list(map(int,sys.stdin.readline().split()))
+
+room.sort(key = lambda x: (x[1], x[0])) #두개의 리스트가 있을때 두번째 리스트값으로 오름차순 정렬
+
+while num<n:    #회의계획을 처음부터 끝까지 반복문 돌린다
+    if room[now][1]<=room[num][0] or cnt==0:  #다음 출발시간이 지금 종료시간과 같거나 많을때
+        cnt += 1                    #지금 room은 끝나는 시간 기준으로 오름차순 정렬 되어있으니까
+        now = num                   #시작시간만 맞다면 최소시간으로 방을 잡을 수 있다
+    num += 1
+    
+print(cnt)
