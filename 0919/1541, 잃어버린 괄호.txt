@@ -1,3 +1,4 @@
+#에러
 import sys
 num = list(sys.stdin.readline())    #수식 입력
 num = num[:-1]  #리스트로 받으면 \n까지 입력되니까 리스트 마지막 제외
@@ -19,3 +20,13 @@ for i in num:   #리스트를 문자열로 입력
     ans = ans+i
 print(ans)
 print(eval(ans))    #eval()함수를 이용해 문자열을 계산
+
+
+
+#런타임에러
+import sys
+num = list(sys.stdin.readline().split('-'))    #수식 입력
+ans = eval(num[0])  #-가 나오기 전까지 문자열의 합을 ans에 입력
+for i in num[1:]:#-가 나온 다음부터 -로 나누어준 문자열 반복문으로 돌림
+    ans = ans - eval(i) #-다음의 모든 합을 더한 후 ans에서 빼줌
+print(ans)
