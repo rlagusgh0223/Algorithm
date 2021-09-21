@@ -1,0 +1,12 @@
+import sys
+N, M, K = map(int, sys.stdin.readline().split())    #여자, 남자, 팀 수 입력
+cnt = 0    #필요한 최소한의 팀 수 계산 위한 변수
+
+while True:
+    if N+M >= K+3 and N>=2 and M>=1: #팀을 만들기 위한 인원이 충분한지
+        N -= 2    #한 팀당 여자는 2명
+        M -= 1    #한 팀당 남자는 1명
+        cnt += 1  #팀이 형성되었으므로 팀 수 +1
+    else:     #팀을 형성할 수 없으면 반복 종료
+        break
+print(cnt)  #팀 수 출력
