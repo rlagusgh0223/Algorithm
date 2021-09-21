@@ -1,0 +1,21 @@
+import sys
+num = list(sys.stdin.readline())    #수식 입력
+num = num[:-1]  #리스트로 받으면 \n까지 입력되니까 리스트 마지막 제외
+ans = ''    #리스트를 문자열로 변환시켜줄 변수 생성
+cnt = 0    #반복문을 돌릴때 -가 처음나오는지 나중에 나오는지 확인하기 위한 변수
+
+for i in range(len(num)):   #리스트의 값을 i에 넣어서 반복문
+    if num[i]=='-' and cnt == 0: #-가 처음 나왔을때
+        num.insert(i+1,'(') #리스트에 (삽입하고, cnt=1로 해서 -가 이미 나왔음을 표시
+        cnt = 1
+    elif num[i] == '-' and cnt == 1: #-가 나중에 나왔을때
+        num.insert(i,')')   #리스트에 )삽입하고, cnt=0으로 해서 -가 이제 없음을 표시
+        cnt = 0
+
+if cnt == 1:    #-가 한번만 나오면 마지막에 괄호가 닫히지 않는다
+    num.append(')') #그럴경우 리스트 마지막에 ) 삽입
+
+for i in num:   #리스트를 문자열로 입력
+    ans = ans+i
+print(ans)
+print(eval(ans))    #eval()함수를 이용해 문자열을 계산
