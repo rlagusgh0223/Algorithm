@@ -1,3 +1,16 @@
+import sys
+num = list(sys.stdin.readline().split('-'))    #수식 입력
+x = map(int,num[0].split('+'))  #숫자를 001로도 된다고 한건 문자열로 받을수 있다는건데
+                                #eval은 그걸론 계산 못한단다
+                                #그래서 +를 다시 숫자별로 나눠서 더하도록 했다
+ans = sum(x)  #-가 나오기 전까지 문자열의 합을 ans에 입력
+for i in range(1,len(num)):#-가 나온 다음부터 -로 나누어준 문자열 반복문으로 돌림
+    x = map(int,num[i].split('+'))
+    ans = ans - sum(x) #-다음의 모든 합을 더한 후 ans에서 빼줌
+print(ans)
+
+
+
 #에러
 import sys
 num = list(sys.stdin.readline())    #수식 입력
