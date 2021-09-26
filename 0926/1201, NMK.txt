@@ -1,0 +1,24 @@
+#아직 수정 필요
+import sys
+N, M, K = map(int, sys.stdin.readline().split())
+lst = [0 for _ in range(N)]
+cnt = 0
+ans = []
+if M+K-1 <= N <= M*K:
+    for i in range(1,N+1):
+        lst[i-1] = i
+
+    n = len(lst)//M
+
+    for i in range(M):
+        ans.append(list())
+        for j in range(n):
+            ans[i].append(lst[j+cnt])
+        cnt += n
+            
+    for i in range(len(ans)):
+        ans[i].reverse()
+    print(ans)
+
+else:
+    print(-1)
