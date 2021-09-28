@@ -1,0 +1,10 @@
+import sys
+N, M = map(int,sys.stdin.readline().split())    #A,B의 개수 입력
+
+#A,B를 미리 선언하고 받아도 될텐데 무슨 차이인지 모르겠다
+A = list(map(int,sys.stdin.readline().split()))    #A의 값 입력
+B = list(map(int,sys.stdin.readline().split()))    #B의 값 입력
+C = A + B    #C라는 변수에 A와 B 리스트값 합침
+C.sort()    #오름차순으로 정렬
+C = ' '.join(map(str,C))  #리스트값을 하나의 문자열로 만듬
+print(C)

@@ -40,3 +40,47 @@ if M+K-1 <= N <= M*K:
 
 else:
     print(-1)
+
+#뒤에서부터 채우게 했는데도 아니란다
+#예제처럼 답은 나오는데 백준에서는 틀렸다고 나옴
+import sys
+N, M, K = map(int, sys.stdin.readline().split())
+lst = [0 for _ in range(N)]
+cnt = 0
+ans = []
+res = ''
+if M+K-1 <= N <= M*K:
+    for i in range(1,N+1):
+        lst[i-1] = i
+
+    n = len(lst)//M
+
+    for i in range(M):
+        ans.append(list())
+        for j in range(n):
+            ans[i].append(lst[j+cnt])
+        cnt += n
+    if n<K:
+        i = -1
+        while True:
+            for j in range(len(ans)):
+                if j+cnt > len(lst)-1:
+                    break
+                ans[i].append(lst[j+cnt])
+                if len(ans[i])==K:
+                    i -= 1
+            cnt += len(ans)
+            if j+cnt > len(lst)-1:
+                break
+    print(ans)
+
+    for i in range(len(ans)):
+        ans[i].reverse()
+    for i in range(len(ans)):
+        for j in range(len(ans[i])):
+            res = res + str(ans[i][j]) + ' '
+
+    print(res)
+
+else:
+    print(-1)
