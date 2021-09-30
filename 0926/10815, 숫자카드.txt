@@ -1,0 +1,11 @@
+import sys
+N = int(sys.stdin.readline())   #입력한 숫자 받는 변수
+n = set(map(int, sys.stdin.readline().split())) #집합 배열. 중복이 없을땐 이거 쓰는게 시간초과에 좋단다
+M = int(sys.stdin.readline())
+m = list(map(int, sys.stdin.readline().split()))
+
+for i in m:     #나중에 입력받은 리스트
+    if i in n:  #그 값이 먼저 받은 집합에 있다면
+        print(1,end=' ')    #1출력
+    else:       #아니면 0출력
+        print(0,end=' ')

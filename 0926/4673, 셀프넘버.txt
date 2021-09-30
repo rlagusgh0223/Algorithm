@@ -1,0 +1,13 @@
+num_1 = set(range(1, 10001))
+num_2 = set()
+for i in range(1, 10001):   #i = 850
+    for j in str(i):        #j = '8', '5', '0'
+        i += int(j)         #850 + 8 + 5 + 0, i = 863
+    num_2.add(i)            #생성자가 있는 숫자들
+
+num = sorted(num_1 - num_2)
+#위에서 생성자로 생겨난 수들을 모아놨고
+#1부터 10000까지 수 중 그 숫자들을 제외하니
+#셀프 넘버만 남는다
+for k in num:
+    print(k)
