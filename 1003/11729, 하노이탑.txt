@@ -1,0 +1,12 @@
+import sys
+N = int(sys.stdin.readline())
+
+def solve(n, start, end):
+    if n == 0:
+        return
+    solve(n-1, start, 6-start-end)
+    print(start, end)
+    solve(n-1, 6-start-end, end)
+
+print(2**N - 1)
+res = solve(N, 1, 3)
