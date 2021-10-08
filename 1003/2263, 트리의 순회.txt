@@ -1,0 +1,25 @@
+import sys
+sys.setrecursionlimit(10**9)
+n = int(sys.stdin.readline())
+in_order = list(map(int, sys.stdin.readline().split()))
+post_order = list(map(int, sys.stdin.readline().split()))
+
+#분할 정복 방식으로 전위 순회를 찾음
+def divide(in_start, in_end, p_start, p_end):
+    if in_start>in_end or p_start>p_end:#start와 end가 만나 수렴하면 종료
+        return
+    parents = post_order[p_end] #후휘순회는 루트노드가 마지막에 나타나니까 후위순회의 가장 마지막값 출력
+    print(parents, end=' ')
+
+    left = pos[parents] - in_start #중위 순회에서 루트의 좌,우로 자식들이 갈라지는 것을 이용하여
+    right = in_end - pos[parents] #left, right를 선언
+
+    #left, right로 나눠 분할 정복 방식으로 트리를 추적하여 전위 순회를 찾아냄
+    divide(in_start, in_start+left-1, p_start, p_start+left-1) #재귀함수 왼쪽
+    divide(in_end-right+1, in_end, p_end-right, p_end-1)#오른쪽
+
+pos = [0]*(n+1)#후위 순회의 끝값이 중위 순회의 어디 인덱스에 위치한지 확인을 위해
+for i in range(n):#중위 순회의 값들의 인덱스값을 저장한다
+    pos[in_order[i]] = i
+    
+divide(0, n-1, 0, n-1)#중위/후위 순회 모두 0부터 n-1(전체범위)값ㅇ르 주고 전위 순회를 구함
