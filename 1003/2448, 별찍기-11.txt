@@ -1,0 +1,27 @@
+import sys
+n = int(sys.stdin.readline())
+
+star = [[' ' for _ in range(2*n)] for _ in range(n)]    #별을 입력하기 위한 리스트
+
+def stars(size, x, y):
+    if size==3:     #별의 기본 사이즈는 3칸이니까
+        star[y][x] = '*'    #기본 자리
+
+        star[y+1][x-1] = '*'    #두번째 자리
+        star[y+1][x+1] = '*'
+
+        star[y+2][x+2] = '*'    #세번째 자리
+        star[y+2][x+1] = '*'
+        star[y+2][x] = '*'
+        star[y+2][x-1] = '*'
+        star[y+2][x-2] = '*'
+
+    else:   #사이즈가 3칸이 안나온다면
+        new_size = size//2
+        stars(new_size, x, y)
+        stars(new_size, x - new_size, y + new_size)
+        stars(new_size, x + new_size, y + new_size)
+
+stars(n, n-1, 0)
+for k in star:
+    print(''.join(k))
