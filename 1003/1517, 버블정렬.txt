@@ -1,0 +1,35 @@
+import sys
+
+n = int(sys.stdin.readline())       	#정렬할 정수의 개수 입력
+x = list(map(int,sys.stdin.readline().split()))
+cnt = 0
+
+def merge(start, end):
+    global cnt, x
+    if start<end:
+        mid = (start + end) // 2    #반으로 나눠서 각각 계산한다
+        merge(start, mid)   #반 만큼 버블정렬 시작
+        merge(mid+1,end)
+
+        a, b = start, mid+1    #반으로 나눈 후 시작과 끝(중간)값 작성
+        temp = []    #최후의 값 받을 리스트 선언
+
+        while a<=mid and b <= end:    #좌, 우로 나눈 리스트가 없어질때까지 반복
+            if x[a] <= x[b]:    #앞에 값이 뒤에 값보다 작다면
+                temp.append(x[a])    #temp에 앞에값 입력
+                a += 1    #앞에값의 위치 하나 증가(다음 리스트 확인)
+            else:
+                temp.append(x[b])    #뒤에 값이 앞에값보다 작다면
+                b += 1    #뒤에값의 위치 증가
+                cnt += (mid - a +1)    #cnt에 좌측에 있는것만큼 더해줌(백준이 강의에서 말함)
+
+        if a <= mid:
+            temp = temp + x[a:mid+1]    #혹시 반대쪽이 더 길어서 한쪽은 남아있을때 남은 수를 가져옴(얘들은 더 큰수임)
+        if b <= end:
+            temp = temp + x[b:end+1]
+
+        for i in range(len(temp)):    #x리스트에 temp값 대입
+            x[start+i] = temp[i]
+
+merge(0, n-1)
+print(cnt)

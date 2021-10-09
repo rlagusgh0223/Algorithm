@@ -1,9 +1,12 @@
 import sys
 n = int(sys.stdin.readline())
 
-star = [[' ' for _ in range(2*n)] for _ in range(n)]    #별을 입력하기 위한 리스트
+star = [[' ' for _ in range(2*n)] for _ in range(n)]    #별을 입력하기 위한 리스트[[가로]세로]
 
-def stars(size, x, y):
+#   *
+#  * *
+# *****
+def stars(size, x, y):  #시작, 가로, 세로값
     if size==3:     #별의 기본 사이즈는 3칸이니까
         star[y][x] = '*'    #기본 자리
 
@@ -19,8 +22,8 @@ def stars(size, x, y):
     else:   #사이즈가 3칸이 안나온다면
         new_size = size//2
         stars(new_size, x, y)
-        stars(new_size, x - new_size, y + new_size)
-        stars(new_size, x + new_size, y + new_size)
+        stars(new_size, x - new_size, y + new_size)     #전달값, 뒤, 아래
+        stars(new_size, x + new_size, y + new_size)     #전달값, 앞, 아래
 
 stars(n, n-1, 0)
 for k in star:
