@@ -1,0 +1,21 @@
+from collections import deque
+
+def bfs():
+    q = deque()     #deque는 양쪽에서 입출력 가능
+    q.append(n)     #시작숫자 deque로 받음
+    while q:
+        x = q.popleft()     #처음 시작은 n
+        if x == k:      #이동 위치가 동생의 위치까지 오면 dist[x] 출력 후 종료
+            print(dist[x])
+            break
+        for i in (x-1, x+1, x*2):   #한번 이동하거나 순간이동 가능 거리를 계산
+            #print(i,end=' ')
+            if 0<=i<=MAX and not dist[i]:#??
+                dist[i] = dist[x] + 1
+                q.append(i)
+        #print()
+
+MAX = 10 ** 5    #시간초과 방지
+dist = [0] * (MAX + 1)    #이동하는 거리 알기 위한 변수
+n, k = map(int, input().split()) #수빈과 동생 위치 입력
+bfs()
