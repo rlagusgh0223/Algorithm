@@ -1,0 +1,19 @@
+import sys
+K, N = map(int, sys.stdin.readline().split())
+line = []
+for _ in range(K):
+    line.append(int(sys.stdin.readline()))
+start = 1
+end = max(line)
+
+while(start<=end):
+    mid = (start+end)//2    #이분탐색을 위한 중간값
+    cnt = 0
+    for i in line:    #입력받은 숫자들
+        cnt += i // mid    #????
+    if cnt >= N:    #???
+        start = mid+1    #자른 개수가 많으면 더 크게 잘라야 함
+    else:
+        end = mid-1    #???
+
+print(end)
