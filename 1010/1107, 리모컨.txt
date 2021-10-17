@@ -1,0 +1,22 @@
+import sys
+n = int(sys.stdin.readline())   #이동하려는 채널
+m = int(sys.stdin.readline())   #고장난 버튼 개수
+
+button = list(map(int,sys.stdin.readline().split()))    #고장난 버튼
+
+cnt = abs(100-n)    #100과 이동하려는 채널의 차이(절대값함수니까 차이만 나온다)
+
+for i in range(1000001):
+    tmp = list(str(i))  #int는 안된단다
+    flag = False
+
+    for j in tmp:   #숫자중에 못 누르는 버튼이 있으면 통과
+        if int(j) in button:
+            flag = True
+            break
+    if flag:
+        continue
+    else:   #가장 가까운 버튼 중에서 n-i한 값 + 길이(가장 가까운 위치만큼 리모콘 누르기 때문)
+        cnt = min(cnt, abs(n-i)+len(str(i)))
+
+print(cnt)
