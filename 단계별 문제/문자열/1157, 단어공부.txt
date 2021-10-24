@@ -1,0 +1,13 @@
+
+inputData = input().upper() #무조건 대문자로 받는다
+#lower():소문자
+searchKeys = list(set(inputData))   #검색 키들을 따로 리스트를 만들고 중복을 제거하는 set()활용
+
+countArr = []
+for key in searchKeys:
+    countArr.append(inputData.count(key))#리스트 내에 해당값이 몇개인지 검색하는 list.count()메서드 활용
+
+if countArr.count(max(countArr)) > 1:   #가장 많이 쓰인 문자가 중복될 경우 ? 출력
+    print("?")
+else:
+    print(searchKeys[countArr.index(max(countArr))])    #가장 많이 쓰인 문자가 하나이면 그 값을 출력
