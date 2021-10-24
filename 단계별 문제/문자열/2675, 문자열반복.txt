@@ -1,0 +1,11 @@
+import sys
+
+S = int(sys.stdin.readline())
+
+for i in range(S):
+    R = list(sys.stdin.readline().split())
+    x = int(R[0])
+    y = R[1]
+    for j in y:
+        print(j * x,end='')
+    print()
