@@ -1,0 +1,19 @@
+import sys
+input = sys.stdin.readline
+
+#다이얼 넘버
+number = ['ABC', 'DEF', 'GHI', 'JKL', 'MNO', 'PQRS', 'TUV', 'WXYZ']
+
+#알파벳 입력
+lst = list(input())
+
+#걸리는 시간
+result = 0
+
+for i in lst:
+    for j in number:
+        #만약에 입력받은 값이 number에 있으면 index에서 3초를 더해준다
+        if i in j:
+            result += number.index(j) + 3
+
+print(result)
