@@ -1,0 +1,9 @@
+import sys
+A, B, C = map(int, sys.stdin.readline().split())
+
+# A + B*n = C*n 일때 수입과 비용이 같아진다
+# 즉, B >= C일 경우에 손익분기점이 나타나지 않는다.
+if B >= C:
+    print(-1)
+else:
+    print(int(A/(C-B)+1)) #n이 판매개수니까 A/(C-B)보다 1이 많을때부터 수익이 발생
