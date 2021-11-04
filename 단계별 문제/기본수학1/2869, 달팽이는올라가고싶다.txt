@@ -1,0 +1,4 @@
+import sys
+import math
+A, B, V = map(int, sys.stdin.readline().split())
+print(math.ceil((V-A) / (A-B)+1))    #올림함수 사용. 반복문을 이용하면 시간안에 못푼다
