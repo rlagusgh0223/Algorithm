@@ -1,0 +1,12 @@
+import sys
+t = int(sys.stdin.readline())
+
+for _ in range(t):
+    floor = int(sys.stdin.readline())
+    num = int(sys.stdin.readline())
+    f = [x for x in range(1, num+1)]
+    for k in range(floor):
+        for i in range(1, num):
+            f[i] += f[i-1]
+        #print(f)
+    print(f[-1])
