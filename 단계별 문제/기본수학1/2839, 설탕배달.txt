@@ -1,0 +1,13 @@
+import sys
+N = int(sys.stdin.readline())
+cnt = 0
+
+while N >= 0:
+    if N % 5 == 0:
+        cnt += N // 5
+        print(cnt)
+        break
+    N -= 3    #5의 배수가 될 때까지 설탕 -3, 봉지 +1
+    cnt += 1
+else:   #while문이 거짓일 경우, 즉 N이 0이될때까지
+    print(-1)    #5의 배수로 나누어 떨어지지 않은 경우 -1 출력
