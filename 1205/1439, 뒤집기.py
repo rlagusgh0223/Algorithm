@@ -11,6 +11,8 @@ for i in range(len(s)-1):
 #0 또는 1 중 하나만 바꾸면 되기 때문에 //2를 해준다
 print(cnt//2)
 """
+
+#이것이 코딩 테스트다 예제랑 비슷한 풀이
 import sys
 s = list(map(int, sys.stdin.readline().rstrip()))
 
