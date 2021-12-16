@@ -24,9 +24,8 @@ while q:                    #큐가 있는 한 반복
     for i in range(4):      #상, 하, 좌, 우 탐색
         nx = x + dx[i]
         ny = y + dy[i]
-        if 0 <= nx < N and 0 <= ny < M and box[nx][ny] == 0:                     #다음 좌표가 토마토 박스 안에 있다면
-        #그리고 박스에는 익을 수 있는 토마토가 있고 탐색한 적이 없거나 이전에 토마토때 탐색 했으나 지금 탐색하면 더 적은 숫자가 된다면(상자 안에 익은 토마토가 2개 이상인 경우를 위해 )
-            if box[nx][ny] == 0 and (visited[nx][ny] == 0 or visited[x][y] < visited[nx][ny]):
+        if 0 <= nx < N and 0 <= ny < M:                     #다음 좌표가 토마토 박스 안에 있다면
+            if box[nx][ny] == 0 and visited[nx][ny] == 0:
                 visited[nx][ny] = visited[x][y] + 1         #다음 위치에 수 체크
                 q.append([nx, ny])                          #다음 좌표 큐에 입력하여 계속 진행하게 한다
 
@@ -46,10 +45,10 @@ for i in range(N):
 if endFlag:             #모두 익은 상태라면 최댓값-1(시작위치부터 카운트했기 때문에 하루 빼줘야 한다.)
     print(ans-1)        #그렇다고 시작위치를 빼고 계산하면 하나가 익지 않은것처럼 표시된다
 
-# for i in range(N):
-#     print(box[i])
-# for i in range(N):
-#     print(visited[i])
+for i in range(N):
+    print(box[i])
+for i in range(N):
+    print(visited[i])
 
 
 
