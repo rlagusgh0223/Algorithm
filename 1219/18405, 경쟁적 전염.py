@@ -56,19 +56,19 @@ q = deque()
 dx = [-1, 1, 0, 0]
 dy = [0, 0, -1, 1]
 
-ans = 0
-for i in range(N):
-    now = max(graph[i])
-    ans = max(ans, now)
-
-# 바이러스값 찾는 코드1
-# ans = []                            # 바이러스 순서를 정리하기 위한 리스트
+# ans = 0
 # for i in range(N):
-#     for j in range(N):
-#         if graph[i][j] != 0:        # 바이러스가 있는 위치는 다 입력받는다
-#             now = graph[i][j]
-#             ans.append(now)
-# ans.sort()
+#     now = max(graph[i])
+#     ans = max(ans, now)
+
+#바이러스값 찾는 코드1
+ans = []                            # 바이러스 순서를 정리하기 위한 리스트
+for i in range(N):
+    for j in range(N):
+        if graph[i][j] != 0:        # 바이러스가 있는 위치는 다 입력받는다
+            now = graph[i][j]
+            ans.append(now)
+ans.sort()
 
 # 바이러스값 찾는 코드2(reshape사용)
 # import numpy as np
@@ -77,7 +77,8 @@ for i in range(N):
 # ans = deque(set(ans))               # 집합을 이용해 중복된 숫자 없애고 오름차순으로 만든 배열을 큐로 만들어준다(리스트도 상관없으나 편하게 맨 앞의 수를 지우기 위해 큐 사용)
 # ans.popleft()                       # 큐의 맨 처음은 0이니까 0을 빼고 나머지 바이러스들만 큐에 들어있게 한다
 
-for cnt in range(1, ans+1):                     # 바이러스 종류만큼 반복하여 그래프에 있는 바이러스 좌표 q에 입력
+#for cnt in range(1, ans+1):                     # 바이러스 종류만큼 반복하여 그래프에 있는 바이러스 좌표 q에 입력
+for cnt in ans:
     for i in range(N):
         for j in range(N):
             if graph[i][j] == cnt:  # 바이러스 순서대로 q에 좌표 입력됨
@@ -87,7 +88,8 @@ chk = 0
 while q:
     if chk == chk1:
         break
-    for cnt in range(1, ans+1):                 # 바이러스 순서대로 전염
+    #for cnt in range(1, ans+1):                 # 바이러스 순서대로 전염
+    for cnt in ans:
         x, y = q.popleft()
         for i in range(4):
             nx = x + dx[i]
