@@ -42,7 +42,7 @@ def BFS(x,y):
             nx = x + dx[i]
             ny = y + dy[i]
             if 0 <= nx < N and 0 <= ny < N:
-                if visited[nx][ny] == visited[x][y]:
+                if visited[nx][ny] == -1 * visited[x][y]:
                     visited[nx][ny] = -1 * visited[nx][ny]
                     q.append((nx,ny))
                     sum += graph[nx][ny]
