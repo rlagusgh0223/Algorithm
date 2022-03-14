@@ -23,6 +23,7 @@ for i in range(n):
             print('1')
         else:
             print('0')
+        print(queue.empty)
 
     elif word[0] == 'front':
         if len(queue) == 0:

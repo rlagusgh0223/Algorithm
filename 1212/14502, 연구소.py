@@ -70,7 +70,6 @@ for i in range(n):
 """
 from collections import deque
 import sys
-
 N, M = map(int, sys.stdin.readline().split())
 graph = [0] * N
 for i in range(N):
@@ -78,13 +77,11 @@ for i in range(N):
 dx = [-1, 1, 0, 0]
 dy = [0, 0, -1, 1]
 cnt = 0
-
 # q = deque()
 # for i in range(N):
 #     for j in range(M):
 #         if graph[i][j] == 2:
 #             q.append([i, j])
-
 # while q:
 #     x, y = q.popleft()
 #     for i in range(4):
@@ -93,7 +90,6 @@ cnt = 0
 #         if 0 <= nx < N and 0 <= ny < M:
 #             if graph[nx][ny]==0:
 #                 graph[nx][ny] = 1
-
 def BFS(x, y):
     q = deque()
     q.append([x, y])
@@ -105,18 +101,14 @@ def BFS(x, y):
             if 0 <= nx < N and 0 <= ny < M:
                 if graph[nx][ny]==0:
                     graph[nx][ny] = 1
-
 for i in range(N):
     for j in range(M):
         if graph[i][j] == 2:
             BFS(i, j)
-
-
 for i in range(N):
     print(graph[i])
     for j in range(M):
         if graph[i][j] == 0:
             cnt += 1
-
 print(cnt)
 """

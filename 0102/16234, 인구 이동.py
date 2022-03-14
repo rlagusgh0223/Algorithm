@@ -22,9 +22,9 @@ def process(x, y, index):
     # 너비 우선 탐색(BFS)를 위한 큐 자료구조 정의
     q = deque()
     q.append((x, y))
-    union[x][y] = index     # 현재 연합의 번호 할당
-    summary = graph[x][y]   # 현재 연합의 전체 인구 수
-    count = 1   # 현재 연합의 국가 수
+    union[x][y] = index         # 현재 연합의 번호 할당
+    summary = graph[x][y]       # 현재 연합의 전체 인구 수
+    count = 1                   # 현재 연합의 국가 수
     # 큐가 빌 때까지 반복(BFS):
     while q:
         x, y = q.popleft()
@@ -50,11 +50,11 @@ total_count = 0
 
 # 더 이상 인구 이동을 할 수 없을 때까지 반복
 while True:
-    union = [[-1] * n for _ in range(n)]
+    union = [[-1] * n for _ in range(n)]    # 그래프와 동일한 리스트를 -1로 채움
     index = 0
     for i in range(n):
         for j in range(n):
-            if union[i][j] == -1:   # 해당 나라가 아직 처리되지 않았다면
+            if union[i][j] == -1:           # 해당 나라가 아직 처리되지 않았다면
                 process(i, j, index)
                 index += 1
     # 모든 인구 이동이 끝난 경우

@@ -1,9 +1,0 @@
-a=int(input())
-for i in range(a-1):
-    print(' '*(a-i-1)+'*',end='')
-    if i==0 : print();continue
-    for j in range(0,(i+1)*2-3):
-        print(' ',end='')
-    print('*',end='')
-    print()
-print('*'*(2*a-1))

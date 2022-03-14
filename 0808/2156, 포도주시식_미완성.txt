@@ -1,4 +1,38 @@
 import sys
+n = int(sys.stdin.readline().rstrip())  #몇 줄 마실지
+wine = [0 for _ in range(n+1)]      #한 잔에 들어있는 값 초기화
+
+for i in range(n):                          #각 잔에 들어있는 값 입력
+    wine[i] = int(sys.stdin.readline().rstrip())
+
+dp = [0]        #dp리스트 첫번째 값
+dp.append(wine[0])      #dp리스트 두번째값=wine첫번째값
+#print(dp)
+
+if n>1:
+    dp.append(wine[0]+wine[1])   #dp세번째 값 = wien첫번째+두번째값
+    #print(dp)
+
+for i in range(3,n+1):
+    #dp에 입력값을 넣는건데 wine은 dp보다 하나 적게 시작하므로 i-1로 해준다
+
+    #이번 포도주를 먹고 이전 포도주를 먹지 않은 경우
+    case_1 = wine[i-1] + dp[i-2]
+    
+    #이번 포도주를 먹고 이전 포도주도 먹은 경우
+    case_2 = wine[i-1] + wine[i-2] + dp[i-3]
+    
+    #이번 포도주를 먹지 않은 경우
+    case_3 = dp[i-1]
+    
+    dp.append(max(case_1,case_2,case_3))
+
+print(dp[n])
+
+
+
+###################################
+import sys
 n = int(sys.stdin.readline().rstrip())
 dp = [0 for _ in range(n+1)]
 d = [0 for _ in range(n+1)]

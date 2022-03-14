@@ -3,14 +3,14 @@ N = int(input())
 number = list(map(int,sys.stdin.readline().split()))
 max=number[0]
 min=number[0]
-for i in number[1:]: # 0은 어차피 계산되어 있으므려 군디 0부터 시작 안해도 됨
+for i in number[1:]: # 0은 어차피 계산되어 있으므려 굳이 0부터 시작 안해도 됨
     if i > max:
         max = i
     elif i < min:
         min = i
 print(min, max)
 """
-#모범답안??
+#모범답안?? - 동작 안함
 import sys 
 a, *b = map(int, sys.stdin.read().split())
 print(min(b), max(b))
