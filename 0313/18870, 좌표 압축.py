@@ -14,6 +14,18 @@ for i in lst1:
 
 
 
+# 이해 안되면 아래 식을 돌려봐라
+# for i in range(len(lst2)):
+#     print(lst2[i], i)
+# print(dic)
+# print(dic[-10])
+# print(dic[-9])
+# print(dic[2])
+# print(dic[1])
+
+
+
+
 # 아래 코드 쓰면 시간초과 난다
 # cnt = [0] * n
 

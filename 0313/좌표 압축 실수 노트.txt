@@ -1,0 +1,13 @@
+딕셔너리를 이용한 계산을 생각하지 못했다.
+
+2 4 -10 4 -9를 
+dic = {lst2[i]:i for i in range(len(lst2))} 로 돌리면
+{-10: 0, -9: 1, 2: 2, 4: 3} 이렇게 값이 나온다
+
+이때 dic[-10]을 입력하면 value값인 0이 나오고
+dic[-9]를 입력하면 1이 나온다
+
+
+for i in lst1:
+    print(dic[i], end=' ')
+르 쓰면 lst1의 값이 dic에 key값으로 있으면 value값을 출력하게 된다
