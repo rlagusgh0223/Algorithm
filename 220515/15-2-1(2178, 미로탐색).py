@@ -1,5 +1,19 @@
 # 책의 모범답안 이지만 기존에 했던 풀이와 코드적으로 크게 다른 부분은 없는 것 같다
 # 코드 길이는 좀 짧지만 시간은 같은것 같으니 그냥 원래 하던 풀이대로 하겠다
+
+# BFS는 대략 아래의 형태를 따라간다
+# bfs(x,y):
+#   q = deque()
+#   q.append((x,y))
+#   while q:
+#     x, y = q.popleft()
+#     for i in range(len(dx))):
+#       nx = x + dx[i]    # dx, dy는 인접 좌표를 나타내는 배열
+#       ny = y + dy[i]    # 상, 하 , 좌, 우 가 될 수 도 있고 8방이 될 수 도 있어서 여기서는 len(dx)로 했다
+#       if 0<=nx<N and 0<=ny<M and 방문한적이 없는지:
+#         q.append(nx, ny)
+#         [nx][ny] 좌표의 배열에 뭔가 변화
+
 from collections import deque
 import sys
 
