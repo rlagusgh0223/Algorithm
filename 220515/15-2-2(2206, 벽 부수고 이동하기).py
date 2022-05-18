@@ -27,7 +27,7 @@ def BFS():
     return -1
 
 N, M = map(int, sys.stdin.readline().split())
-map = [list(map(int, sys. stdin.readline().rstrip())) for _ in range(N)]
+map = [list(map(int, sys.stdin.readline().rstrip())) for _ in range(N)]
 print(BFS())
 
 
