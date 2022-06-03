@@ -1,6 +1,4 @@
-# 아직 모르겠다
 import sys
-
 def lower(start, end, d, L):
     while start<end:
         mid = (start+end)//2
@@ -10,21 +8,22 @@ def lower(start, end, d, L):
             end = mid
     return end
 
+
 N, H = map(int, sys.stdin.readline().split())
 up = []
 down = []
-result = [0]*500001
+result = [0] * 500001
 for i in range(N):
-    now = int(sys.stdin.readline())
-    if i%2==1:
-        up.append(now)
+    x = int(sys.stdin.readline())
+    if x%2==1:
+        up.append(x)
     else:
-        down.append(now)
+        down.append(x)
 
 up.sort()
 down.sort()
 answer = 0
-mx = 100000000000
+mx = 1000000000000000
 
 for i in range(1, H+1):
     idxd = lower(0, len(down), i, down)
