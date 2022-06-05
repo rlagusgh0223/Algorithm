@@ -1,10 +1,11 @@
 import sys
 N = int(sys.stdin.readline())
-lst = [0]*10001
+check = [0]*10001
 for i in range(N):
-    lst[int(sys.stdin.readline())] += 1
+    x = int(sys.stdin.readline())
+    check[x] += 1
 
-for i in range(len(lst)):
-    if lst[i] != 0:
-        for _ in range(lst[i]):
+for i in range(len(check)):
+    if check[i] != 0:
+        for j in range(check[i]):
             print(i)
