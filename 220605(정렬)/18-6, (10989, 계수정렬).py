@@ -1,11 +1,12 @@
+# 계수정렬
 import sys
 N = int(sys.stdin.readline())
-check = [0]*10001
-for i in range(N):
-    x = int(sys.stdin.readline())
-    check[x] += 1
+lst = [0] * 10001
 
-for i in range(len(check)):
-    if check[i] != 0:
-        for j in range(check[i]):
+for i in range(N):
+    lst[int(sys.stdin.readline())] += 1
+
+for i in range(len(lst)):
+    if lst[i] != 0:
+        for now in range(lst[i]):
             print(i)
