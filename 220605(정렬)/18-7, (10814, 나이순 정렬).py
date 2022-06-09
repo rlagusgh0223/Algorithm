@@ -1,11 +1,11 @@
 import sys
 N = int(sys.stdin.readline())
-lst = []
+member = []
 for i in range(N):
-    x, y = sys.stdin.readline().split()
-    lst.append([int(x), y])
+    age, name = sys.stdin.readline().split()
+    member.append([int(age), name])
 
-lst.sort(key=lambda x:x[0])    # x[0]인 나이를 내림차순
+member.sort(key=lambda x:x[0])
 
-for now in lst:
-    print(now[0], now[1])
+for answer in member:
+    print(answer[0], answer[1])

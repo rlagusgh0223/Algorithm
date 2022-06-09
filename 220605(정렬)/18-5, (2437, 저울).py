@@ -1,12 +1,13 @@
 import sys
 N = int(sys.stdin.readline())
-lst = [int(now) for now in sys.stdin.readline().split()]
-lst.sort()
+weight = list(map(int, sys.stdin.readline().split()))
+
+weight.sort()
 num = 1
 
-for i in lst:
-    if num < i:
+for now in weight:
+    if num < now:
         break
-    num += i
+    num += now
 
 print(num)
