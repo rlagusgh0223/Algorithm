@@ -1,10 +1,10 @@
 import sys
-N = int(sys.stdin.readline())
-lst = [0] * 10000
-for i in range(N):
-    lst[int(sys.stdin.readline())-1] += 1
+n = int(sys.stdin.readline())
+number = [0] * 10000
+for i in range(n):
+    number[int(sys.stdin.readline())-1] += 1
 
-for i in range(len(lst)):
-    if lst[i] != 0:
-        for j in range(lst[i]):
+for i in range(len(number)):
+    if number[i] != 0:
+        for j in range(number[i]):
             print(i+1)

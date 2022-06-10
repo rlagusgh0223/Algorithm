@@ -1,14 +1,13 @@
-# 선택정렬
 import sys
-N = int(sys.stdin.readline())
+n = int(sys.stdin.readline())
 lst = []
-for i in range(N):
+for i in range(n):
     lst.append(int(sys.stdin.readline()))
 
-for i in range(len(lst)):
-    for j in range(i+1, N):
+for i in range(n):
+    for j in range(i+1, n):
         if lst[i] > lst[j]:
             lst[i], lst[j] = lst[j], lst[i]
 
-for number in lst:
-    print(number)
+for i in lst:
+    print(i)

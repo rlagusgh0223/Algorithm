@@ -1,11 +1,11 @@
 import sys
-N = int(sys.stdin.readline())
+n = int(sys.stdin.readline())
 member = []
-for i in range(N):
-    age, name = sys.stdin.readline().split()
-    member.append([int(age), name])
+for i in range(n):
+    x, y = sys.stdin.readline().split()
+    member.append([int(x), y])
 
 member.sort(key=lambda x:x[0])
 
-for answer in member:
-    print(answer[0], answer[1])
+for i in member:
+    print(i[0], i[1])
