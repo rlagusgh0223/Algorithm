@@ -17,9 +17,9 @@ while start<=end:
         print(left)
         check = False
         break
-    if check == True:  # 폭발문자열과 동일한 문자열이 left에 있다면
-      for i in range(len(bomb)):  # 폭발문자열의 길이만큼
-        left.pop()  # left에서 빼버린다
+    if check == True:
+      for i in range(len(bomb)):
+        left.pop()
 
 if len(left)==0:
   print("FRULA")
