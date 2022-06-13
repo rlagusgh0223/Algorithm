@@ -20,15 +20,15 @@ class Trie:
 
 for _ in range(int(input().rstrip())):
   n = int(input().rstrip())
-  phone_List = [input().rstrip() for _ in range(n)]
-  phone_List.sort()
+  phone_list = [input().rstrip() for _ in range(n)]
+  phone_list.sort()
   trie = Trie()
   tof = True
-  for num in phone_List:
+  for num in phone_list:
     tof = trie.insert(num)
     if not tof:
       break
   if tof:
-    print("YES")
+    print('YES')
   else:
-    print("NO")
+    print('NO')
