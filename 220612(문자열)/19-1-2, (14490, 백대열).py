@@ -1,5 +1,4 @@
-import sys
-N, M = map(int, sys.stdin.readline().split(':'))
+n, m = map(int, input().split(':'))
 
 def GCD(x, y):
   if y%x:
@@ -7,7 +6,7 @@ def GCD(x, y):
   else:
     return x
 
-a = GCD(N, M)
-print(N//a, end='')
-print(":", end='')
-print(M//a, end='')
+a = GCD(n, m)
+print(n//a, end='')
+print(':', end='')
+print(m//a, end='')

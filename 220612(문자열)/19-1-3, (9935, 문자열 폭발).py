@@ -1,25 +1,24 @@
-import sys
-s = sys.stdin.readline().rstrip()
-bomb = sys.stdin.readline().rstrip()
-left = []
+s = input()
+bomb = input()
 start = 0
-end = len(s)-1
+end = len(s) - 1
+lst = []
 
 while start<=end:
-  left.append(s[start])
-  start += 1
+  lst.append(s[start])
+  start+=1
   chk = True
-  if len(left) >= len(bomb):
+  if len(lst) >= len(bomb):
     for i in range(len(bomb)):
-      if bomb[i] != left[len(left) - len(bomb) + i]:
+      if bomb[i] != lst[len(lst) - len(bomb) + i]:
         chk = False
         break
     if chk:
       for i in range(len(bomb)):
-        left.pop()
+        lst.pop()
 
-if len(left) == 0:
+if len(lst) == 0:
   print("FRULA")
 else:
-  for i in left:
-    print(i, end='')
+  for word in lst:
+    print(word, end='')

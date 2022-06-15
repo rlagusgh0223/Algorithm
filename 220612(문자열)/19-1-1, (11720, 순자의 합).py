@@ -1,4 +1,3 @@
-import sys
-N = int(sys.stdin.readline())
-lst = list(sys.stdin.readline().rstrip())
+n = input()
+lst = list(input())
 print(sum(map(int, lst)))
