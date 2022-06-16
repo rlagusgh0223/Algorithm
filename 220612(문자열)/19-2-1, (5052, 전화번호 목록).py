@@ -1,4 +1,3 @@
-# 트라이 자료구조
 class NODE:
   def __init__(self):
     self.value = False
@@ -19,9 +18,9 @@ class Trie:
     curNode.value = True
     return True
 
-for _ in range(int(input())):
-  n = int(input())
-  phone_list = [input() for _ in range(n)]
+for _ in range(int(input().rstrip())):
+  n = int(input().rstrip())
+  phone_list = [input().rstrip() for _ in range(n)]
   phone_list.sort()
   trie = Trie()
   tof = True
@@ -30,6 +29,6 @@ for _ in range(int(input())):
     if not tof:
       break
   if tof:
-    print('YES')
+    print("YES")
   else:
-    print('No')
+    print("NO")

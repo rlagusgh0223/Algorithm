@@ -1,12 +1,11 @@
-n, m = map(int, input().split(':'))
-
 def GCD(x, y):
   if y%x:
     return GCD(y%x, x)
   else:
     return x
 
-a = GCD(n, m)
-print(n//a, end='')
+N, M = map(int, input().split(':'))
+a = GCD(N, M)
+print(N//a, end='')
 print(':', end='')
-print(m//a, end='')
+print(M//a, end='')
