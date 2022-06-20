@@ -1,13 +1,13 @@
-import sys
-n = int(sys.stdin.readline())
-wine=[0 for _ in range(n+1)]
+n = int(input())
+drink = [0] * (n+1)
 for i in range(n):
-  wine[i] = int(sys.stdin.readline())
+  drink[i] = int(input())
 
-dp = [0]
-dp.append(wine[0])
-dp.append(wine[0] + wine[1])
+chk = [0]
+chk.append(drink[0])
+chk.append(drink[0] + drink[1])
 
 for i in range(3, n+1):
-  dp.append(max(dp[i-1], wine[i-1]+dp[i-2], wine[i-1]+wine[i-2]+dp[i-3]))
-print(dp[n])
+  chk.append(max(chk[i-1], drink[i-1]+chk[i-2], drink[i-1]+drink[i-2]+chk[i-3]))
+
+print(chk[n])
