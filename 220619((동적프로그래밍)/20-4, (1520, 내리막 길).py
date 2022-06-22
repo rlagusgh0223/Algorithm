@@ -1,22 +1,23 @@
-N, M = map(int, input().split())
-map = [[int(now) for now in input().split()] for _ in range(N)]
-chk = [[-1 for _ in range(M)] for _ in range(N)]
+import sys
+n, m = map(int, sys.stdin.readline().split())
+map = [[int(now) for now in sys.stdin.readline().split()] for _ in range(n)]
+type = [[-1 for _ in range(m)] for _ in range(n)]
 
-dx = [0, -1, 0, 1]
-dy = [1, 0, -1, 0]
+dx = [-1, 0, 1, 0]
+dy = [0, -1, 0, 1]
 
 def downstreet(x, y):
-  if chk[x][y] != -1:
-    return chk[x][y]
-  if x==N-1 and y==M-1:
+  if type[x][y] != -1:
+    return type[x][y]
+  if x==n-1 and y==m-1:
     return 1
-  chk[x][y] = 0
+  type[x][y] = 0
   for i in range(4):
     nx = x + dx[i]
     ny = y + dy[i]
-    if 0<=nx<N and 0<=ny<M and map[x][y] > map[nx][ny]:
-      chk[x][y] += downstreet(nx,ny)
+    if 0<=nx<n and 0<=ny<m and map[x][y] > map[nx][ny]:
+      type[x][y] += downstreet(nx, ny)
 
-  return chk[x][y]
+  return type[x][y]
 
-print(downstreet(0,0))
+print(downstreet(0, 0))
