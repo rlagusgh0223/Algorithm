@@ -1,6 +1,6 @@
-import sys
-chef = [list(map(int, sys.stdin.readline().split())) for _ in range(5)]
-score = 0
+chef = [[int(now) for now in input().split()] for _ in range(5)]
+
+score = cnt = 0
 
 for i in range(5):
   if score < sum(chef[i]):
