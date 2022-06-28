@@ -1,10 +1,13 @@
-chef = [[int(now) for now in input().split()] for _ in range(5)]
+import sys
 
-score = cnt = 0
+chef = [list(map(int, sys.stdin.readline().split())) for _ in range(5)]
 
-for i in range(5):
-  if score < sum(chef[i]):
-    score = sum(chef[i])
-    cnt = i+1
+score = 0
+cnt = 0
+
+for x in range(5):
+  if score < sum(chef[x]):
+    score = sum(chef[x])
+    cnt = x+1
 
 print(cnt, score)

@@ -1,17 +1,19 @@
 from collections import deque
-N, K = map(int, input().split())
-man = deque([int(i) for i in range(1, N+1)])
-answer = []
-cnt = 0
+import sys
+N, K = map(int, sys.stdin.readline().split())
 
-while man:
+human = deque([int(i)+1 for i in range(N)])
+cnt = 0
+answer = []
+
+while human:
   cnt += 1
-  now = man.popleft()
+  now = human.popleft()
   if cnt == K:
     answer.append(str(now))
     cnt = 0
   else:
-    man.append(now)
+    human.append(now)
 
 print("<", end='')
 print(", ".join(answer), end='')
