@@ -1,15 +1,12 @@
-import sys
-N = int(sys.stdin.readline())
+N = int(input())
+number = list(map(int, input().split()))
+Max = number[0]
+Min = number[0]
 
-number = [int(now) for now in sys.stdin.readline().split()]
+for i in range(1, N):
+  if Max < number[i]:
+    Max = number[i]
+  elif Min > number[i]:
+    Min = number[i]
 
-max_score = number[0]
-min_score = number[0]
-
-for x in range(N):
-  if max_score < number[x]:
-    max_score = number[x]
-  elif min_score > number[x]:
-    min_score = number[x]
-
-print(min_score, max_score)
+print(Min, Max)
