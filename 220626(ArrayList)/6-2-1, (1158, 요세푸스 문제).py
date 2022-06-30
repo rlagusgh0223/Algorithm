@@ -1,18 +1,18 @@
 from collections import deque
-N, K = map(int, input().split())
-human = deque([int(x) for x in range(1, N+1)])
-lst = []
+import sys
+N, K = map(int, sys.stdin.readline().split())
+lst = deque([int(i)+1 for i in range(N)])
+man = []
 cnt = 0
-
-while human:
+while lst:
   cnt += 1
-  now = human.popleft()
+  now = lst.popleft()
   if cnt == K:
+    man.append(str(now))
     cnt = 0
-    lst.append(str(now))
   else:
-    human.append(now)
+    lst.append(now)
 
 print("<", end='')
-print(", ".join(lst), end='')
+print(", ".join(man), end='')
 print(">")

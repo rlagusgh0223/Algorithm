@@ -1,9 +1,13 @@
-chef = [list(map(int, input().split())) for _ in range(5)]
-score = 0
-cnt = 0
-for i in range(5):
-  if score < sum(chef[i]):
-    score = sum(chef[i])
-    cnt = i+1
+import sys
+chef = [[int(now) for now in sys.stdin.readline().split()] for _ in range(5)]
 
-print(cnt, score)
+lst = []
+
+for i in range(5):
+  lst.append(sum(chef[i]))
+
+for i in range(5):
+  if sum(chef[i]) == max(lst):
+    cnt = i+1
+    break
+print(cnt, max(lst))

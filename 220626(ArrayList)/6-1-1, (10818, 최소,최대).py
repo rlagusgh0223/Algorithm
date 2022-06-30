@@ -1,12 +1,15 @@
-N = int(input())
-number = list(map(int, input().split()))
-Max = number[0]
-Min = number[0]
+import sys
+N = int(sys.stdin.readline())
+number = [int(now) for now in sys.stdin.readline().split()]
+# maxNumber = number[0]
+# minNumber = number[0]
+# for i in range(1, N):
+#   if maxNumber < number[i]:
+#     maxNumber = number[i]
+#   elif minNumber > number[i]:
+#     minNumber = number[i]
+#==============================
+maxNumber = max(number)
+minNumber = min(number)
 
-for i in range(1, N):
-  if Max < number[i]:
-    Max = number[i]
-  elif Min > number[i]:
-    Min = number[i]
-
-print(Min, Max)
+print(minNumber, maxNumber)
