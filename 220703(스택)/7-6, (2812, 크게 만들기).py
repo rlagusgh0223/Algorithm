@@ -1,8 +1,8 @@
 N, K = map(int, input().split())
 number = list(input())
-
-answer = []
 cnt = K
+answer = []
+
 for num in number:
     while answer and cnt>0 and answer[-1]<num:
         answer.pop()
