@@ -1,16 +1,14 @@
-import sys
-galho = sys.stdin.readline().rstrip()
-answer = []
+stick = list(input())
+galho = []
 cnt = 0
-
-for now in range(len(galho)):
-    if galho[now] == '(':
-        answer.append(galho[now])
-    elif galho[now-1] == '(' and galho[now] == ')':
-        answer.pop()
-        cnt += len(answer)
-    elif galho[now] == ')':
-        answer.pop()
+for i in range(len(stick)):
+    if stick[i] == '(':
+        galho.append('(')
+    elif stick[i] == ')' and stick[i-1] == '(':
+        galho.pop()
+        cnt += len(galho)
+    elif stick[i] == ')':
+        galho.pop()
         cnt += 1
 
 print(cnt)

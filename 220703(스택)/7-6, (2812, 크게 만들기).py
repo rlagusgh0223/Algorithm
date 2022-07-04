@@ -1,12 +1,13 @@
-N, K = map(int, input().split())
-number = list(input())
-cnt = K
-answer = []
+import sys
+N, K = map(int, sys.stdin.readline().split())
+number = [now for now in sys.stdin.readline().rstrip()]
+result = []
+count = K
 
 for num in number:
-    while answer and cnt>0 and answer[-1]<num:
-        answer.pop()
-        cnt -= 1
-    answer.append(num)
+    while result and count>0 and result[-1]<num:
+        result.pop()
+        count -= 1
+    result.append(num)
 
-print(''.join(answer[:N-K]))
+print(''.join(result[:N-K]))
