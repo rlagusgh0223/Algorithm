@@ -1,7 +1,6 @@
 import sys
+N = int(input())
 stack = []
-N = int(sys.stdin.readline())
-
 def push(x):
     return stack.append(x)
 def pop():
@@ -23,14 +22,14 @@ def top():
         return -1
 
 for i in range(N):
-    order = sys.stdin.readline().split()
-    if order[0] == 'push':
-        push(order[1])
-    elif order[0] == 'pop':
+    command = sys.stdin.readline().split()
+    if command[0]=='push':
+        push(command[1])
+    elif command[0] == 'pop':
         print(pop())
-    elif order[0] == 'size':
+    elif command[0] == 'size':
         print(size())
-    elif order[0] == 'empty':
+    elif command[0] == 'empty':
         print(empty())
-    elif order[0] == 'top':
+    elif command[0] == 'top':
         print(top())
