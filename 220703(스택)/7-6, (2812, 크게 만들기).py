@@ -1,13 +1,13 @@
 import sys
 N, K = map(int, sys.stdin.readline().split())
-number = [word for word in sys.stdin.readline().rstrip()]
-result = []
-check = K
+lst = [int(now) for now in sys.stdin.readline().rstrip()]
+answer = []
+cnt = K
 
-for i in range(N):
-    while result and check>0 and result[-1]<number[i]:
-        result.pop()
-        check -= 1
-    result.append(number[i])
+for now in lst:
+    while answer and cnt>0 and int(answer[-1])<now:
+        answer.pop()
+        cnt -= 1
+    answer.append(str(now))
 
-print(''.join(result[:N-K]))
+print(''.join(answer[:N-K]))
