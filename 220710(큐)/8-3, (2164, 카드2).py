@@ -1,10 +1,9 @@
 from collections import deque
-import sys
-N = int(sys.stdin.readline())
-queue = deque([int(now) for now in range(1, N+1)])
+N = int(input())
+card = deque([int(now) for now in range(1, N+1)])
 
-while len(queue)!= 1:
-    queue.popleft()
-    queue.append(queue.popleft())
+while len(card) != 1:
+    card.popleft()
+    card.append(card.popleft())
 
-print(queue[0])
+print(card[0])
