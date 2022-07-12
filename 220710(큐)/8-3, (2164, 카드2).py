@@ -1,9 +1,12 @@
 from collections import deque
-N = int(input())
-card = deque([int(now) for now in range(1, N+1)])
+import sys
 
-while len(card) != 1:
-    card.popleft()
-    card.append(card.popleft())
+N = int(sys.stdin.readline().rstrip())
+queue = deque()
+lst = deque([int(card) for card in range(N, 0, -1)])
 
-print(card[0])
+while len(lst)>1:
+    lst.pop()
+    lst.appendleft(lst.pop())
+
+print(lst[0])
