@@ -1,32 +1,45 @@
 from collections import deque
 import sys
 
+def push(x):
+    queue.appendleft(x)
+def pop():
+    if queue:
+        return queue.pop()
+    else:
+        return -1
+def size():
+    return len(queue)
+def empty():
+    if queue:
+        return 0
+    else:
+        return 1
+def front():
+    if queue:
+        return queue[-1]
+    else:
+        return -1
+def back():
+    if queue:
+        return queue[0]
+    else:
+        return -1
+
 N = int(sys.stdin.readline())
 queue = deque()
 
 for i in range(N):
     command = sys.stdin.readline().split()
     if command[0] == 'push':
-        queue.appendleft(command[1])
+        push(command[1])
     elif command[0] == 'pop':
-        if queue:
-            print(queue.pop())
-        else:
-            print(-1)
+        print(pop())
     elif command[0] == 'size':
-        print(len(queue))
+        print(size())
     elif command[0] == 'empty':
-        if queue:
-            print(0)
-        else:
-            print(1)
+        print(empty())
     elif command[0] == 'front':
-        if queue:
-            print(queue[-1])
-        else:
-            print(-1)
+        print(front())
     elif command[0] == 'back':
-        if queue:
-            print(queue[0])
-        else:
-            print(-1)
+        print(back())
