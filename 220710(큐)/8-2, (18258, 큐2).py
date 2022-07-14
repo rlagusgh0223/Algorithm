@@ -1,11 +1,11 @@
 from collections import deque
 import sys
 
-def push(x):
-    queue.appendleft(x)
+def push(X):
+    return queue.append(X)
 def pop():
     if queue:
-        return queue.pop()
+        return queue.popleft()
     else:
         return -1
 def size():
@@ -17,18 +17,17 @@ def empty():
         return 1
 def front():
     if queue:
-        return queue[-1]
+        return queue[0]
     else:
         return -1
 def back():
     if queue:
-        return queue[0]
+        return queue[-1]
     else:
         return -1
 
 N = int(sys.stdin.readline())
 queue = deque()
-
 for i in range(N):
     command = sys.stdin.readline().split()
     if command[0] == 'push':
