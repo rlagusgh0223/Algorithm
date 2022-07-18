@@ -1,28 +1,28 @@
 import sys
 
-def preorder(data):
-    if data != '.':
-        print(data, end='')
-        preorder(tree[data][0])
-        preorder(tree[data][1])
+def preorder(now):
+    if now != '.':
+        print(now, end='')
+        preorder(tree[now][0])
+        preorder(tree[now][1])
 
-def inorder(data):
-    if data != '.':
-        inorder(tree[data][0])
-        print(data, end='')
-        inorder(tree[data][1])
+def inorder(now):
+    if now != '.':
+        inorder(tree[now][0])
+        print(now, end='')
+        inorder(tree[now][1])
 
-def postorder(data):
-    if data != '.':
-        postorder(tree[data][0])
-        postorder(tree[data][1])
-        print(data, end='')
+def postorder(now):
+    if now != '.':
+        postorder(tree[now][0])
+        postorder(tree[now][1])
+        print(now, end='')
 
 N = int(sys.stdin.readline())
 tree = {}
 for i in range(N):
-    data, left, right = sys.stdin.readline().split()
-    tree[data] = [left, right]
+    now, left, right = sys.stdin.readline().split()
+    tree[now] = [left, right]
 
 preorder('A')
 print()

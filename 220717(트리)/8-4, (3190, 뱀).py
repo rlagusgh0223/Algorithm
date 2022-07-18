@@ -8,17 +8,17 @@ def change(d, c):
         d = (d+1)%4
     return d
 
-n = int(sys.stdin.readline())
-board = [[0]*n for _ in range(n)]
+N = int(sys.stdin.readline())
+board = [[0]*N for _ in range(N)]
 
-k = int(sys.stdin.readline())
-for _ in range(k):
+K = int(sys.stdin.readline())
+for _ in range(K):
     x, y = map(int, sys.stdin.readline().split())
     board[x-1][y-1] = 1
 
-l = int(sys.stdin.readline())
+L = int(sys.stdin.readline())
 times = {}
-for _ in range(l):
+for _ in range(L):
     x, y = sys.stdin.readline().split()
     times[int(x)] = y
 
@@ -26,14 +26,14 @@ dx = [0, 1, 0, -1]
 dy = [-1, 0, 1, 0]
 
 direction = 1
+time = 1
 y, x = 0, 0
 snake = deque([[y, x]])
 board[y][x] = 2
-time = 1
 
 while True:
     y, x = y+dy[direction], x+dx[direction]
-    if 0<=y<n and 0<=x<n and board[y][x] != 2:
+    if 0<=y<N and 0<=x<N and board[y][x] != 2:
         if board[y][x] != 1:
             delY, delX = snake.popleft()
             board[delY][delX] = 0
