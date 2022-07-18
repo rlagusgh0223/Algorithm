@@ -1,5 +1,4 @@
 from collections import deque
-import sys
 
 def change(d, c):
     if c=='L':
@@ -8,19 +7,19 @@ def change(d, c):
         d = (d+1)%4
     return d
 
-N = int(sys.stdin.readline())
-board = [[0]*N for _ in range(N)]
+N = int(input())
+board = [[0 for _ in range(N)] for _ in range(N)]
 
-K = int(sys.stdin.readline())
+K = int(input())
 for _ in range(K):
-    x, y = map(int, sys.stdin.readline().split())
+    x, y = map(int, input().split())
     board[x-1][y-1] = 1
 
-L = int(sys.stdin.readline())
+L = int(input())
 times = {}
 for _ in range(L):
-    x, y = sys.stdin.readline().split()
-    times[int(x)] = y
+    X, C = input().split()
+    times[int(X)] = C
 
 dx = [0, 1, 0, -1]
 dy = [-1, 0, 1, 0]

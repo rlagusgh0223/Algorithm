@@ -1,5 +1,3 @@
-import sys
-
 def preorder(now):
     if now != '.':
         print(now, end='')
@@ -18,10 +16,10 @@ def postorder(now):
         postorder(tree[now][1])
         print(now, end='')
 
-N = int(sys.stdin.readline())
+N = int(input())
 tree = {}
 for i in range(N):
-    now, left, right = sys.stdin.readline().split()
+    now, left, right = input().split()
     tree[now] = [left, right]
 
 preorder('A')
