@@ -1,4 +1,5 @@
 from collections import deque
+import sys
 
 def change(d, c):
     if c=='L':
@@ -7,19 +8,19 @@ def change(d, c):
         d = (d+1)%4
     return d
 
-N = int(input())
-board = [[0 for _ in range(N)] for _ in range(N)]
+n = int(sys.stdin.readline())
+board = [[0]*n for _ in range(n)]
 
-K = int(input())
-for _ in range(K):
-    x, y = map(int, input().split())
+k = int(sys.stdin.readline())
+for _ in range(k):
+    x, y = map(int, sys.stdin.readline().split())
     board[x-1][y-1] = 1
 
-L = int(input())
+l = int(sys.stdin.readline())
 times = {}
-for _ in range(L):
-    X, C = input().split()
-    times[int(X)] = C
+for _ in range(l):
+    x, c = sys.stdin.readline().split()
+    times[int(x)] = c
 
 dx = [0, 1, 0, -1]
 dy = [-1, 0, 1, 0]
@@ -32,7 +33,7 @@ board[y][x] = 2
 
 while True:
     y, x = y+dy[direction], x+dx[direction]
-    if 0<=y<N and 0<=x<N and board[y][x] != 2:
+    if 0<=y<n and 0<=x<n and board[y][x]!=2:
         if board[y][x] != 1:
             delY, delX = snake.popleft()
             board[delY][delX] = 0
