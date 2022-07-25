@@ -1,17 +1,16 @@
-# 최소힙으로 구해야 하므로 -1을 곱할 필요 없다
-import heapq, sys
-N = int(sys.stdin.readline())
+import heapq
+N = int(input())
 card = []
 answer = 0
 for i in range(N):
-    card.append(int(sys.stdin.readline()))
+    card.append(int(input()))
 heapq.heapify(card)
 
-while len(card)>1:
+while len(card) > 1:
     first = heapq.heappop(card)
     second = heapq.heappop(card)
-    sum = first+second
-    answer += sum
-    heapq.heappush(card, sum)
+    Sum = first + second
+    answer += Sum
+    heapq.heappush(card, Sum)
 
 print(answer)

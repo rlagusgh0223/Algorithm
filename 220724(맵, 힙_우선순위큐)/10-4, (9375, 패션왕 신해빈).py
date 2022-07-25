@@ -1,15 +1,14 @@
-import sys
-n = int(sys.stdin.readline())
+n = int(input())
 for _ in range(n):
-    N = int(sys.stdin.readline())
+    N = int(input())
     cloth = {}
     answer = 1
     for _ in range(N):
-        name, type = sys.stdin.readline().split()
-        if type in cloth:
-            cloth[type] += 1
+        name, Type = input().split()
+        if Type in cloth:
+            cloth[Type] += 1
         else:
-            cloth[type] = 1
+            cloth[Type] = 1
     for now in cloth:
         answer *= cloth[now]+1
-    print(answer-1)
+    print(answer - 1)

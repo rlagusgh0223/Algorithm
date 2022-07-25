@@ -1,12 +1,12 @@
 import heapq, sys
 N = int(sys.stdin.readline())
-number = []
+hp = []
 for i in range(N):
     x = int(sys.stdin.readline())
-    if x==0:
-        if number:
-            print(-1 * heapq.heappop(number))
+    if x != 0:
+        heapq.heappush(hp, -x)
+    else:
+        if hp:
+            print(-1 * heapq.heappop(hp))
         else:
             print(0)
-    else:
-        heapq.heappush(number, -x)
