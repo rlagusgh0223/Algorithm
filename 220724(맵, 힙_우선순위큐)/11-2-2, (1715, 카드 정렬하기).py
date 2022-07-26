@@ -1,16 +1,15 @@
-import heapq
-N = int(input())
-card = []
+import heapq, sys
+N = int(sys.stdin.readline())
+number = []
 answer = 0
-for i in range(N):
-    card.append(int(input()))
-heapq.heapify(card)
-
-while len(card) > 1:
-    first = heapq.heappop(card)
-    second = heapq.heappop(card)
-    Sum = first + second
-    answer += Sum
-    heapq.heappush(card, Sum)
+for _ in range(N):
+    num = int(sys.stdin.readline())
+    heapq.heappush(number, num)
+while len(number)>1:
+    first = heapq.heappop(number)
+    second = heapq.heappop(number)
+    plus = first+second
+    answer += plus
+    heapq.heappush(number, plus)
 
 print(answer)
