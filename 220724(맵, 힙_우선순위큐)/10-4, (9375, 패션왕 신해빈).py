@@ -1,15 +1,15 @@
 import sys
 testcase = int(sys.stdin.readline())
-for i in range(testcase):
+for _ in range(testcase):
+    cloths = {}
     n = int(sys.stdin.readline())
-    cloth = {}
-    answer = 1
-    for j in range(n):
-        name, ctype = sys.stdin.readline().split()
-        if ctype in cloth.keys():
-            cloth[ctype] += 1
+    result = 1
+    for _ in range(n):
+        name, cloth = sys.stdin.readline().split()
+        if cloth in cloths:
+            cloths[cloth] += 1
         else:
-            cloth[ctype] = 1
-    for ctype in cloth.keys():
-        answer *= cloth[ctype] + 1
-    print(answer - 1)
+            cloths[cloth] = 1
+    for now in cloths:
+        result *= cloths[now]+1
+    print(result-1)

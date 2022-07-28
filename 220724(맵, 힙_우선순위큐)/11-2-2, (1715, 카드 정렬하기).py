@@ -1,16 +1,16 @@
-import heapq, sys
+import sys, heapq
 N = int(sys.stdin.readline())
 card = []
 answer = 0
-for i in range(N):
-    x = int(sys.stdin.readline())
-    heapq.heappush(card, x)
+for _ in range(N):
+    card.append(int(sys.stdin.readline()))
+heapq.heapify(card)
 
 while len(card) > 1:
     first = heapq.heappop(card)
     second = heapq.heappop(card)
-    cardsum = first + second
-    answer += cardsum
-    heapq.heappush(card, cardsum)
+    csum = first + second
+    answer += csum
+    heapq.heappush(card, csum)
 
 print(answer)

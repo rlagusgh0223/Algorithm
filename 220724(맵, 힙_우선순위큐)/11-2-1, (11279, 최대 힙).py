@@ -1,13 +1,12 @@
-import heapq, sys
+import sys, heapq
 N = int(sys.stdin.readline())
-heap = []
-
-for i in range(N):
+number = []
+for _ in range(N):
     x = int(sys.stdin.readline())
     if x == 0:
-        if heap:
-            print(-1 * heapq.heappop(heap))
+        if number:
+            print(-1 * heapq.heappop(number))
         else:
             print(0)
     else:
-        heapq.heappush(heap, -x)
+        heapq.heappush(number, -x)
