@@ -1,8 +1,8 @@
 N = int(input())
 csort = [0 for _ in range(1002)]
-nums = list(map(int, input().split()))
+A = list(map(int, input().split()))
 for i in range(N):
-    csort[nums[i]] += 1
+    csort[A[i]] += 1
 
 answer = ''
 while True:
@@ -18,7 +18,7 @@ while True:
                         break
                 if k != -1:
                     while csort[i]:
-                        answer += str(i)+' '
+                        answer += str(i) + ' '
                         csort[i] -= 1
                     answer += str(k)+' '
                     csort[k] -= 1
