@@ -1,6 +1,7 @@
-N = int(input())
-A = list(map(int, input().split()))
-S = int(input())
+import sys
+N = int(sys.stdin.readline())
+A = list(map(int, sys.stdin.readline().split()))
+S = int(sys.stdin.readline())
 
 while True:
     tof = True
