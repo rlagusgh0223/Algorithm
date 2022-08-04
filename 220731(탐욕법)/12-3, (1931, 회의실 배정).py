@@ -1,16 +1,15 @@
 import sys
 N = int(sys.stdin.readline())
-meet = []
+meeting = []
 for i in range(N):
-    meet.append([int(x) for x in sys.stdin.readline().split()])
-
-meet.sort(key=lambda x:(x[1], x[0]))
+    meeting.append(list(map(int, sys.stdin.readline().split())))
+meeting.sort(key=lambda x:(x[1], x[0]))
 
 answer = 0
 endTime = 0
 for i in range(N):
-    if endTime <= meet[i][0]:
-        endTime = meet[i][1]
+    if endTime <= meeting[i][0]:
+        endTime = meeting[i][1]
         answer += 1
 
 print(answer)

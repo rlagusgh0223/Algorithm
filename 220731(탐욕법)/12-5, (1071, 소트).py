@@ -1,7 +1,6 @@
-import sys
-N = int(sys.stdin.readline())
-A = [int(x) for x in sys.stdin.readline().split()]
+N = int(input())
 csort = [0 for _ in range(1002)]
+A = [int(x) for x in input().split()]
 for i in range(N):
     csort[A[i]] += 1
 
@@ -17,11 +16,11 @@ while True:
                     if csort[j]:
                         k = j
                         break
-                if k!= -1:
+                if k != -1:
                     while csort[i]:
-                        answer += str(i)+' '
+                        answer += str(i) + ' '
                         csort[i] -= 1
-                    answer += str(k) +' '
+                    answer += str(k)+' '
                     csort[j] -= 1
                     break
                 else:
@@ -35,4 +34,5 @@ while True:
                 break
     if tof:
         break
+
 print(answer)

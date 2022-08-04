@@ -1,7 +1,6 @@
-import sys
-N = int(sys.stdin.readline())
-A = [int(x) for x in sys.stdin.readline().split()]
-S = int(sys.stdin.readline())
+N = int(input())
+A = list(map(int, input().split()))
+S = int(input())
 
 while True:
     tof = True
@@ -11,8 +10,8 @@ while True:
         for j in range(N-1, i, -1):
             if A[idx]<A[j] and j-i<=S:
                 idx = j
-                tof = False
                 cmp = j-i
+                tof = False
         if idx != i:
             tmp = A[idx]
             del A[idx]
