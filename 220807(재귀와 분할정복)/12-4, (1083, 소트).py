@@ -1,23 +1,24 @@
-N = int(input())
-A = [int(x) for x in input().split()]
-S = int(input())
+import sys
+n = int(sys.stdin.readline())
+a = list(map(int, sys.stdin.readline().split()))
+s = int(sys.stdin.readline())
 
 while True:
     tof = True
-    for i in range(N):
+    for i in range(n):
         idx = i
         cmp = 0
-        for j in range(N-1, i, -1):
-            if A[idx]<A[j] and j-i<=S:
+        for j in range(n-1, i, -1):
+            if a[idx]<a[j] and j-i<=s:
                 idx = j
                 cmp = j-i
                 tof = False
         if idx != i:
-            tmp = A[idx]
-            del A[idx]
-            A.insert(i, tmp)
-            S -= cmp
+            tmp = a[idx]
+            del a[idx]
+            a.insert(i, tmp)
+            s -= cmp
     if tof:
         break
 
-print(*A)
+print(*a)
