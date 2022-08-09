@@ -21,8 +21,7 @@ def divide(x, y, n):
 N = int(sys.stdin.readline())
 paper = [[int(x) for x in sys.stdin.readline().split()] for _ in range(N)]
 
-white = 0
-blue = 0
+white = blue = 0
 divide(0, 0, N)
 print(white)
 print(blue)

@@ -1,6 +1,6 @@
 import sys
 N = int(sys.stdin.readline())
-A = [int(a) for a in sys.stdin.readline().split()]
+A = list(map(int, sys.stdin.readline().split()))
 csort = [0 for _ in range(1002)]
 for i in range(N):
     csort[A[i]] += 1
@@ -33,6 +33,7 @@ while True:
                     answer += str(i)+' '
                     csort[i] -= 1
                 break
+
     if tof:
         break
 

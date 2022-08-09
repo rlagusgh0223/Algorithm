@@ -1,6 +1,6 @@
 import sys
 N = int(sys.stdin.readline())
-A = [int(a) for a in sys.stdin.readline().split()]
+A = list(map(int, sys.stdin.readline().split()))
 S = int(sys.stdin.readline())
 
 while True:
@@ -10,14 +10,14 @@ while True:
         cmp = 0
         for j in range(N-1, i, -1):
             if A[idx]<A[j] and j-i<=S:
+                tof = True
                 idx = j
                 cmp = j-i
-                tof = False
         if idx != i:
             tmp = A[idx]
             del A[idx]
-            S -= cmp
             A.insert(i, tmp)
+            S -= cmp
     if tof:
         break
 
