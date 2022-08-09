@@ -1,9 +1,9 @@
 import sys
-n = int(sys.stdin.readline())
-a = list(map(int, sys.stdin.readline().split()))
+N = int(sys.stdin.readline())
+A = [int(a) for a in sys.stdin.readline().split()]
 csort = [0 for _ in range(1002)]
-for i in range(n):
-    csort[a[i]] += 1
+for i in range(N):
+    csort[A[i]] += 1
 
 answer = ''
 while True:
@@ -25,7 +25,7 @@ while True:
                     csort[k] -= 1
                     break
                 else:
-                    answer += str(i+1) + ' '
+                    answer += str(i+1)+' '
                     csort[i+1] -= 1
                     break
             else:
