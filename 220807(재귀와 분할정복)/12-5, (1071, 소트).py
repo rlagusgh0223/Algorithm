@@ -1,7 +1,7 @@
 import sys
 N = int(sys.stdin.readline())
-csort = [0 for _ in range(1002)]
-A = [int(x) for x in sys.stdin.readline().split()]
+A = list(map(int, sys.stdin.readline().split()))
+csort = [0] * 1002
 for i in range(N):
     csort[A[i]] += 1
 
@@ -26,7 +26,7 @@ while True:
                     break
                 else:
                     answer += str(i+1)+' '
-                    csort[i+1] -= 1
+                    csort[i+1] -=1
                     break
             else:
                 while csort[i]:
@@ -35,5 +35,4 @@ while True:
                 break
     if tof:
         break
-
 print(answer)

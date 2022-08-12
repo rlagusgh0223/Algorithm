@@ -9,6 +9,5 @@ def hanoi(N, start, to, end):
         hanoi(N-1, to, start, end)
 
 N = int(sys.stdin.readline())
-
 print(2**N-1)
 hanoi(N, 1, 2, 3)
