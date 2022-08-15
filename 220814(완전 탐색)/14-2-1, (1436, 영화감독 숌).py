@@ -1,9 +1,10 @@
-n = int(input())
-x = 665
+import sys
+N = int(sys.stdin.readline())
+now = 665
 
-while n>0:
-    x += 1
-    if '666' in str(x):
-        n -= 1
+while N>0:
+    now += 1
+    if '666' in str(now):
+        N -= 1
 
-print(x)
+print(now)
