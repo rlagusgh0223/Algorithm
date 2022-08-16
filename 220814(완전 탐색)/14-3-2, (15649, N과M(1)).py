@@ -1,5 +1,4 @@
-N, M = map(int, input().split())
-answer = []
+import sys
 
 def DFS(depth):
     if depth == M:
@@ -12,4 +11,6 @@ def DFS(depth):
         DFS(depth+1)
         answer.pop()
 
+N, M = map(int, sys.stdin.readline().split())
+answer = []
 DFS(0)
