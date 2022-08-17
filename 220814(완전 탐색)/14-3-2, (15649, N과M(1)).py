@@ -1,5 +1,3 @@
-import sys
-
 def DFS(depth):
     if depth == M:
         print(' '.join(map(str, answer)))
@@ -11,6 +9,6 @@ def DFS(depth):
         DFS(depth+1)
         answer.pop()
 
-N, M = map(int, sys.stdin.readline().split())
+N, M = map(int, input().split())
 answer = []
 DFS(0)
