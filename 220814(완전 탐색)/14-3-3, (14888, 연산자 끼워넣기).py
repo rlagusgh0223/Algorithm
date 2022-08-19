@@ -1,3 +1,5 @@
+import sys
+
 def DFS(index, sum):
     global maxAns, minAns
     if index == N-1:
@@ -5,7 +7,6 @@ def DFS(index, sum):
             maxAns = sum
         if minAns > sum:
             minAns = sum
-        return
     
     for i in range(4):
         temp = sum
@@ -19,7 +20,7 @@ def DFS(index, sum):
             sum *= numArr[index+1]
         else:
             if sum < 0:
-                sum = abs(sum)//numArr[index+1]*-1
+                sum = abs(sum) // numArr[index+1] * -1
             else:
                 sum //= numArr[index+1]
         operator[i] -= 1
@@ -27,12 +28,11 @@ def DFS(index, sum):
         operator[i] += 1
         sum = temp
 
-
-N = int(input())
-numArr = [int(A) for A in input().split()]
-operator = list(map(int, input().split()))
-minAns = float('Inf')
+N = int(sys.stdin.readline())
+numArr = list(map(int, sys.stdin.readline().split()))
+operator = list(map(int, sys.stdin.readline().split()))
 maxAns = float('-Inf')
+minAns = float('Inf')
 DFS(0, numArr[0])
 print(maxAns)
 print(minAns)
