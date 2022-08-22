@@ -1,5 +1,3 @@
-import sys
-
 def DFS(idx, sum):
     global answer
     if idx == N:
@@ -10,8 +8,8 @@ def DFS(idx, sum):
     DFS(idx+1, sum-arr[idx])
     DFS(idx+1, sum)
 
-N, S = map(int, sys.stdin.readline().split())
-arr = list(map(int, sys.stdin.readline().split()))
+N, S = map(int, input().split())
+arr = list(map(int, input().split()))
 answer = 0
 DFS(0, 0)
 print(answer)
