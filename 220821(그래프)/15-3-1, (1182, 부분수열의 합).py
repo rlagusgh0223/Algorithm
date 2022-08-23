@@ -1,17 +1,15 @@
-import sys
-
 def DFS(idx, sum):
-    global answer
+    global cnt
     if idx==N:
         return
     sum += arr[idx]
     if S == sum:
-        answer += 1
+        cnt += 1
     DFS(idx+1, sum-arr[idx])
     DFS(idx+1, sum)
 
-N, S = map(int, sys.stdin.readline().split())
-arr = list(map(int, sys.stdin.readline().split()))
-answer = 0
+N, S = map(int, input().split())
+arr = list(map(int, input().split()))
+cnt = 0
 DFS(0, 0)
-print(answer)
+print(cnt)
