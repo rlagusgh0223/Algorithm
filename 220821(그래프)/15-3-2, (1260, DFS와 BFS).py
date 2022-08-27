@@ -1,4 +1,5 @@
 from collections import deque
+import sys
 
 def DFS(V):
     visit[V] = 1
@@ -16,13 +17,13 @@ def BFS(V):
         print(V, end=' ')
         for i in range(1, N+1):
             if visit[i]==1 and graph[V][i]==1:
-                q.append(i)
                 visit[i] = 0
+                q.append(i)
 
-N, M, V = map(int, input().split())
+N, M, V = map(int, sys.stdin.readline().split())
 graph = [[0 for _ in range(N+1)] for _ in range(N+1)]
 for i in range(M):
-    x, y = map(int, input().split())
+    x, y = map(int, sys.stdin.readline().split())
     graph[x][y] = graph[y][x] = 1
 visit = [0]*(N+1)
 DFS(V)

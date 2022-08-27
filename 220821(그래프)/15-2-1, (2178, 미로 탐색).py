@@ -1,6 +1,7 @@
 from collections import deque
-N, M = map(int, input().split())
-maze = [list(map(int, input())) for _ in range(N)]
+import sys
+N, M = map(int, sys.stdin.readline().split())
+maze = [list(map(int, sys.stdin.readline().rstrip())) for _ in range(N)]
 dx = [-1, 0, 1, 0]
 dy = [0, 1, 0, -1]
 q = deque()
@@ -13,4 +14,5 @@ while q:
         if 0<=nx<N and 0<=ny<M and maze[nx][ny]==1:
             maze[nx][ny] += maze[x][y]
             q.append([nx, ny])
+
 print(maze[N-1][M-1])
