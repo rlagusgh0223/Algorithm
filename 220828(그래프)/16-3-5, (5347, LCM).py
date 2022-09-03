@@ -3,7 +3,7 @@ def LCM(a, b):  # 최소공배수를 구학 ㅣ위한 함수
 
 def GCD(a, b):  # 최대공약수를 구하는 함수
     if b % a:
-        return GCD(b % a, a)
+        return GCD(b % a, a)  # 어느 하나를 나누어서 나누어 떨어질때까지 나눈다
     else:
         return a
 
