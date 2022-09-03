@@ -1,7 +1,7 @@
 N, K = list(map(int, input().split()))
 
 up = 1
-for i in range(1, N+1):  # n!을 구한다
+for i in range(1, N+1):  # N!을 구한다
     up *= i
 
 down = 1
