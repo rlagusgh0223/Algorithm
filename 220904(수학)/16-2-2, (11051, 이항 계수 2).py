@@ -1,4 +1,5 @@
-N, K = map(int, input().split())
+import sys
+N, K = map(int, sys.stdin.readline().split())
 dp = [[0]*1001 for _ in range(1001)]
 
 for i in range(1, N+1):

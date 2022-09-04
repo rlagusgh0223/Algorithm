@@ -1,3 +1,5 @@
+import sys
+
 def LCM(a, b):
     return (a*b) // GCD(a, b)
 
@@ -7,7 +9,7 @@ def GCD(a, b):
     else:
         return a
 
-n = int(input())
+n = int(sys.stdin.readline())
 for i in range(n):
-    a, b = map(int, input().split())
+    a, b = map(int, sys.stdin.readline().split())
     print(LCM(a, b))

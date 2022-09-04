@@ -1,15 +1,16 @@
-N, K = map(int, input().split())
+import sys
+N, K = map(int, sys.stdin.readline().split())
 
-np = 1
+nf = 1
 for i in range(1, N+1):
-    np *= i
+    nf *= i
 
-kp = 1
+kf = 1
 for i in range(1, K+1):
-    kp *= i
+    kf *= i
 
-nkp = 1
+nkf = 1
 for i in range(1, N-K+1):
-    nkp *= i
+    nkf *= i
 
-print(np//(kp*nkp))
+print(nf//(kf*nkf))
