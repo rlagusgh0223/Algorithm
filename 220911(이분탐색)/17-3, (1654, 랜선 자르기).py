@@ -1,15 +1,16 @@
-k, n = map(int, input().split())
+K, N = map(int, input().split())
 lanson = []
-for i in range(k):
+for i in range(K):
     lanson.append(int(input()))
-start = answer = 0
-end = 10000000000
+start = 1
+end = max(lanson)
+answer = 0
 while start<=end:
-    mid = (start+end)//2
+    mid = (start+end) // 2
     num = 0
     for lan in lanson:
         num += lan//mid
-    if num >= n:
+    if num >= N:
         start = mid + 1
         if mid > answer:
             answer = mid

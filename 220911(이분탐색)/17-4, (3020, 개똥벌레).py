@@ -1,34 +1,47 @@
-# 여기는 import로 안하면 시간초과 나온다
 import sys
-def lower(s, e, d, L):
-    while e-s>0:
-        m = (s+e) // 2
-        if L[m] < d:
-            s = m + 1
+
+def upper(start, end, now, lst):
+    while start>end:
+        mid = (start+end) // 2
+        if lst[mid] <= now:
+            start = mid + 1
         else:
-            e = m
-    return e
+            end = mid
+    return end
+
+def lower(start, end, now, lst):
+    while end>start:
+        mid = (start+end) // 2
+        if lst[mid] < now:
+            start = mid + 1
+        else:
+            end = mid
+    return end
 
 up = []
 down = []
 result = [0] * 500001
-n, h = map(int, sys.stdin.readline().split())
-for i in range(n):
-    obstacle = int(sys.stdin.readline())
-    if i%2==1:
-        up.append(obstacle)
+N, H = map(int, sys.stdin.readline().split())
+for i in range(N):
+    now = int(sys.stdin.readline())
+    if i%2 == 1:
+        up.append(now)
     else:
-        down.append(obstacle)
+        down.append(now)
+
 up.sort()
 down.sort()
 answer = 0
-mx = 10000000000
-for i in range(1, h+1):
-    idxd = lower(0, len(down), i, down)
-    idxu = lower(0, len(up), h-i+1, up)
-    result[i] = n//2-idxd + n//2-idxu
+mx = 500000
+
+for i in range(1, H+1):
+    idxd = lower(0, len(down), i ,down)
+    idxu = lower(0, len(up), H-i+1, up)
+    result[i] = N//2-idxd + N//2-idxu
     mx = min(mx, result[i])
-for i in range(1, h+1):
+
+for i in range(1, H+1):
     if result[i] == mx:
         answer += 1
+
 print(mx, answer)
