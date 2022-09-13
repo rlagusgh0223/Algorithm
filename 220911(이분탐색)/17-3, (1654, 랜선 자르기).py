@@ -1,17 +1,15 @@
-import sys
-K, N = map(int, sys.stdin.readline().split())
-lenson = []
-for i in range(K):
-    lenson.append(int(sys.stdin.readline()))
-start = 1
-end = max(lenson)
-answer = 0
+k, n = map(int, input().split())
+lanson = []
+for i in range(k):
+    lanson.append(int(input()))
+start = answer = 0
+end = 10000000000
 while start<=end:
-    mid = (start+end) // 2
+    mid = (start+end)//2
     num = 0
-    for len in lenson:
-        num += len//mid
-    if num >= N:
+    for lan in lanson:
+        num += lan//mid
+    if num >= n:
         start = mid + 1
         if mid > answer:
             answer = mid
