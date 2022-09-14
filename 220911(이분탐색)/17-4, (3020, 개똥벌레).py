@@ -1,33 +1,33 @@
 import sys
 
-def upper(start, end, now, lst):
+def upper(start, end, num, lst):
     while start>end:
-        mid = (start+end) // 2
-        if lst[mid] <= now:
-            start = mid + 1
+        mid = (start+end)//2
+        if lst[mid]<=num:
+            start = mid+1
         else:
             end = mid
     return end
 
-def lower(start, end, now, lst):
-    while end>start:
-        mid = (start+end) // 2
-        if lst[mid] < now:
-            start = mid + 1
+def lower(start, end, num, lst):
+    while start<end:
+        mid = (start+end)//2
+        if lst[mid]<num:
+            start = mid+1
         else:
             end = mid
     return end
 
+N, H = map(int, sys.stdin.readline().split())
 up = []
 down = []
 result = [0] * 500001
-N, H = map(int, sys.stdin.readline().split())
 for i in range(N):
-    now = int(sys.stdin.readline())
+    num = int(sys.stdin.readline())
     if i%2 == 1:
-        up.append(now)
+        up.append(num)
     else:
-        down.append(now)
+        down.append(num)
 
 up.sort()
 down.sort()
@@ -43,5 +43,5 @@ for i in range(1, H+1):
 for i in range(1, H+1):
     if result[i] == mx:
         answer += 1
-
+    
 print(mx, answer)
