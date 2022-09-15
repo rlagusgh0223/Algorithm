@@ -1,23 +1,20 @@
-import sys
-
-def search(now):
+def search(num):
     start = 0
     end = N-1
     while start<=end:
         mid = (start+end)//2
-        if A[mid] == now:
+        if A[mid] == num:
             return 1
-        elif A[mid]>now:
+        elif A[mid] > num:
             end = mid - 1
         else:
             start = mid + 1
     return 0
 
-N = int(sys.stdin.readline())
-A = list(map(int, sys.stdin.readline().split()))
+N = int(input())
+A = list(map(int, input().split()))
+M = int(input())
+arr = list(map(int, input().split()))
 A.sort()
-M = int(sys.stdin.readline())
-lst = [int(now) for now in sys.stdin.readline().split()]
-
-for i in lst:
-    print(search(i))
+for i in range(M):
+    print(search(arr[i])) 

@@ -1,8 +1,7 @@
-import sys
-K, N = map(int, sys.stdin.readline().split())
+K, N = map(int, input().split())
 lanson = []
 for i in range(K):
-    lanson.append(int(sys.stdin.readline()))
+    lanson.append(int(input()))
 start = 1
 end = max(lanson)
 answer = 0
