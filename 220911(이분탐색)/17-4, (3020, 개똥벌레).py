@@ -1,10 +1,19 @@
 import sys
 
+def upper(start, end, num, lst):
+    while start>end:
+        mid = (start+end)//2
+        if lst[mid] < num:
+            start = mid + 1
+        else:
+            end = mid
+    return end
+
 def lower(start, end, num, lst):
     while start<end:
         mid = (start+end)//2
-        if lst[mid]<num:
-            start = mid+1
+        if lst[mid] < num:
+            start = mid + 1
         else:
             end = mid
     return end
@@ -12,10 +21,10 @@ def lower(start, end, num, lst):
 N, H = map(int, sys.stdin.readline().split())
 up = []
 down = []
-result = [0]*500001
+result = [0] * 500001
 for i in range(N):
     num = int(sys.stdin.readline())
-    if i%2==1:
+    if i%2 == 1:
         up.append(num)
     else:
         down.append(num)
