@@ -1,3 +1,5 @@
+import sys
+
 def search(now):
     start = 0
     end = N-1
@@ -11,11 +13,10 @@ def search(now):
             end = mid - 1
     return 0
 
-N = int(input())
-A = list(map(int, input().split()))
-M = int(input())
-arr = list(map(int, input().split()))
+N = int(sys.stdin.readline())
+A = list(map(int, sys.stdin.readline().split()))
 A.sort()
-
-for i in arr:
-    print(search(i))
+M = int(sys.stdin.readline())
+lst = [int(x) for x in sys.stdin.readline().split()]
+for now in lst:
+    print(search(now))
