@@ -1,14 +1,5 @@
 import sys
 
-def upper(start, end, num, lst):
-    while start>end:
-        mid = (start+end)//2
-        if lst[mid] < num:
-            start = mid + 1
-        else:
-            end = mid
-    return end
-
 def lower(start, end, num, lst):
     while start<end:
         mid = (start+end)//2
