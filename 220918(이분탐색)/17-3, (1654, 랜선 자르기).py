@@ -7,7 +7,7 @@ start = 1
 end = max(lanson)
 answer = 0
 while start<=end:
-    mid = (start+end)//2
+    mid = (start+end) // 2
     num = 0
     for lan in lanson:
         num += lan//mid

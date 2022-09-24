@@ -1,13 +1,14 @@
-def lower(start, end, num, lst):
-    while start < end:
-        mid = (start+end) // 2
-        if lst[mid] < num:
+import sys
+
+def lower(start, end, now, lst):
+    while start<end:
+        mid = (start+end)//2
+        if lst[mid] < now:
             start = mid + 1
         else:
             end = mid
     return end
 
-import sys
 N, H = map(int, sys.stdin.readline().split())
 up = []
 down = []
@@ -17,11 +18,11 @@ for i in range(N):
         up.append(num)
     else:
         down.append(num)
-mx = 5000000
-result = [0] * 500001
 up.sort()
 down.sort()
 answer = 0
+result = [0] * 500001
+mx = 500000
 for i in range(1, H+1):
     idxd = lower(0, len(down), i, down)
     idxu = lower(0, len(up), H-i+1, up)
@@ -30,4 +31,4 @@ for i in range(1, H+1):
 for i in range(1, H+1):
     if result[i] == mx:
         answer += 1
-print( mx, answer)
+print(mx, answer)
