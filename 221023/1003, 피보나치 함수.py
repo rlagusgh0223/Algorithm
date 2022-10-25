@@ -1,14 +1,3 @@
-def fibonacci(n):
-    global one, zero
-    if n==0:
-        zero += 1
-        return 0
-    elif n==1:
-        one += 1
-        return 1
-    else:
-        return fibonacci(n-1) + fibonacci(n-2)
-
 import sys
 T = int(sys.stdin.readline())
 
