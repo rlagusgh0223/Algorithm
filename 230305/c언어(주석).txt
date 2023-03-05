@@ -1,0 +1,9 @@
+#include <stdio.h>
+int main(){
+    // 정수형 변수 예제를 이용한 주석 예제
+    /*int age = 17;
+    printf("%d\n", age);  // 17 출력
+    age += 1;
+    printf("%d\n", age);  // 18 출력
+    return 0;*/
+}
