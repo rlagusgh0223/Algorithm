@@ -1,0 +1,8 @@
+#include<stdio.h>
+int main(){
+    float f = 64.5f;  // float는 숫자 뒤에 f붙여야 된다. 안붙여도 돌아는 간다.
+    double d = 4.248;  // double은 숫자 뒤에 아무것도 안붙인다.
+    printf("%.2f\n", f);  // .2f를 써서 소수점 뒤에 2자리까지만 나오게 했다.
+    printf("%.2lf", d);  // double은 lf를 써야 되는데 f만써도 돌아는 간다.
+    return 0;
+}
