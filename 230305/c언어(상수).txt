@@ -1,0 +1,7 @@
+#include<stdio.h>
+int main(){
+    const int year = 2023;  // 변수 앞에 const입력하면 상수가 된다
+    printf("올해 : %d\n", year);
+    // year = 2022;  // 상수는 못 바꾼다
+    printf("올해 : %d\n", year);
+}
