@@ -1,0 +1,7 @@
+#include <stdio.h>
+int main(){
+    int add = 3+7;
+    printf("add = %d\n", add);  // add = 10
+    printf("%d x %d = %d", 3, 7, 3*7);  // 3 x 7 = 21
+    return 0;
+}
