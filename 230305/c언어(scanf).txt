@@ -1,0 +1,19 @@
+#include <stdio.h>
+int main(){
+    int one, two, three;
+    printf("정수 3개를 입력하시오 :");
+    scanf("%d %d %d", &one, &two, &three);
+    // scanf_s("%d %d %d", &one, &two, &three);
+    // 강의에선 scanf_s로 쓰라고 했는데 온라인 컴파일러에선 에러난다. 아직 적용이 안된것 같다
+    printf("-> %d, %d, %d\n", one, two, three);
+    
+    char str[256];
+    printf("문자열을 입력하시오 :");
+    scanf("%s", str);
+    // scanf_s("%s", str, sizeof(str));
+    // 문자열(배열)은 &안써도 되지만 배열 길이가 얼마나 되는지 뒤에 써줘야 한다.
+    // 문자하나는 %c로 표현하는 것 같다
+    printf("-> %s\n", str);
+    
+    return 0;
+}
