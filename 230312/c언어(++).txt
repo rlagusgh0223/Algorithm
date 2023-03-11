@@ -1,0 +1,8 @@
+#include <stdio.h>
+int main(){
+    int b = 1;
+    printf("%d\n", ++b);  // 2 <- 이 줄이 실행되기 전에 1 더한다
+    printf("%d\n", b++);  // 2 <- 이 줄이 실행된 후에 1 더한다
+    printf("%d", b);  // 3
+    return 0;
+}
