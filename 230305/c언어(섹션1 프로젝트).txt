@@ -1,0 +1,50 @@
+#include<stdio.h>
+int main(){
+    // 문자 하나만 받는 방법
+    // char c;
+    // scanf("%c", &c);
+    // printf("%c", c);
+    
+    // c앞에 숫자를 붙여주면 그 숫자만큼 문자를 받는다
+    // char로 선언할때 숫자만큼 크기를 잡아주고 출력할땐 %s로 한다
+    // 몇글자씩 끊어서 받는 경우에 사용할 수 있다
+    char s[3];
+    scanf("%3c", &s);
+    printf("%s", s);
+    return 0;
+}
+
+
+
+//범죄조서
+// 이름, 나이, 몸무게, 키, 범죄명
+#include<stdio.h>
+int main(){
+    char name[30];
+    printf("이름이 뭐예요?");
+    scanf("%s", &name);
+    
+    int age;
+    printf("몇살이에요?");
+    scanf("%d", &age);
+    
+    float weight;
+    printf("몸무게는 어떻게 되요?");
+    scanf("%f", &weight);
+    
+    double tall;
+    printf("키는 어떻게 되요?");
+    scanf("%lf", &tall);
+    
+    char crime[300];
+    printf("무슨 범죄를 저질렀어요?");
+    scanf("%s", &crime);
+    
+    printf("\n\n----범죄자 정보----\n\n");
+    printf("이름   : %s\n", name);
+    printf("나이   : %d\n", age);
+    printf("몸무게 : %.2f\n", weight);
+    printf("키     : %.2lf\n", tall);
+    printf("범죄명 :%s", crime);
+    return 0;
+}
