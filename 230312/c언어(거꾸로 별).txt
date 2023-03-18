@@ -1,0 +1,15 @@
+// 인터넷 c compiler는 띄어쓰기를 제대로 인식하지 못하므로 S를 이용해서 띄어쓰기를 보였다
+#include<stdio.h>
+int main(){
+    for (int i=0; i<5; i++){
+        int j = 4;
+        for (j; j>i; j--){
+            printf("S");
+        }
+        for (j; j>=0; j--){
+            printf("*");
+        }
+        printf("\n");
+    }
+    return 0;
+}
