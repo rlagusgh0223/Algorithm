@@ -1,0 +1,16 @@
+#include<stdio.h>
+int main(){
+    int floor;
+    printf("몇 층? : ");
+    scanf("%d", &floor);
+    for (int i=1; i<=floor; i++){
+        for (int j=1; j<=floor-i; j++){
+            printf("S");
+        }
+        for (int k=0; k<i*2-1; k++){
+            printf("*");
+        }
+        printf("\n");
+    }
+    return 0;
+}
