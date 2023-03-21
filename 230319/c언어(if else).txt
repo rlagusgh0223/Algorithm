@@ -1,0 +1,21 @@
+// 초등학생(8~13) / 중학생(14~16) / 고등학생(17~19) / 학생 아닌사람
+// if(조건문){} else if(조건문){} else{}
+#include<stdio.h>
+int main(){
+    int age;
+    printf("나이 : ");
+    scanf("%d", &age);
+    if (age>=8 && age<=13){
+        printf("초등학생\n");
+    }
+    else if(age>=14 && age<=16){
+        printf("중학생\n");
+    }
+    else if(age>=17 && age<=19){
+        printf("고등학생\n");
+    }
+    else{
+        printf("학생이 아닙니다");
+    }
+    return 0;
+}
