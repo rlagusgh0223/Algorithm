@@ -1,0 +1,15 @@
+#include<stdio.h>
+int main(){
+    for (int i=0; i<=30; i++){
+        if (i==7){
+            printf("%d번 학생은 결석\n", i);
+            continue;
+        }
+        if (i >= 10){
+            printf("나머지 학생은 집으로 가세요\n");
+            break;
+        }
+        printf("%d번 학생 발표\n", i);
+    }
+    return 0;
+}
