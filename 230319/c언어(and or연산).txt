@@ -1,0 +1,14 @@
+#include<stdio.h>
+int main(){
+    int a = 18;
+    int b = 17;
+    int c = 17;
+    int d = 17;
+    if (b==c && c==d){
+        printf("b와 c는 같고, c와 d는 같습니다\n");
+    }
+    if (a==b || c==d){
+        printf("a와 b가 같거나 c와 d가 같습니다\n");
+    }
+    return 0;
+}
