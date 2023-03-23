@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<time.h>
+int main(){
+    srand(time(NULL));
+    int num = rand() % 100+1;
+    int ans = 0;
+    for (int i=5; i>0; i--){
+        printf("%d번 남았습니다\n", i);
+        printf("숫자 : ");
+        scanf("%d", &ans);
+        if (ans > num){
+            printf("DOWN\n");
+        }
+        else if(ans < num){
+            printf("UP\n");
+        }
+        else{
+            printf("정답입니다\n");
+            break;
+        }
+    }
+    printf("정답 : %d", num);
+    return 0;
+}
