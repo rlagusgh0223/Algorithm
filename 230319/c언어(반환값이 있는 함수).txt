@@ -1,0 +1,14 @@
+#include<stdio.h>
+int function();
+int main(){
+    int ret = function();
+    printf("반환값 : %d", ret);
+}
+int function(){
+    printf("반환값이 있는 함수\n");
+    return 10;
+}
+
+
+// 반환값이 있는 함수
+// 반환값 : 10

@@ -1,0 +1,12 @@
+#include<stdio.h>
+void function();
+int main(){
+    function();
+    return 0;
+}
+void function(){
+    printf("반환값이 없는 함수입니다.\n");
+}
+
+
+// 반환값이 없는 함수입니다.

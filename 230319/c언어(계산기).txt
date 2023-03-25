@@ -1,0 +1,20 @@
+#include<stdio.h>
+// 선언
+void p(int num);
+int main(){
+    int num = 2;
+    p(num);
+    num += 3;
+    p(num);
+    num -= 1;
+    p(num);
+    num *= 7;
+    p(num);
+    num /= 2;
+    p(num);
+    return 0;
+}
+//정의
+void p(int num){
+    printf("num은 %d입니다\n", num);
+}

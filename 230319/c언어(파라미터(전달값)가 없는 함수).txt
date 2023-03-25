@@ -1,0 +1,11 @@
+#include<stdio.h>
+void function();
+int main(){
+    function();
+    return 0;
+}
+void function(){
+    printf("파라미터(전달값)가 없는 함수");
+}
+
+// 파라미터(전달값)가 없는 함수

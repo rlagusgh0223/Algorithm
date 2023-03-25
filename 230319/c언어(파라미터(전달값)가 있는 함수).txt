@@ -1,0 +1,12 @@
+#include<stdio.h>
+void function(int num1, int num2, int num3);
+int main(){
+    function(17, 18, 23);
+    return 0;
+}
+void function(int num1, int num2, int num3){
+    printf("파라미터가 있는 함수이며 받은 값은 %d, %d, %d", num1, num2, num3);
+}
+
+
+// 파라미터가 있는 함수이며 받은 값은 17, 18, 23
