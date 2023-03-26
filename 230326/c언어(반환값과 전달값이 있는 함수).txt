@@ -1,0 +1,13 @@
+// 파라미터(전달값)도 받고, 반환값도 있는 함수
+#include<stdio.h>
+int apple(int a, int b);
+int main(){
+    printf("%d개 중 %d를 먹으면 %d개가 남는다", 10, 2, apple(10, 2));
+    return 0;
+}
+int apple(int a, int b){
+    return a-b;
+}
+
+
+// 10개 중 2를 먹으면 8개가 남는다

@@ -1,0 +1,36 @@
+#include<stdio.h>
+int add(int num1, int num2);
+int sub(int num1, int num2);
+int mul(int num1, int num2);
+int div(int num1, int num2);
+int main(){
+    int num = 2;
+    num = add(num, 3);
+    printf("num은 %d\n", num);
+    num = sub(num, 2);
+    printf("num은 %d\n", num);
+    num = mul(num, 4);
+    printf("num은 %d\n", num);
+    num = div(num, 3);
+    printf("num은 %d\n", num);
+    return 0;
+}
+int add(int num1, int num2){
+    return num1 + num2;
+}
+int sub(int num1, int num2){
+    return num1 - num2;
+}
+int mul(int num1, int num2){
+    return num1 * num2;
+}
+int div(int num1, int num2){
+    return num1 / num2;
+}
+
+
+
+// num은 5
+// num은 3
+// num은 12
+// num은 4

@@ -1,0 +1,53 @@
+# 랜덤함수를 만드는게 에러가 나서 다른건 잘 돌아가는지만 확인했다
+#include<stdio.h>
+// #include<time.h>
+int get(int level);
+void show(int level, int num1, int num2);
+void success();
+void fail();
+
+// 5개의 문을 비밀번호를 통해 열어야 된다
+// 문제는 갈수록 어려워진다
+// 5번 후 몇 개를 맞췄는지 출력한다
+int main(){
+    // srand(time(NULL));
+    int ans = 0;
+    int cnt = 0;
+    for (int i=0; i<5; i++){
+        int num1 = get(i);
+        int num2 = get(i);
+        show(i, num1, num2);
+        int ans = -1;
+        scanf("%d", &ans);
+        if (ans == -1){
+            printf("프로그램 종료\n");
+            exit(0);
+        }
+        else if(ans == num1 * num2){
+            success();
+            cnt++;
+            
+        }
+        else{
+            fail();
+        }
+    }
+    printf("맞춘 횟수 : %d", cnt);
+    return 0;
+}
+
+int get(int level){
+    // 문제가 계속될수록 구하는 수가 더 커질 수 있다
+    // return rand() % (level*7) + 1;
+    return (level*7) + 1;
+}
+void show(int level, int num1, int num2){
+    printf("%d번째 비밀번호\n", level);
+    printf("%d x %d는?( 종료 : -1) >> \n", num1, num2);
+}
+void success(){
+    printf("성공\n");
+}
+void fail(){
+    printf("실패\n");
+}
