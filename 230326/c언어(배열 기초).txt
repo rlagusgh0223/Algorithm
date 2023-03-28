@@ -1,0 +1,11 @@
+#include<stdio.h>
+int main(){
+    int subway[3];
+    subway[0] = 10;
+    subway[1] = 20;
+    subway[2] = 30;
+    for (int i=0; i<3; i++){
+        printf("%d호차에는 %d명의 사람들이 있습니다\n", i+1, subway[i]);
+    }
+    return 0;
+}
