@@ -1,0 +1,35 @@
+#include<stdio.h>
+int main(){
+    // 문자열 끝에는 끝을 의미하는 NULL문자 \0이 들어가야 함
+    char str[7] = "coding";
+    printf("%s\n", str);  // coding
+    
+    // 자동으로 문자열 끝을 나타내는 NULL문자가 들어감감
+    char str1[] = "coding";
+    printf("%s\n", str1);  // coding
+    printf("%d\n", sizeof(str1));  // 7
+    
+    // 값을 끊어서 출력
+    for (int i=0; i<sizeof(str1); i++){
+        printf("%c\n", str1[i])
+    }
+
+// c
+// o
+// d
+// i
+// n
+// g
+    
+    // 영어는 한 글자 1byte
+    // 한글은 한 글자 2byte
+    char str2[] = "나도코딩";
+    printf("%s\n", str2);  // 나도코딩
+    printf("%d\n", sizeof(str2));  // 13
+    return 0;
+}
+
+
+
+
+
