@@ -1,0 +1,18 @@
+#include<stdio.h>
+int main(){
+    char c_array[10] = {'c','o', 'd', 'i', 'n', 'g'};
+    for (int i=0; i<sizeof(c_array); i++){
+        printf("%c\n", c_array[i])  // 남는공간은 공백으로 받는다
+    }
+    printf("\n");
+    for (int i=0; i<sizeof(c_array); i++){
+        printf("%d\n", c_array[i]) // 아스키코드값 출력. Null문자는 0
+    }
+    
+    // 문자열 입력받기
+    char name[256];
+    printf("이름 : ");
+    scanf("%s", name, sizeof(name));
+    printf("%s\n", name);
+    return 0;
+}
