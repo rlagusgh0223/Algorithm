@@ -1,0 +1,12 @@
+#include<stdio.h>
+int main(){
+    printf("%c\n", 'a');  // a
+    printf("%d\n", 'a');  // 97
+    
+    printf("%c\n", 'A');  // A
+    printf("%d\n", 'A');  // 65
+    
+    printf("%c\n", '0');  // 0
+    printf("%d\n", '0');  // 48
+    return 0;
+}
