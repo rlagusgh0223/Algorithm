@@ -1,0 +1,31 @@
+#include <stdio.h>
+struct GameInfo{
+    char *name;
+    int year;
+    int price;
+    char *company;
+    
+    struct GameInfo *freindGame; // 연관 업체 게임
+};
+int main(){
+    struct GameInfo gameinfo1;
+    gameinfo1.name = "나도게임";
+    gameinfo1.year = 2017;
+    gameinfo1.price = 50;
+    gameinfo1.company = "나도회사";
+    struct GameInfo gameinfo2 = {"너도게임", 2018, 100, "너도회사"};
+    
+    // 연관 업체 게임 소개
+    gameinfo1.freindGame = &gameinfo2;
+    printf("게임명   : %s\n", gameinfo1.freindGame->name);
+    printf("발매년도 : %d\n", gameinfo1.freindGame->year);
+    printf("가격     : %d\n", gameinfo1.freindGame->price);
+    printf("제작사   : %s\n\n", gameinfo1.freindGame->company);
+    return 0;
+}
+
+
+// 게임명   : 너도게임
+// 발매년도 : 2018
+// 가격     : 100
+// 제작사   : 너도회사

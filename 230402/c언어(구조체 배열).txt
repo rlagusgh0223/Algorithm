@@ -1,0 +1,35 @@
+#include <stdio.h>
+struct GameInfo{
+    char *name;
+    int year;
+    int price;
+    char *company;
+};
+int main(){
+    // 구조체를 배열처럼 초기화
+    struct GameInfo gameinfo[] = {
+        {"나도게임", 2017, 50, "나도회사"},
+        {"너도게임", 2018, 100, "너도회사"}
+    };
+    // 구조체 출력
+    printf("게임명   : %s\n", gameinfo[0].name);
+    printf("발매년도 : %d\n", gameinfo[0].year);
+    printf("가격     : %d\n", gameinfo[0].price);
+    printf("제작사   : %s\n\n", gameinfo[0].company);
+    
+    printf("게임명   : %s\n", gameinfo[1].name);
+    printf("발매년도 : %d\n", gameinfo[1].year);
+    printf("가격     : %d\n", gameinfo[1].price);
+    printf("제작사   : %s\n\n", gameinfo[1].company);
+    return 0;
+}
+
+// 게임명   : 나도게임
+// 발매년도 : 2017
+// 가격     : 50
+// 제작사   : 나도회사
+
+// 게임명   : 너도게임
+// 발매년도 : 2018
+// 가격     : 100
+// 제작사   : 너도회사

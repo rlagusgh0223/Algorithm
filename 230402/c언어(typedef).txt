@@ -1,0 +1,65 @@
+#include <stdio.h>
+struct GameInfo{
+    char *name;
+    int year;
+    int price;
+    char *company;
+    
+    struct GameInfo *freindGame; // 연관 업체 게임
+};
+
+typedef struct GameInfomation{
+    char *name;
+    int year;
+    int price;
+    char *company;
+    
+    struct GameInfo *freindGame; // 연관 업체 게임
+}GAME_INFO;
+
+int main(){
+    // typedef
+    // 자료형에 별명 지정
+    int i = 1;
+    typedef int 정수;
+    정수 j = 3;
+    typedef float 실수;
+    실수 k = 3.23f;
+    printf("정수변수 : %d, 실수변수 %.2f\n\n", j, k);
+    
+    typedef struct GameInfo 게임정보;
+    게임정보 game1;
+    game1.name = "한글게임";
+    game1.year = 2015;
+    
+    GAME_INFO game2;
+    game2.name = "한글게임2";
+    game2.year = 2013;
+    
+   struct GameInfomation game3;
+    game3.name = "한글게임3";
+    game3.year = 2013;
+    
+    
+    printf("게임명   : %s\n", game1.name);
+    printf("발매년도 : %d\n\n", game1.year);
+    
+    printf("게임명   : %s\n", game2.name);
+    printf("발매년도 : %d\n\n", game2.year);
+    
+    printf("게임명   : %s\n", game3.name);
+    printf("발매년도 : %d\n", game3.year);
+    
+    return 0;
+}
+
+// 정수변수 : 3, 실수변수 3.23
+
+// 게임명   : 한글게임
+// 발매년도 : 2015
+
+// 게임명   : 한글게임2
+// 발매년도 : 2013
+
+// 게임명   : 한글게임3
+// 발매년도 : 2013
