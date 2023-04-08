@@ -1,0 +1,38 @@
+#include <stdio.h>
+int main(){
+    // 포인터는 각각 배열의 값을 지정할 수 있다
+    int arr[3] = {1, 2, 3};
+    // arr == arr배열의 첫번째 값의 주소와 동일 == &arr[0]
+    int *ptr = arr;
+    for (int i=0; i<3; i++){
+        printf("arr의 %d번째 값 : %d\n", i, arr[i]);
+        printf("ptr의 %d번째 값 : %d\n\n", i, ptr[i]);
+    }
+    // arr == arr배열의 첫번째 값의 주소와 동일 == &arr[0]
+    printf("arr 자체의 값 : %d\n", arr);
+    printf("arr[0]의 주소 : %d\n\n", &arr[0]);
+    
+    printf("arr 자체의 값이 가지는 주소의 실제 값 : %d\n", *arr);
+    printf("arr[0]의 실제 값: %d\n\n", *&arr[0]);
+    
+    // *& 는 아무것도 없는 것과 같다.
+    // &는 주소이며, *는 그 주소의 값이기 때문에
+    // *&는 서로 상쇄된다
+    return 0;
+}
+
+
+// arr의 0번째 값 : 1
+// ptr의 0번째 값 : 1
+
+// arr의 1번째 값 : 2
+// ptr의 1번째 값 : 2
+
+// arr의 2번째 값 : 3
+// ptr의 2번째 값 : 3
+
+// arr 자체의 값 : -1867500468
+// arr[0]의 주소 : -1867500468
+
+// arr 자체의 값이 가지는 주소의 실제 값 : 1
+// arr[0]의 실제 값: 1

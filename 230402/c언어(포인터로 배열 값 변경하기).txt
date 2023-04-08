@@ -1,0 +1,18 @@
+#include <stdio.h>
+void changeArray(int *ptr);
+int main(){
+    int arr[3] = {10, 20, 30};
+    changeArray(arr);  // 배열은은 별도로 주소를 넘겨줄 필요가 없다다
+    for (int i=0; i<3; i++){
+        printf("%d\n", arr[i]);
+    }
+    return 0;
+}
+
+void changeArray(int *ptr){
+    ptr[2] = 50;
+}
+
+// 10
+// 20
+// 50
