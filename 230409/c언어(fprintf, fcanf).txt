@@ -1,0 +1,35 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#define MAX 10000
+int main(){
+    // fputs, fgets -> 문자열
+    // fprintf, fscanf -> 정형화된 포멧에 대해서 읽고 쓰기
+    
+    // 파일 쓰기
+    int num[6] = {0, 0, 0, 0, 0, 0}; // 로또 추첨번호
+    int bonus = 0; // 보너스
+    char str1[MAX];
+    char str2[MAX];
+    FILE *file = fopen("c:\\test2.txt", "wb");
+    if (file==NULL){
+        printf("파일 열기 실패\n");
+        return 1;
+    }
+    
+    // 로또 추첨 번호 저장
+    fprintf(file, "%s %d %d %d %d %d %d", "추첨번호", 1, 2, 3, 4, 5, 6);
+    fprintf(file, "%s %d\n", "보너스번호", 7);
+    
+    
+    // 파일 읽기
+    FILE *file1 = fopen("c:\\test2.txt", "wb");
+    if (file1==NULL){
+        printf("파일 열기 실패\n");
+        return 1;
+    }
+    fscanf(file, "%s %d %d %d %d %d %d", str1, &num[0], &num[1], &num[2], &num[3], &num[4], &num[5]);
+    fprintf(file, "%s %d %d %d %d %d %d", "추첨번호", &num[0], &num[1], &num[2], &num[3], &num[4], &num[5]);
+    fscanf(file, "%d %d", str2, &bonus);
+    fprintf(file, "%s %d\n", "보너스번호", bonus);
+    return 0;
+}

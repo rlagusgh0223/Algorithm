@@ -1,0 +1,35 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#define MAX 10000
+int main(){
+    // 파일 입출력
+    // 파일에 어떤 데이터를 저장
+    // 파일에 저장된 데이터를 불러오기
+    
+    // fputs, fgets 쌍
+    // 파일 쓰기
+    char line[MAX];
+    FILE *file = fopen("c:\\test1.txt", "wb");
+    if (file==NULL){
+        printf("파일 열기 실패\n");
+        return 1;
+    }
+    fputs("fputs를 이용해서 글을 적어볼게요\n", file);
+    fputs("잘 적히는지 확인\n", file);
+    
+    
+    // 파일 읽기
+    FILE *file1 = fopen("c:\\test1.txt", "rb");
+    if (file1==NULL){
+        printf("파일 열기 실패\n");
+        return 1;
+    }
+    
+    while(fgets(line, MAX, file1) != NULL){
+        printf("%s", line);
+    }
+    
+    
+    fclose(file);
+    return 0;
+}
