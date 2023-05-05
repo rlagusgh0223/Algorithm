@@ -1,31 +1,29 @@
-# c배열을 한번에 만들고 초기화 안하는게 오히려 시간 더 걸린다
-# 초기화를 할 일이 많이 없어서 그런것 같다
-# bfs호출할때 배열에 매개변수 안 넣으면 시간 더 오래 걸린다
-
-def BFS():
-    ok = False
-    for i in range(N):
+def BFS(human, L, R):
+    ok = False  # 인구 이동이 일어났는지 반영하는 변수
+    ck = [[0]*N for _ in range(N)]  # 인구 점검한 나라인지 체크할 리스트
+    for i in range(N):  # 모든 나라를 본다
         for j in range(N):
-            if c[i][j] < ans:
-                c[i][j] = ans
+            if ck[i][j] == 0:  # 점검한 적이 없는 나라라면
+                ck[i][j] = 1  # 점검했다고 표시하고
                 q = deque()
-                q.append((i, j))
-                s = [(i, j)]
-                total = a[i][j]
+                q.append((i, j))  # 큐에 현재 나라의 좌표 넣어준다
+                move = [(i, j)]  # 인구 이동할 나라의 리스트에 현재 나라의 좌표 넣어준다
+                total = human[i][j]  # 인구 이동할 나라의 총 인구수에 현재 나라의 인구 추가한다
                 while q:
                     x, y = q.popleft()
                     for k in range(4):
                         nx, ny = x+dx[k], y+dy[k]
-                        if 0<=nx<N and 0<=ny<N and c[nx][ny]<ans:
-                            if L<=abs(a[nx][ny]-a[x][y])<=R:
-                                c[nx][ny] = ans
-                                q.append((nx, ny))
-                                s.append((nx, ny))
-                                total += a[nx][ny]
-                                ok = True
-                val = total//len(s)
-                for x, y in s:
-                    a[x][y] = val
+                        # 다음 좌표가 리스트 안에 있고 방문한 적 없는 국가이며 인구 이동이 가능한 인구차라면
+                        if 0<=nx<N and 0<=ny<N and ck[nx][ny]==0 and L<=abs(human[nx][ny]-human[x][y])<=R:
+                            ck[nx][ny] = 1  # 점검했다고 체크하고
+                            q.append((nx, ny))  # 큐와 이동할 나라 리스트에 좌표 추가한다
+                            move.append((nx, ny))
+                            total += human[nx][ny]  # 이동할 나라들의 총 인구수에 다음 나라 인구 추가
+                            ok = True  # 인구이동이 일어났으므로 이동했다고 변수 입력
+                # 각 나라에 살 평균 인구를 구하고 입력한다
+                total //= len(move)
+                for x, y in move:
+                    human[x][y] = total
     return ok
 
 from collections import deque
@@ -33,12 +31,8 @@ import sys
 dx = [-1, 0, 1, 0]
 dy = [0, 1, 0, -1]
 N, L, R = map(int, sys.stdin.readline().split())
-a = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
-ans = 0
-c = [[-1]*N for _ in range(N)]
-while True:
-    if BFS():
-        ans += 1
-    else:
-        break
+human = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
+ans = 0  # 인구 이동이 일어나는 날 저장하는 변수
+while BFS(human, L, R):  # 인구 이동이 일어났다면
+    ans += 1  # 날짜 하루 증가
 print(ans)
