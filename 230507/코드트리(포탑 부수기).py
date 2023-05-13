@@ -150,7 +150,8 @@ def search():
                     elif x+y == i+j:
                         if y > j:  # 열 값이 더 작다면
                             tmax = [lst[i][j], i, j]
-
+    if tmin[1]==tmax[1] and tmin[2]==tmax[2]:  # 포탑이 하나만 남은 경우에는 완전정지 한다
+        exit()
 
 from collections import deque
 import sys
