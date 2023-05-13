@@ -1,14 +1,23 @@
+# 반례
+# 4 4 3
+# 6 8 0 1
+# 0 0 0 0
+# 0 0 0 0
+# 0 0 8 0
+# 정답 : 12
+
 # 미완성 코드
-# 틀렸지만 테스트 케이스는 맞았다고 나온다
+# 6%까지는 맞았다고 나온다
 def BFS(tmin, attack):
     q = deque()
-    q.append((tmin[1], tmin[2]))
-    lst[tmin[1]][tmin[2]] += N+M
-    check[tmin[1]][tmin[2]] = attack
+    X, Y = tmin[1], tmin[2]
+    q.append((X, Y))
+    lst[X][Y] += N+M
+    check[X][Y] = attack
     visit = [[[-1, -1]]*M for _ in range(N)]  # 최단거리를 기록하기 위한 배열
-    visit[tmin[1]][tmin[2]] = [tmin[1], tmin[2]]
+    visit[X][Y] = [X, Y]
     bomb = [[True]*M for _ in range(N)]  # 이번 공격에 관계된 영역인지 확인
-    bomb[tmin[1]][tmin[2]] = False
+    bomb[X][Y] = False
     # print("===visit===")
     # for i in range(N):
     #     print(*visit[i])
@@ -18,17 +27,17 @@ def BFS(tmin, attack):
     while q:
         x, y = q.popleft()
         for i in range(4):
-            nx, ny = x+dx[i], y+dy[i]
+            nx, ny = (x+dx[i])%N, (y+dy[i])%M
             # 가장자리에 가면 반대편으로 이동
             # 더해지는건 1씩이니까 칸이 많이 이동할 일은 없다
-            if nx < 0:
-                nx = N-1
-            elif nx >= N:
-                nx = 0
-            if ny < 0:
-                ny = M-1
-            elif ny >= M:
-                ny = 0
+            # if nx < 0:
+            #     nx = N-1
+            # elif nx >= N:
+            #     nx = 0
+            # if ny < 0:
+            #     ny = M-1
+            # elif ny >= M:
+            #     ny = 0
 
             # 최단거리 구하기
             if visit[nx][ny]==[-1, -1] and lst[nx][ny]!=0:
@@ -37,6 +46,7 @@ def BFS(tmin, attack):
             
             # 가장 강한 포탑을 만나면, 그리고 가는길이 끊어지지 않았다면(레이저)
             if lst[nx][ny] == tmax[0] and visit[nx][ny] != [-1, -1] and nx==tmax[1] and ny==tmax[2]:
+                # print("레이저 공격")
                 lst[nx][ny] -= tmin[0]
                 bomb[nx][ny] = False
                 bx, by = visit[nx][ny]
@@ -50,10 +60,10 @@ def BFS(tmin, attack):
                     bx, by = visit[bx][by]
                 for bi in range(N):
                     for bj in range(M):
-                        if lst[bi][bj] < 0:
+                        if lst[bi][bj] < 0:  # 포탑이 음수가 되면 0으로 바꿔줌(음수 값은 없다)
                             lst[bi][bj] = 0
-                        if bomb[bi][bj] and lst[bi][bj]!=0:
-                            lst[bi][bj] += 1
+                        if bomb[bi][bj] and lst[bi][bj]!=0:  # 이번 공격과 관계 없는 곳이고 포탑이 존재한다면
+                            lst[bi][bj] += 1  # 포탑의 생명력 1 증가
                 # print("===visit===")
                 # for i in range(N):
                 #     print(*visit[i])
@@ -65,49 +75,61 @@ def BFS(tmin, attack):
                 #     print(*bomb[i])
                 return
             
-            # 가장 강한 포탑을 만났지만 가는길이 끊어졌다면(폭탄)
-            elif lst[nx][ny] == tmax[0] and visit[nx][ny] == [-1, -1]:
-                print("vh")
-                lst[nx][ny] -= tmin[0]
-                bomb[nx][ny] = False
-                for ci in range(-1, 2):
-                    for cj in range(-1, 2):
-                        if ci == cj == 0:
-                            continue
-                        CI, CJ = nx+ci, ny+cj
-                        if CI < 0:
-                            CI = N-1
-                        elif CI >= N:
-                            CI = 0
-                        if CJ < 0:
-                            CJ = M-1
-                        elif CJ >= M:
-                            CJ = 0
-                        lst[CI][CJ] -= int(lst[nx][ny]/2)
-                        bomb[CI][CJ] = False
-                for ci in range(N):
-                    for cj in range(M):
-                        if lst[ci][cj] < 0:
-                            lst[ci][cj] = 0
-                        if bomb[ci][cj] and lst[ci][cj]!=0:
-                            lst[ci][cj] += 1                        
-                return
+    # 가장 강한 포탑을 만났지만 가는길이 끊어졌다면(폭탄)
+    if visit[tmax[1]][tmax[2]]==[-1, -1]:
+        nx, ny = tmax[1], tmax[2]
+        # print("폭탄 공격")
+        lst[nx][ny] -= tmin[0]  # 폭탄 위치 값 감소
+        bomb[nx][ny] = False
+        # 폭탄 주변 8곳의 값 감소
+        for ci in range(-1, 2):
+            for cj in range(-1, 2):
+                if ci == cj == 0:
+                    continue
+                CI, CJ = (nx+ci)%N, (ny+cj)%M
+                # CI, CJ = nx+ci, ny+cj
+                # if CI < 0:
+                #     CI = N-1
+                # elif CI >= N:
+                #     CI = 0
+                # if CJ < 0:
+                #     CJ = M-1
+                # elif CJ >= M:
+                #     CJ = 0
+                lst[CI][CJ] -= int(lst[X][Y]/2)
+                bomb[CI][CJ] = False
+        for ci in range(N):
+            for cj in range(M):
+                if lst[ci][cj] < 0:
+                    lst[ci][cj] = 0
+                if bomb[ci][cj] and lst[ci][cj]!=0:
+                    lst[ci][cj] += 1                        
+        return
 
-
-
-from collections import deque
-import sys
-N, M, K = map(int, sys.stdin.readline().split())
-lst = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
-dx = [0, 1, 0, -1]
-dy = [1, 0, -1, 0]
-tmax = [0, 0, 0]
-tmin = [5001, 0, 0]
-attack = 1  # check에 언제 공격했는지 입력하기 위한 변수
-check = [[0]*M for _ in range(N)]  # 언제 공격했는지 확인하는 배열. 값이 클수록 최근
 
 def search():
-    global tmax, tmin, lst, check
+    global tmax, tmin, lst, check  # 최댓값, 최솟값, 포탑리스트, 공격포탑 표시 리스트 수정 가능하다고 선언
+
+    # 공격자 구하는 반복문
+    for i in range(N):  # 배열 입력 및 가장 약한 포탑 / 가장 강한 포탑 확인
+        for j in range(N):    
+            # 최솟값(공격하는 포탑 구하기)
+            # 기존의 최솟값보다 작은 값이 있다면 배열을 새로 만든다
+            if lst[i][j]>0 and lst[i][j]<tmin[0]:
+                tmin = [lst[i][j], i, j]
+            # 기존의 최솟값과 같은 값이 있다면 차례대로 계산
+            elif lst[i][j] == tmin[0]:
+                x, y= tmin[1], tmin[2]
+                if check[x][y] < check[i][j]:  # 이번 포탑이 더 최근에 공격했다면 공격포탑 수정
+                    tmin = [lst[i][j], i, j]
+                elif check[x][y] == lst[i][j]:
+                    if x+y < i+j:  # 이번 포탑의 행+열의 합이 더 큰 경우 공격포탑 수정
+                        tmin = [lst[i][j], i, j]
+                    elif x+y == i+j:
+                        if y < j:  # 이번 포탑의 열 값이 더 큰 경우 공격 포탑 수정
+                            tmin = [lst[i][j], i, j]
+
+    # 공격 당하는 포탑 구하는 반복문
     for i in range(N-1, -1, -1):  # 배열 입력 및 가장 약한 포탑 / 가장 강한 포탑 확인
         for j in range(N-1, -1, -1):
             # 만약 포탑이 없는곳이라면 통과
@@ -120,40 +142,34 @@ def search():
             # 기존의 최댓값과 같은 값이 있다면 차례대로 계산
             elif lst[i][j] == tmax[0]:
                 x, y = tmax[1], tmax[2]
-                if check[x][y] > check[i][j]:
+                if check[x][y] > check[i][j]:  # 지금 포탑이 더 먼저 공격했다면
                     tmax = [lst[i][j], i, j]
                 elif check[x][y] == check[i][j]:
-                    if x+y > i+j:
+                    if x+y > i+j:  # 행과 열의 합이 더 작다면
                         tmax = [lst[i][j], i, j]
                     elif x+y == i+j:
-                        if y > j:
+                        if y > j:  # 열 값이 더 작다면
                             tmax = [lst[i][j], i, j]
 
-    for i in range(N):  # 배열 입력 및 가장 약한 포탑 / 가장 강한 포탑 확인
-        for j in range(N):    
-            # 최솟값(공격하는 포탑 구하기)
-            # 기존의 최솟값보다 작은 값이 있다면 배열을 새로 만든다
-            if lst[i][j]>0 and lst[i][j]<tmin[0]:
-                tmin = [lst[i][j], i, j]
-            # 기존의 최솟값과 같은 값이 있다면 차례대로 계산
-            elif lst[i][j] == tmin[0]:
-                x, y= tmin[1], tmin[2]
-                if check[x][y] < check[i][j]:
-                    tmin = [lst[i][j], i, j]
-                elif check[x][y] == lst[i][j]:
-                    if x+y < i+j:
-                        tmin = [lst[i][j], i, j]
-                    elif x+y == i+j:
-                        if y < j:
-                            tmin = [lst[i][j], i, j]
+
+from collections import deque
+import sys
+N, M, K = map(int, sys.stdin.readline().split())  # 맵의 세로, 가로, 공격의 반복 횟수
+lst = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
+dx = [0, 1, 0, -1]
+dy = [1, 0, -1, 0]
+tmax = [0, 0, 0]  # max값, x좌표, y좌표
+tmin = [5001, 0, 0]  # min값, x좌표, y좌표
+attack = 1  # check에 언제 공격했는지 입력하기 위한 변수
+check = [[0]*M for _ in range(N)]  # 언제 공격했는지 확인하는 배열. 값이 클수록 최근
 
 for i in range(K):
-    search()
+    search()  # 가장 약한 포탑(공격자)와 가장 강한 포탑(공격을 당하는 포탑)을 찾는 함수
     tmin[0] += N+M
     BFS(tmin, i+1)
-    print(tmax, tmin)
-    for i in range(N):
-        print(lst[i])
+    # print(tmax, tmin)
+    # for i in range(N):
+    #     print(lst[i])
 answer = 0
 for i in range(N):
     answer = max(answer, max(lst[i]))
