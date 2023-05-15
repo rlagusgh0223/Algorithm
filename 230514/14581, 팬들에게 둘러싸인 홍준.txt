@@ -1,0 +1,11 @@
+#include <stdio.h>
+int main(){
+    char fan[] = {":fan:"};
+    char str[20];
+    scanf("%s", &str);
+    printf("%s%s%s\n", fan, fan, fan);
+    printf("%s:%s:%s\n", fan, str, fan);
+    printf("%s%s%s\n", fan, fan, fan);
+    
+    return 0;
+}
