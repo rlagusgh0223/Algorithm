@@ -1,72 +1,39 @@
-# 특정한 인덱스(index)의 톱니바퀴를 회전시키는 함수
-# 연쇄 방향(direction) : 오른쪽(R) 혹은 왼쪽(L)으로 인접 톱니바퀴를 회전
-def dfs(index, direction, rotation, move=True):
-    # 오른쪽에 있는 톱니바퀴를 회전시키기
-    if index<=2 and direction=='R':
-        # 현재 기어의 오른쪽 극과 오른쪽 기어의 왼쪽 극이 다르다면
-        if gears[index][2] != gears[index+1][6]:
-            next_rotation = 'R'
-            if rotation == 'R':
-                next_rotation = 'L'
-            dfs(index+1, 'R', next_rotation)
-    # 왼쪽에 있는 톱니바퀴 회전시키기
-    elif index>=1 and direction=='L':
-        # 현재 기어의 왼쪽 극과 왼쪽 기어의 오른쪽 극이 다르다면
-        if gears[index][6] != gears[index-1][2]:
-            next_rotation = 'R'
-            if rotation == 'R':
-                next_rotation = 'L'
-            dfs(index-1, 'L', next_rotation)
-    # 최종적으로 내 톱니바퀴를 회전시키기
+# 회전하는 바퀴인지 확인하는 함수
+def DFS(index, dir, rot, move):
+    if index<3 and dir=='R':  # 오른쪽 바퀴가 비교할 수 있는 위치이고 오른쪽 바퀴를 비교하는 상황이라면
+        if gears[index][2] != gears[index+1][6]:  # 두 바퀴의 극이 다를 경우 바퀴는 회전한다
+            DFS(index+1, dir, rot*-1, True)  # 이동한 바퀴를 기준으로 그 다음 바퀴를 비교한다
+    elif index>0 and dir=='L':  # 왼쪽 바퀴가 비교할 수 있는 위치이고 왼쪽 바퀴를 비교하는 상황이라면
+        if gears[index-1][2] != gears[index][6]:  # 두 바퀴의 극이 다를 경우 바퀴는 회전한다
+            DFS(index-1, dir, rot*-1, True)  # 이동한 바퀴를 기준으로 그 다음 바퀴를 비교한다
     if move:
-        rotate(index, rotation)
+        rotate(index, rot)
 
-# 한 톱니바퀴(index)를 시계방향(R) 혹은 반시계 방향(L)으로 회전
-def rotate(index, rotation):
-    result = [None] * 8
-    # 톱니바퀴를 시계 방향으로 회전시키는 경우
-    if rotation == 'R':
+# 실질적으로 바퀴를 돌리는 함수
+def rotate(index, rot):
+    result = [0] * 8
+    if rot == 1:  # 시계방향으로 돌아가는 경우
         for i in range(8):
-            result[(i+1) % 8] = gears[index][i]
-    # 톱니바퀴를 반시계 방향으로 회전시키는 경우
-    if rotation == 'L':
+            result[(i+1)%8] = gears[index][i]
+    else:  # 반시계방향으로 돌아가는 경우
         for i in range(8):
-            result[(i-1) % 8] = gears[index][i]
+            result[(i-1)%8] = gears[index][i]
     gears[index] = result
 
-
-
 import sys
-input = sys.stdin.readline
-
-# 4개의 톱니바퀴(gear) 정보 입력
 gears = [[] for _ in range(4)]
 for i in range(4):
-    gear = input().strip()
-    for j in range(len(gear)):
-        gears[i].append(int(gear[j]))
-
-k = int(input())  # 회전할 톱니바퀴의 수
-for i in range(k):
-    index, rotation = map(int, input().split())
+    gear = sys.stdin.readline().rstrip()
+    for g in gear:
+        gears[i].append(int(g))
+K = int(sys.stdin.readline())
+for _ in range(K):
+    index, rot = map(int, sys.stdin.readline().split())
     index -= 1
-    # 시계 방향 : R(1), 반시계 방향 : L(-1)
-    if rotation == 1:
-        rotation = 'R'
-    else:
-        rotation = 'L'
-    # 시작 위치에서부터 오른쪽(R), 왼쪽(L)으로 인접한 톱니바퀴 회전
-    dfs(index, 'R', rotation, move=False)
-    dfs(index, 'L', rotation)  # 시작 톱니바퀴는 1번만 회전
-
-# 최종 점수(score) 계산
-result = 0
-if gears[0][0] == 1:
-    result += 1
-if gears[1][0] == 1:
-    result += 2
-if gears[2][0] == 1:
-    result += 4
-if gears[3][0] == 1:
-    result += 8
-print(result)
+    DFS(index, "R", rot, False)  # 여기서 True를 주면 이번과 밑에거로 인해 두 번 돌리게 된다
+    DFS(index, "L", rot, True)
+ans = 0
+for i in range(4):
+    if gears[i][0] == 1:
+        ans += 2**i
+print(ans)
