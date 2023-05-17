@@ -1,0 +1,8 @@
+// 몇년도 문제이든 가장 쉬운 문제는 A번이다
+#include <stdio.h>
+int main(){
+    int y;
+    scanf("%d", &y);
+    printf("A");
+    return 0;
+}
