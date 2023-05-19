@@ -2,7 +2,7 @@
 #include <string.h>
 int main(){
     char school[5];
-    scanf("%s", school);
+    scanf("%s", school);  // 배열은 입력 받을때 & 안쓴다
     if (strcmp(school,"NLCS") == 0){
         printf("North London Collegiate School");
     }
