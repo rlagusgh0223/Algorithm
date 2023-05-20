@@ -1,0 +1,16 @@
+#include <stdio.h>
+int main(){
+    int lst[3], x;
+    scanf("%d %d %d", &lst[0], &lst[1], &lst[2]);
+    for (int i=0; i<3; i++){
+        for (int j=i; j<3; j++){
+            if (lst[i] > lst[j]){
+                x = lst[i];
+                lst[i] = lst[j];
+                lst[j] = x;
+            }
+        }
+    }
+    printf("%d %d %d\n", lst[0], lst[1], lst[2]);
+    return 0;
+}
