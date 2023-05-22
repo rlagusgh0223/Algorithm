@@ -1,0 +1,14 @@
+#include <stdio.h>
+int main(){
+    int n, cnt=0;
+    scanf("%d", &n);
+    int lst[5];
+    scanf("%d %d %d %d %d", &lst[0], &lst[1], &lst[2], &lst[3], &lst[4]);
+    for (int i=0; i<5; i++){
+        if (lst[i] == n){
+            cnt += 1;
+        }
+    }
+    printf("%d", cnt);
+    return 0;
+}
