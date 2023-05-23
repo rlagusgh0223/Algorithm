@@ -1,0 +1,15 @@
+#include <stdio.h>
+int main(){
+    int L, P, ans;
+    scanf("%d %d", &L, &P);
+    ans = L * P;
+    int lst[5], answer[5];
+    // c언어는 파이썬과 달라서 띄어쓰기 부분도 반복문으로 받을 수 있는것 같다
+    scanf("%d %d %d %d %d", &lst[0], &lst[1], &lst[2], &lst[3], &lst[4]);
+    for (int i=0; i<5; i++){
+        answer[i] = lst[i]-ans;
+        printf("%d ", answer[i]);
+    }
+    printf("\n");
+    return 0;
+}

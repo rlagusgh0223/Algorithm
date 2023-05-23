@@ -1,3 +1,4 @@
+# https://www.codetree.ai/training-field/frequent-problems/problems/destroy-the-turret/description?page=3&pageSize=20
 # 반례
 # 4 4 3
 # 6 8 0 1
@@ -5,6 +6,30 @@
 # 0 0 0 0
 # 0 0 8 0
 # 정답 : 12
+
+# 10 10 20
+# 995 3976 1850 0 0 0 0 0 2823 0
+# 0 2197 4554 0 3991 0 0 0 0 0
+# 2243 918 206 2051 0 0 0 0 0 2354
+# 0 0 2211 394 3896 2763 0 0 3580 3094
+# 0 0 4364 0 0 0 0 0 0 4990
+# 0 0 0 0 0 0 736 0 1159 0
+# 1374 0 2610 3165 3653 0 2651 0 0 0
+# 4493 0 1423 0 2416 0 0 0 3580 0
+# 0 4112 3779 0 3654 1247 0 0 132 712
+# 92 2643 1459 4675 4838 0 2539 850 2040 2153
+
+# 995   3976    1850    0       0       0       0       0   2823    0
+# 0     2197    4554    0       3991    0       0       0   0       0
+# 2243  918     206     2051    0       0       0       0   0       2354
+# 0     0       2211    394     3896    2763    0       0   3580    3094
+# 0     0       4364    0       0       0       0       0   0       4990
+# 0     0       0       0       0       0       736     0   1159    0
+# 1374  0       2610    3165    3653    0       2651    0   0       0
+# 4493  0       1423    0       2416    0       0       0   3580    0
+# 0     4112    3779    0       3654    1247    0       0   132     712
+# 92    2643    1459    4675    4838    0       2539    850 2040    2153
+# 답 : 4168
 
 # 미완성 코드
 # 6%까지는 맞았다고 나온다
@@ -18,26 +43,10 @@ def BFS(tmin, attack):
     visit[X][Y] = [X, Y]
     bomb = [[True]*M for _ in range(N)]  # 이번 공격에 관계된 영역인지 확인
     bomb[X][Y] = False
-    # print("===visit===")
-    # for i in range(N):
-    #     print(*visit[i])
-    # print("===check===")
-    # for i in range(N):
-    #     print(*check[i])
     while q:
         x, y = q.popleft()
         for i in range(4):
             nx, ny = (x+dx[i])%N, (y+dy[i])%M
-            # 가장자리에 가면 반대편으로 이동
-            # 더해지는건 1씩이니까 칸이 많이 이동할 일은 없다
-            # if nx < 0:
-            #     nx = N-1
-            # elif nx >= N:
-            #     nx = 0
-            # if ny < 0:
-            #     ny = M-1
-            # elif ny >= M:
-            #     ny = 0
 
             # 최단거리 구하기
             if visit[nx][ny]==[-1, -1] and lst[nx][ny]!=0:
@@ -46,7 +55,7 @@ def BFS(tmin, attack):
             
             # 가장 강한 포탑을 만나면, 그리고 가는길이 끊어지지 않았다면(레이저)
             if lst[nx][ny] == tmax[0] and visit[nx][ny] != [-1, -1] and nx==tmax[1] and ny==tmax[2]:
-                # print("레이저 공격")
+                print("레이저 공격")
                 lst[nx][ny] -= tmin[0]
                 bomb[nx][ny] = False
                 bx, by = visit[nx][ny]
@@ -55,8 +64,8 @@ def BFS(tmin, attack):
                         break
                     lst[bx][by] -= tmin[0]//2
                     bomb[bx][by] = False
-                    if lst[bx][by] < 0:
-                        lst[bx][by] = 0
+                    # if lst[bx][by] < 0:
+                    #     lst[bx][by] = 0
                     bx, by = visit[bx][by]
                 for bi in range(N):
                     for bj in range(M):
@@ -64,21 +73,12 @@ def BFS(tmin, attack):
                             lst[bi][bj] = 0
                         if bomb[bi][bj] and lst[bi][bj]!=0:  # 이번 공격과 관계 없는 곳이고 포탑이 존재한다면
                             lst[bi][bj] += 1  # 포탑의 생명력 1 증가
-                # print("===visit===")
-                # for i in range(N):
-                #     print(*visit[i])
-                # print("===check===")
-                # for i in range(N):
-                #     print(*check[i])
-                
-                # for i in range(N):
-                #     print(*bomb[i])
                 return
             
     # 가장 강한 포탑을 만났지만 가는길이 끊어졌다면(폭탄)
     if visit[tmax[1]][tmax[2]]==[-1, -1]:
         nx, ny = tmax[1], tmax[2]
-        # print("폭탄 공격")
+        print("폭탄 공격")
         lst[nx][ny] -= tmin[0]  # 폭탄 위치 값 감소
         bomb[nx][ny] = False
         # 폭탄 주변 8곳의 값 감소
@@ -87,15 +87,8 @@ def BFS(tmin, attack):
                 if ci == cj == 0:
                     continue
                 CI, CJ = (nx+ci)%N, (ny+cj)%M
-                # CI, CJ = nx+ci, ny+cj
-                # if CI < 0:
-                #     CI = N-1
-                # elif CI >= N:
-                #     CI = 0
-                # if CJ < 0:
-                #     CJ = M-1
-                # elif CJ >= M:
-                #     CJ = 0
+                if CI==tmin[1] and CJ==tmin[2]:
+                    continue
                 lst[CI][CJ] -= int(lst[X][Y]/2)
                 bomb[CI][CJ] = False
         for ci in range(N):
@@ -113,9 +106,11 @@ def search():
     # 공격자 구하는 반복문
     for i in range(N):  # 배열 입력 및 가장 약한 포탑 / 가장 강한 포탑 확인
         for j in range(N):    
+            if lst[i][j]==0:
+                continue
             # 최솟값(공격하는 포탑 구하기)
             # 기존의 최솟값보다 작은 값이 있다면 배열을 새로 만든다
-            if lst[i][j]>0 and lst[i][j]<tmin[0]:
+            if lst[i][j]<tmin[0]:
                 tmin = [lst[i][j], i, j]
             # 기존의 최솟값과 같은 값이 있다면 차례대로 계산
             elif lst[i][j] == tmin[0]:
@@ -168,9 +163,6 @@ for i in range(K):
     search()  # 가장 약한 포탑(공격자)와 가장 강한 포탑(공격을 당하는 포탑)을 찾는 함수
     tmin[0] += N+M
     BFS(tmin, i+1)
-    # print(tmax, tmin)
-    # for i in range(N):
-    #     print(lst[i])
 answer = 0
 for i in range(N):
     answer = max(answer, max(lst[i]))
