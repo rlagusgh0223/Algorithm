@@ -5,6 +5,7 @@ def dfs(num, cnt, horse):
     if num == 10:
         ans = max(ans, cnt)
         return
+
     
     # 백트래킹
     for i in range(4):  # 4개의 말 비교
