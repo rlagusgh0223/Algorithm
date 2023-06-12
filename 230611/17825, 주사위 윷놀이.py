@@ -1,3 +1,4 @@
+
 def dfs(num, cnt, horse):
     global ans
     # 10번 주사위 다 돌리면 최댓값 비교 후 리턴
