@@ -1,20 +1,17 @@
-
-def dfs(num, cnt, horse):
-    global ans
-    # 10번 주사위 다 돌리면 최댓값 비교 후 리턴
+def DFS(num, cnt, horse):  # 주사위 순서, 점수의 합, 말의 위치
+    # 만약 10번째까지 주사위를 돌렸다면 이번순서의 최댓값과 지금까지의 최댓값 중 큰 값을 저장 후 이번 DFS 종료
     if num == 10:
+        global ans
         ans = max(ans, cnt)
         return
-
     
-    # 백트래킹
-    for i in range(4):  # 4개의 말 비교
-        x = horse[i]
-        horse[i] = board[x][dice[num]]
-        if horse.count(horse[i])==1 or horse[i]==21:
-            dfs(num+1, cnt+number[board[x][dice[num]]], horse)
-        horse[i] = x
-
+    # 4개의 말들을 다 검사
+    for i in range(4):
+        x = horse[i]  # 지금 값을 임시 변수에 입력하고
+        horse[i] = board[x][dice[num]]  # 다음 주사위를 입력하여 이동한다고 했을때
+        if horse.count(horse[i])==1 or horse[i]==21:  # 만약 다른 말들과 위치가 겹치지 않거나 도착 위치로 가게 된다면
+            DFS(num+1, cnt+number[board[x][dice[num]]], horse)  # 이번 순서는 진행된다고 가정하고 다음 순서로 넘어간다
+        horse[i] = x  # DFS 종료 후 원래 값으로 다시 돌려준다
 
 import sys
 # 주사위가 1,2,3,4,5 나왔을 때 이동할 인덱스
@@ -53,9 +50,10 @@ board = [
     [31,32,25,26,27,20],
     [32,25,26,27,20,21]
 ]
+# 각 발판에 입력된 값
 number = [0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,0,13,16,19,25,30,35,22,24,28,27,26]
 dice = list(map(int, sys.stdin.readline().split()))
-horse = [0, 0, 0, 0]
-ans = 0
-dfs(0, 0, horse)
+ans = 0  # 점수의 최댓값
+horse = [0, 0, 0, 0]  # 각 말들의 현재 위치를 저장할 리스트
+DFS(0, 0, horse)
 print(ans)
