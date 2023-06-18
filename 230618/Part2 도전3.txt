@@ -1,0 +1,23 @@
+#include <stdio.h>
+int main(){
+    int ans[10];
+    int now, h=0, j=9;
+    printf("총 10개의 숫자 입력\n");
+    for (int i=0; i<10; i++){
+        printf("입력: ");
+        scanf("%d", &now);
+        if (now%2==1){
+            ans[h] = now;
+            h++;
+        }
+        else{
+            ans[j] = now;
+            j--;
+        }
+    }
+    printf("배열 요소의 출력 : ");
+    for (int i=0; i<10; i++){
+        printf("%d ", ans[i]);
+    }
+    return 0;
+}

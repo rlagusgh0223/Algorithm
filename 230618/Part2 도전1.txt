@@ -1,0 +1,36 @@
+#include <stdio.h>
+void jjak(int *num);
+void hol(int *num);
+
+int main(){
+    int num[10];
+    int i;
+    printf("총 10개의 숫자 입력\n");
+    for (i=0; i<10; i++){
+        printf("입력: ");
+        scanf("%d", &num[i]);
+    }
+    hol(num);
+    printf("\n");
+    jjak(num);
+    return 0;
+}
+
+void hol(int *num){
+    printf("홀수 출력:");
+    int i;
+    for (i=0; i<10; i++){
+        if (num[i]%2 == 1){
+            printf(" %d", num[i]);
+        }
+    }
+}
+void jjak(int *num){
+    printf("짝수 출력:");
+    int i;
+    for (i=0; i<10; i++){
+        if (num[i]%2 == 0){
+            printf(" %d", num[i]);
+        }
+    }
+}
