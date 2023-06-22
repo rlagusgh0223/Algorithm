@@ -1,0 +1,29 @@
+#include <stdio.h>
+int main(){
+    // 12-1-1
+    // int num=10;
+    // int *ptr1=&num;
+    // int *ptr2=ptr1;
+    
+    // (*ptr1)++;
+    // (*ptr2)++;
+    // printf("%d", num);
+    // ptr2 -> ptr1 -> num
+    
+    
+    // 12-2-2
+    // 초기화 할 때를 제외하고 주소값을 줄 땐 포인터 변수 명만 준다
+    // ex) *ptr = &num; 가 아니라 ptr = &num;
+    int num1=10, num2=20;
+    int *ptr1=&num1, *ptr2=&num2;
+    
+    (*ptr1) += 10;
+    (*ptr2) -= 10;
+    
+    ptr1 = &num2;
+    ptr2 = &num1;
+    
+    printf("num2 : %d, ptr1이 가리키는 변수에 저장된 값 : %d\n", num2, *ptr1);
+    printf("num1 : %d, ptr2가 가리키는 변수에 저장된 값 : %d", num1, *ptr2);
+    return 0;
+}
