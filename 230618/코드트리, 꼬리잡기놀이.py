@@ -23,6 +23,10 @@ def go(X, Y):
             if ground[nx][ny] == 4:
                 ground[nx][ny], ground[x][y] = ground[x][y], ground[nx][ny]
                 visit[nx][ny], visit[x][y] = visit[x][y], visit[nx][ny]
+                if ground[nx][ny] == 1:
+                    visit[nx][ny] = 1
+                else:
+                    visit[nx][ny] = visit[nx][ny]+1
                 x, y = x-dx[i], y-dy[i]
 
 # 발견한 사람의 모임에서 1과 3 위치 파악
@@ -119,5 +123,4 @@ for i in range(n):
             BFS(i, j)
 while k > 0:
     k = Round(k)
-    
 print(ans)

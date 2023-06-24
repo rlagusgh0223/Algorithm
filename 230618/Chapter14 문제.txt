@@ -1,0 +1,53 @@
+// 14-1-1
+#include <stdio.h>
+int SquareByBalue(int num);
+int SquareByReference(int *num);
+int main(){
+    int num = 10;
+    SquareByBalue(num);
+    printf("%d\n\n", num);
+    SquareByReference(&num);
+    printf("%d", num);
+    return 0;
+}
+
+int SquareByBalue(int num){
+    printf("%d\n", num*num);
+}
+
+int SquareByReference(int *ptr){
+    int num = *ptr;
+    *ptr = num*num;
+    printf("%d\n", *ptr);
+}
+
+
+// 결과
+// 100
+// 10
+
+// 100
+// 100
+
+
+
+
+
+// 14-1-2
+#include <stdio.h>
+int Swap3(int *num1, int *num2, int *num3);
+int main(){
+    int num1=10, num2=20, num3=30;
+    Swap3(&num1, &num2, &num3);
+    printf("%d %d %d", num1, num2, num3);
+    return 0;
+}
+
+int Swap3(int *num1, int *num2, int *num3){
+    int temp = *num3;
+    *num3 = *num2;
+    *num2 = *num1;
+    *num1 = temp;
+}
+
+// 결과 : 30 10 20
