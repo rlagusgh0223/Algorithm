@@ -1,0 +1,79 @@
+#include <stdio.h>
+int main() {
+	// 16-1-1
+	/*
+	int arr[3][9] = {
+		{2, 4, 6, 8, 10, 12, 14,16, 18},
+		{3, 6, 9, 12, 15,18, 21, 24, 27},
+		{4, 8, 12, 16, 20, 24, 28, 32, 36}
+	};
+	int i, j;
+	for (i = 0; i < 3; i++) {
+		for (j = 0; j < 9; j++) {
+			printf("%d ", arr[i][j]);
+		}
+		printf("\n");
+	}
+	*/
+
+
+
+	// 16-1-2
+	/*
+	int A[2][4] = {
+		{1, 2, 3, 4},
+		{5, 6, 7, 8}
+	};
+	int B[4][2];
+	int i, j;
+	for (i = 0; i < 4; i++) {
+		for (j = 0; j < 2; j++) {
+			B[i][j] = A[j][i];
+		}
+	}
+
+	for (i = 0; i < 4; i++) {
+		for (j = 0; j < 2; j++) {
+			printf("%d ", B[i][j]);
+		}
+		printf("\n");
+	}
+	*/
+
+
+
+	// 16-1-3
+	int record[5][5];
+	int i, j, ans, cnt;
+	for (i = 0; i < 4; i++) {
+		ans = 0, cnt = 0;
+		printf("국어:");
+		scanf("%d", &record[i][0]);
+		printf("영어:");
+		scanf("%d", &record[i][1]);
+		printf("수학:");
+		scanf("%d", &record[i][2]);
+		printf("국사:");
+		scanf("%d", &record[i][3]);
+	}
+	for (i = 0; i < 4; i++) {
+		ans = 0, cnt = 0;
+		for (j = 0; j < 4; j++) {
+			ans += record[i][j];
+			cnt += record[j][i];
+		}
+		record[i][4] = ans;
+		record[4][i] = cnt;
+	}
+	record[4][4] = 0;
+	for (i = 0; i < 4; i++) {
+		record[4][4] += record[i][4];
+	}
+	for (i = 0; i < 5; i++) {
+		for (j = 0; j < 5; j++) {
+			printf("%4d ", record[i][j]);
+		}
+		printf("\n");
+	}
+	return 0;
+}
