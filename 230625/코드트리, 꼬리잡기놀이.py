@@ -8,10 +8,8 @@
 # 점수 획득 후 방향 바꿈
 # 공을 한 번 던질 때 마다 한 칸씩 전진함
 
-# 해야되는것
-# 맨 처음에 일단 한 칸 전진하는 과정이 빠졌음
-# 1. 머리/꼬리 사람 바꾸기
-# 2. 앞으로 한 칸 전진
+# 왜 다 돌고 종료할때 visit에 쓸데없는 1이 생기고
+# 말의 이동은 이상한걸까?
 
 
 # 발견한 사람의 모임에서 1과 3 위치 파악
@@ -39,24 +37,6 @@ def turn(i, j):
                         #     go(hnx, hny)
                 q.append((nx, ny))
                 ck[nx][ny] = 1
-    
-    # print("visit")
-    # for i in range(n):
-    #     print(visit[i])
-
-
-# def BFS(i, j):
-#     q = deque()
-#     q.append((i, j))
-#     visit[i][j] = 1
-#     while q:
-#         x, y = q.popleft()
-#         for i in range(4):
-#             nx, ny = x+dx[i], y+dy[i]
-#             if 0<=nx<n and 0<=ny<n and 0<ground[nx][ny]<4 and visit[nx][ny]==0:
-#                 visit[nx][ny] = visit[x][y] + 1
-#                 q.append((nx, ny))
-
 
 
 
@@ -153,20 +133,7 @@ dx = [-1, 0, 1, 0]
 dy = [0, 1, 0, -1]
 visit = [[0]*n for _ in range(n)]
 
-# 사람별 점수를 주기 위해 BFS 사용
-# for i in range(n):
-#     for j in range(n):
-#         if visit[i][j]==0 and ground[i][j]==1:
-#             BFS(i, j)
-
-# 최초에 한번은 먼저 앞으로 한 칸 이동한다
-# for i in range(n):
-#     for j in range(n):
-#         if ground[i][j]==1 and visit[i][j]==0:
-#             go(i, j)
 # 4면을 다 돌아도 k가 남았다면 k가 사라질때까지 반복
 while k > 0:
     k = Round(k)
 print(ans)
-# for i in range(n):
-#     print(ground[i])
