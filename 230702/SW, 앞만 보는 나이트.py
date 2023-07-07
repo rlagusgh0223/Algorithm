@@ -1,3 +1,13 @@
+# https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AYgEu2460GwDFARP
+# 문제에서 체스판의 크기를 지정해 주지 않았다
+# 말이 뒤로 가지는 않으므로 주어진 값이 끝이라고 가정해서 판을 만들어 보았으나 값이 큰 경우 답이 안 나온다
+# 3
+# 3 3
+# #1 2
+# 2 2
+# #2 0
+# 999999 999999
+# 여기서 값이 안 나온다 
 def BFS(X, Y):
     q = deque()
     q.append((0, 0))
