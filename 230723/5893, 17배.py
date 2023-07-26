@@ -4,4 +4,4 @@ N = int(sys.stdin.readline(), 2)
 # 17 곱하기
 result = N * 17
 # 10진수를 2진수로 출력(맨 앞의 두글자는 0b가 나오므로 제외한다)
-print(bin(result[2:]))
+print(bin(result)[2:])
