@@ -18,21 +18,18 @@ while q:
     # 몬스터 복제
     egg[r][c] = d
 
-# 몬스터 이동
+    # 몬스터 이동
+    if ground[r][c] > 0:
+        nxt = 0
+        for k in range(8):
+            I = (ground[r][c]+dx[nxt]) % 8
+            J = (ground[r][c]+dy[nxt]) % 8
+            nxt += 1
+            if 0<=I<4 and 0<=J<4 and ground[I][J]==0:
+                ground[I][J], ground[r][c] = ground[r][c], ground[I][J]
+                break
+    for k in range(4):
+        print(ground[k])
+    print()
 for i in range(4):
-    for j in range(4):
-        if ground[i][j] > 0:
-            nxt = 0
-            for k in range(8):
-                I = (ground[i][j]+nxt) % 8
-                J = (ground[i][j]+nxt) % 8
-                nxt += 1
-                if 0<=I<4 and 0<=J<4 and ground[I][J]==0:
-                    ground[I][J], ground[i][j] = ground[i][j], ground[I][J]
-                    break
-            for k in range(r):
-                print(ground[k])
-            print()
-print()
-for i in range(r):
     print(egg[i])
