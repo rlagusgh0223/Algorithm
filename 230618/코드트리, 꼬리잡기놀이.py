@@ -117,10 +117,14 @@ ans = 0
 dx = [-1, 0, 1, 0]
 dy = [0, 1, 0, -1]
 visit = [[0]*n for _ in range(n)]
+
+# 사람별 점수를 주기 위해 BFS 사용
 for i in range(n):
     for j in range(n):
         if visit[i][j]==0 and ground[i][j]==1:
             BFS(i, j)
+
+# 4면을 다 돌아도 k가 남았다면 k가 사라질때까지 반복
 while k > 0:
     k = Round(k)
 print(ans)

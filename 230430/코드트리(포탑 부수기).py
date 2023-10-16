@@ -126,8 +126,8 @@ for i in range(N):  # 배열 입력 및 가장 약한 포탑 / 가장 강한 포
 for i in range(K):
     tmin[0] += N+M
     BFS(tmin, i+1)
-# for i in range(N):
-#     print(lst[i])
+for i in range(N):
+    print(lst[i])
 answer = 0
 for i in range(N):
     answer = max(answer, max(lst[i]))

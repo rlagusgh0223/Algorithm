@@ -108,7 +108,7 @@ def go():
                 continue
             print(nx, ny)
             for i in range(n):
-                print(ground[i])
+                print(visit[i])
             print()
             # 맨 처음 1이 4와 바뀔때
             if ground[nx][ny]==4 and ground[x][y]==1:  # 맨 처음 1일때

@@ -25,10 +25,10 @@ def DFS(depth, room):
         min_value = min(min_value, cnt)
         return
     # 모든 cctv가 감시할 수 있는 구역 체크
-    cctv_num, x, y = cctv[depth]
-    for i in mode[cctv_num]:
+    cctv_num, x, y = cctv[depth]  # cctv번호, x좌표, y좌표
+    for i in mode[cctv_num]:  # cctv번호에 따른 감시 구역
         temp = copy.deepcopy(room)  # 원본은 건들지 않고 cctv감시 구역을 표시하기 위해 리스트 복사
-        check(temp, i, x, y)
+        check(temp, i, x, y)  # 복사한 배열, cctv가 점검할 방향(ex [0, 2], [1, 2, 3]), x좌표, y좌표
         DFS(depth+1, temp)
 
 import sys, copy
@@ -38,7 +38,7 @@ room = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
 dx = [-1, 0, 1, 0]
 dy = [0, 1, 0, -1]
 cctv = []  # cctv 종류, x좌표, y좌표
-mode = [
+mode = [  # cctv 종류에 따른 감시 방향
     [],
     [[0], [1], [2], [3]],
     [[0, 2], [1, 3]],
@@ -48,8 +48,8 @@ mode = [
 ]
 for i in range(N):
     for j in range(M):
-        if 1 <= room[i][j] <= 5:  # cctv는 cctv배열에 넣는다
+        if 1 <= room[i][j] <= 5:  # 전체 배열 중 cctv는 cctv배열에 넣는다
             cctv.append([room[i][j], i, j])
 min_value = 100  # 사각지대, 사무실은 최대 8칸이므로 사각지대는 64를 넘지 않는다
-DFS(0, room)
+DFS(0, room)  # 현재까지 확인한 cctv개수, 전체 배열
 print(min_value)
