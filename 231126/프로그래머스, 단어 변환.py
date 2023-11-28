@@ -26,7 +26,6 @@ def solution(begin, target, words):
                 if diff == 1:
                     q.append([words[i], cnt+1])
                     visit[i] = 1
-            
     return answer
 
 import sys
