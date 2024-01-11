@@ -1,0 +1,44 @@
+// 풀이 1
+import java.util.HashMap;
+class Solution {
+    public int[] solution(String s) {
+        int[] answer = new int[s.length()];
+        HashMap<Character, Integer> map = new HashMap<>();
+        for (int i=0; i<s.length(); i++){
+            char c = s.charAt(i);
+            if (map.get(c) == null){
+                answer[i] = -1;
+            }else{
+                answer[i] = i - map.get(c);
+            }
+            map.put(c, i);
+        }
+        
+        return answer;
+    }
+}
+
+
+
+
+
+// 풀이 2
+import java.util.Arrays;
+class Solution {
+    public int[] solution(String s) {
+        int[] answer = new int[s.length()];
+        int[] check = new int[26];
+        Arrays.fill(check, -1);
+        for (int i=0; i<s.length(); i++){
+            int c = s.charAt(i)-'a';
+            if (check[c] == -1)
+                answer[i] = -1;
+            else
+                answer[i] = i - check[c];
+            check[c] = i;
+        }
+        return answer;
+    }
+}
+
+
