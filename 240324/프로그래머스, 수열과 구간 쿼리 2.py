@@ -11,6 +11,7 @@ def solution(arr, queries):
             answer.append(-1)
     return answer
 
+
 import sys
 
 arr = list(map(int, sys.stdin.readline().split(", ")))
