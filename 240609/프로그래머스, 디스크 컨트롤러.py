@@ -24,6 +24,7 @@ def solution(jobs):
     return answer // len(jobs)
 
 
+
 import sys
 
 jobs = list(sys.stdin.readline().strip().split("], ["))
