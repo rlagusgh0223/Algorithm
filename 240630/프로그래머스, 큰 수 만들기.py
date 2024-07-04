@@ -8,9 +8,13 @@ def solution(number, k):
         while k>0 and answer and answer[-1]<num:
             answer.pop()
             k -= 1
+        # 현재 수는 앞에 작은 수가 없거나
+        # 앞의 작은 수가 있더라도 제거할 수 만큼 제거해
+        # 더이상 제거할 수 없는 상태이므로 answer에 입력한다
         answer.append(num)
     # 혹시 k가 남았다면 k만큼 뒤를 자른다
     return ''.join(answer[:len(answer)-k])
+
 
 import sys
 
