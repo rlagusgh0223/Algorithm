@@ -21,6 +21,7 @@ def solution(operations):
         return [0, 0]
     return [max(answer), min(answer)]
 
+
 import sys
 
 print(solution(list(sys.stdin.readline().strip().split('", "'))))
