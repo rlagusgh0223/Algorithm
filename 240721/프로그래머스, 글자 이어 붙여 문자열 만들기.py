@@ -4,6 +4,7 @@ def solution(my_string, index_list):
         answer += my_string[i]
     return answer
 
+
 import sys
 
 my_string = sys.stdin.readline().strip()
