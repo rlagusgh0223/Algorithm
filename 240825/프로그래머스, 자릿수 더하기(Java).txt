@@ -1,0 +1,13 @@
+import java.util.*;
+
+public class Solution {
+    public int solution(int n) {
+        int answer = 0;
+        String N = String.valueOf(n);
+        for (int i=0; i<N.length(); i++){
+            int now = Integer.valueOf(String.valueOf((N.charAt(i))));
+            answer += now;
+        }
+        return answer;
+    }
+}
