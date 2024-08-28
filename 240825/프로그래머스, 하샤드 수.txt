@@ -1,0 +1,11 @@
+class Solution {
+    public boolean solution(int x) {
+        int ck = 0;
+        int X = x;
+        while (x>0){
+            ck += x%10;
+            x /= 10;
+        }
+        return X%ck==0 ? true : false;
+    }
+}
