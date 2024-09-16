@@ -1,6 +1,5 @@
 def solution(strArr):
-    answer = [arr for arr in strArr if 'ad' not in arr]
-    return answer
+    return [arr for arr in strArr if 'ad' not in arr]
 
 import sys
 
