@@ -1,6 +1,7 @@
 def solution(my_string, alp):
     return my_string.replace(alp, alp.upper())
 
+
 import sys
 
 my = sys.stdin.readline().strip()
