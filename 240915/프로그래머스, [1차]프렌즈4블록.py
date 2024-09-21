@@ -24,7 +24,7 @@ def solution(m, n, board):
         #     print(board[i])
         # print()
 
-        # 위에서부터 [i+1][j]의 문자가 비어있는 경우 위의 문자로 바꾼다
+        # 문자가 비어있는 경우 가장 가까운 위의 문자와 바꾼다
         for i in range(m-1, 0, -1):
             for j in range(n):
                 if board[i][j] == ' ':
