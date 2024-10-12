@@ -1,7 +1,7 @@
 # 반례
 # [["a","09:00","30"],["b","09:10","20"],["c","09:15","20"],["d","09:55","10"],["e","10:50","5"]]
 # 기대값 : ["c","b","d","a","e"]
-def solutions(plans):
+def solution(plans):
     answer = []
     
     # 시간 변환 (시간을 분 단위로 변환)
@@ -26,12 +26,11 @@ def solutions(plans):
             answer.append(plans[i][0])
             while stack and time>0:
                 last = stack.pop()
-                last[1] -= time
-                if last[1] <= 0:
+                if last[1] <= time:
                     answer.append(last[0])
                     time -= last[1]
                 else:
-                    stack.append(last)
+                    stack.append([last[0], last[1]-time])
                     break
         # 지금 과제를 다음 과제 전까지 마칠 수 없을 때
         else:
@@ -45,6 +44,11 @@ def solutions(plans):
         answer.append(last[0])
     
     return answer
+
+
+
+
+
 
 import sys
 
