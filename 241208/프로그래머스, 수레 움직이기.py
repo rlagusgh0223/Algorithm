@@ -1,3 +1,5 @@
+# 미완성
+
 from collections import deque
 
 
