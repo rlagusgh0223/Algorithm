@@ -1,0 +1,41 @@
+// 1
+#include<iostream>
+void ch1(int& ch) {
+	ch++;
+}
+void ch2(int& ch) {
+	ch *= -1;
+}
+int main() {
+	int x;
+	std::cout << "입력 : ";
+	std::cin >> x;
+	ch1(x);
+	std::cout << x << "\n";
+	ch2(x);
+	std::cout << x;
+
+	return 0;
+}
+
+
+
+//2
+#include<iostream>
+using namespace std;
+void SwapPointer(int *(& num1), int*(& num2)) {
+	int *temp;
+	temp = num1;
+	num1 = num2;
+	num2 = temp;
+}
+int main() {
+	int num1 = 5;
+	int* ptr1 = &num1;
+	int num2 = 10;
+	int* ptr2 = &num2;
+	cout << *ptr1 << endl << *ptr2<<endl<<endl;
+	SwapPointer(ptr1, ptr2);
+	cout << *ptr1 << endl << *ptr2;
+	return 0;
+}
