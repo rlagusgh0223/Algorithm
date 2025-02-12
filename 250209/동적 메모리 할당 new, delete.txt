@@ -1,0 +1,48 @@
+// 동적 메모리가 필요한 경우
+
+// 1. 배열 크기가 동적으로 변하는 경우
+#include<iostream>
+using namespace std;
+
+int main() {
+	int size;
+	cout << "배열 크기 : ";
+	cin >> size;
+
+	int* arr = new int[size];
+	for (int i = 0; i < size; i++) {
+		arr[i] = i + 1;
+		cout << arr[i] << " ";
+	}
+	delete[] arr;
+	return 0;
+}
+
+
+
+
+// 2. 객체를 동적으로 생성하는 경우
+#include<iostream>
+using namespace std;
+
+class MyClass {
+public:
+	int value;
+	MyClass(int v):value(v){}
+	void print() {
+		cout << "Value : " << value << endl;
+	}
+};
+
+int main() {
+	MyClass* obj = new MyClass(100);  // 객체를 동적으로 생성
+	obj->print();  // obj는 객체를 가리키는 포인터인데, 포인터 obj가 가리키는 객체의 print()멤버 함수를 호출
+	delete obj;
+	return 0;
+}
+
+
+
+// 3. 메모리의 수명을 직접 제어해야 하는 경우
+// 지역 변수는 함수가 종료되면 자동으로 해제되지만
+// 동적 메모리는 개발자가 종료를 해야된다
