@@ -1,0 +1,87 @@
+// 1
+#include<iostream>
+using namespace std;
+class Calculator {
+private:
+	int add;
+	int min;
+	int mul;
+	int div;
+public:
+	void Init();
+	double Add(double x, double y);
+	double Min(double x, double y);
+	double Mul(double x, double y);
+	double Div(double x, double y);
+	void ShowOpCount();
+};
+
+void Calculator::Init() {
+	add = 0;
+	min = 0;
+	mul = 0;
+	div = 0;
+}
+double Calculator::Add(double x, double y) {
+	add++;
+	return x + y;
+}
+double Calculator::Min(double x, double y) {
+	min++;
+	return x - y;
+}
+double Calculator::Mul(double x, double y) {
+	mul++;
+	return x * y;
+}
+double Calculator::Div(double x, double y) {
+	div++;
+	return x / y;
+}
+
+void Calculator::ShowOpCount(){
+	cout << "덧셈 : " << add << " 뺄셈 : " << min << " 곱셈 : " << mul << " 나눗셈 : " << div << endl;
+}
+
+int main() {
+	Calculator cal;
+	cal.Init();
+	cout << "3.2 + 2.4 = " << cal.Add(3.2, 2.4) << endl;
+	cout << "3.5 / 1.7 = " << cal.Div(3.5, 1.7) << endl;
+	cout << "2.2 - 1.5 = " << cal.Min(2.2, 1.5) << endl;
+	cout << "4.9 / 1.2 = " << cal.Div(4.9, 1.2) << endl;
+	cal.ShowOpCount();
+	return 0;
+}
+
+
+
+
+//2
+#include<iostream>
+#include<cstring>
+using namespace std;
+class Printer {
+private:
+	string print;
+public:
+	void SetString(const string &s);
+	void showString();
+};
+
+void Printer::SetString(const string& s) {
+	print = s;
+}
+void Printer::showString() {
+	cout << print << endl;;
+}
+
+int main() {
+	Printer pnt;
+	pnt.SetString("Hello World");
+	pnt.showString();
+
+	pnt.SetString("I love C++");
+	pnt.showString();
+	return 0;
+}
