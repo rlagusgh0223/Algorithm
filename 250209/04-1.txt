@@ -1,0 +1,64 @@
+#include<iostream>
+using namespace std;
+class FruitSellor{
+private:
+	int Price;
+	int Num;
+	int Money;
+public:
+	void InitMembers(int price, int num, int money) {
+		Price = price;
+		Num = num;
+		Money = money;
+	}
+	int SaleApples(int money) {
+		if (money < 0) {
+			cout << "0보다 작은 수는 입력할 수 없습니다.\n";
+			return 0;
+		}
+		int num = money / Price;
+		Num -= num;
+		Money += money;
+		return num;
+	}
+	void ShowSalesResult() const{
+		cout << "남은 사과:" << Num << endl;
+		cout << "판매 수익:" << Money << endl<<endl;
+	}
+};
+
+class FruitBuyer{
+	int Money;
+	int Num;
+public:
+	void InitMembers(int money) {
+		Money = money;
+		Num = 0;
+	}
+	void BuyApples(FruitSellor& seller, int money) {
+		if (money < 0) {
+			cout << "0보다 작은 수는 입력할 수 없습니다.\n";
+		}
+		Num += seller.SaleApples(money);
+		Money -= money;
+	}
+	void ShowBuyResult() const{
+		cout << "현재 잔액 : " << Money << endl;
+		cout << "사과 개수 : " << Num << endl<<endl;
+	}
+};
+
+int main() {
+	FruitSellor seller;
+	seller.InitMembers(1000, 20, 0);
+	FruitBuyer buyer;
+	buyer.InitMembers(5000);
+	buyer.BuyApples(seller, 2000);
+
+
+	cout << "과일 판매자의 현황" << endl;
+	seller.ShowSalesResult();
+	cout << "과일 구매자의 현황" << endl;
+	buyer.ShowBuyResult();
+	return 0;
+}
