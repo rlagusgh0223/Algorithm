@@ -1,0 +1,111 @@
+// 1
+// 04-2에서 각 클래스 별로 생성자만 생성했음
+#include<iostream>
+using namespace std;
+
+class Point {
+private:
+	int xpos, ypos;
+public:
+	Point(int x, int y):xpos(x), ypos(y) 
+	{
+	}
+	void ShowPointInfo() const {
+		cout << "[" << xpos << ", " << ypos << "]\n";
+	}
+};
+
+class Circle {
+private:
+	int rad;
+	Point point;
+public:
+	Circle(int x, int y, int r):rad(r), point(x, y)
+	{
+	}
+	void ShowCircleInfo() const {
+		cout << "radius : " << rad << endl;
+		point.ShowPointInfo();
+	}
+};
+
+class Ring {
+private:
+	Circle inner;
+	Circle outter;
+public:
+	Ring(int x1, int y1, int z1, int x2, int y2, int z2):inner(x1,y1,z1), outter(x2,y2,z2)
+	{
+	}
+	void ShowRingInfo() const {
+		cout << "Inner Circle Info...\n";
+		inner.ShowCircleInfo();
+		cout << "Outter Circle Info...\n";
+		outter.ShowCircleInfo();
+	}
+};
+
+int main() {
+	Ring ring(1, 1, 4, 2, 2, 9);
+	ring.ShowRingInfo();
+	return 0;
+}
+
+
+
+
+// 2
+// 인터넷 C++컴파일러에서는 정상적으로 돌아가나, VisualStudio에서만 에러가 난다
+#include<iostream>
+#include<cstring>
+using namespace std;
+namespace COMP_POS {
+	enum { CLERK, SENIOR, ASSIST, MANAGER };
+	void ShowPositionInfo(int pos) {
+		switch (pos) {
+		case CLERK:cout << "사원\n";break;
+		case SENIOR:cout << "주임\n";break;
+		case ASSIST:cout << "대리\n";break;
+		case MANAGER:cout << "과장\n";
+		}
+	}
+}
+class NameCard {
+private:
+	char* name;
+	char* company;
+	char* phone;
+	int position;
+public:
+	NameCard(const char* _name, const char* _company, const char* _phone, int pos) :position(pos) {
+		name = new char[strlen(_name) + 1];
+		company = new char[strlen(_company) + 1];
+		phone = new char[strlen(_phone) + 1];
+		strcpy(name, _name);
+		strcpy(company, _company);
+		strcpy(phone, _phone);
+	}
+	void ShowNameCardInfo() {
+		cout << "이름: " << name << endl;
+		cout << "회사: " << company << endl;
+		cout << "전화번호: " << phone << endl;
+		cout << "직급: ";
+		COMP_POS::ShowPositionInfo(position);
+		cout << endl;
+	}
+	~NameCard() {
+		delete[] name;
+		delete[] company;
+		delete[] phone;
+	}
+};
+
+int main() {
+	NameCard manClerk("Lee", "ABCEng", "010 - 1111 - 2222", COMP_POS::CLERK);
+	NameCard manSENIOR("Hong", "OrangeEng", "010-3333-4444", COMP_POS::SENIOR);
+	NameCard manAssist("Kim", "SoGoodComp", "010-5555-6666", COMP_POS::ASSIST);
+	manClerk.ShowNameCardInfo();
+	manSENIOR.ShowNameCardInfo();
+	manAssist.ShowNameCardInfo();
+	return 0;
+}
