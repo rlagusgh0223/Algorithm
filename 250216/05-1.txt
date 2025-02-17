@@ -1,0 +1,69 @@
+// 복사 생성자는 동적 할당된 멤버 변수를 깊은 복사하기 위해 필요하다
+// 복사 생성자의 기본 형태
+// ClassName(const ClassName& 기존객체);
+
+#include<iostream>
+#include<cstring>
+using namespace std;
+namespace COMP_POS {
+	enum { CLERK, SENIOR, ASSIST, MANAGER };
+	void ShowPositionInfo(int pos) {
+		switch (pos) {
+		case CLERK:cout << "사원\n"; break;
+		case SENIOR:cout << "주임\n"; break;
+		case ASSIST:cout << "대리\n"; break;
+		case MANAGER:cout << "과장\n";
+		}
+	}
+}
+class NameCard {
+private:
+	char* name;
+	char* company;
+	char* phone;
+	int position;
+public:
+	NameCard(const char* _name, const char* _company, const char* _phone, int pos) :position(pos) {
+		name = new char[strlen(_name) + 1];
+		company = new char[strlen(_company) + 1];
+		phone = new char[strlen(_phone) + 1];
+		strcpy(name, _name);
+		strcpy(company, _company);
+		strcpy(phone, _phone);
+	}
+	// 아래 복사 생성자가 없으면 얕은 복사가 된다
+	// main코드 기준으로 copy1이나 copy2가 종료되면 manClerk, manSENIOR이 접근할 메모리가 사라지게 됨
+	NameCard(const NameCard& ref) :position(ref.position) {  // 복사할 원본 객체를 ref로 받음. 멤버 변수 position을 직접 복사(int 같은 기본 타입은 단순 복사해도 문제 없음)
+		// ref.name, ref.company, ref.phone의 메모리를 그대로 사용하지 않고
+		// 새로운 메모리를 할당한 후 문자열 내용을 복사(깊은 복사)
+		name = new char[strlen(ref.name) + 1];
+		company = new char[strlen(ref.company) + 1];
+		phone = new char[strlen(ref.phone) + 1];
+		strcpy(name, ref.name);
+		strcpy(company, ref.company);
+		strcpy(phone, ref.phone);
+	}
+	void ShowNameCardInfo() {
+		cout << "이름: " << name << endl;
+		cout << "회사: " << company << endl;
+		cout << "전화번호: " << phone << endl;
+		cout << "직급: ";
+		COMP_POS::ShowPositionInfo(position);
+		cout << endl;
+	}
+	~NameCard() {
+		delete[] name;
+		delete[] company;
+		delete[] phone;
+	}
+};
+
+int main() {
+	NameCard manClerk("Lee", "ABCEng", "010 - 1111 - 2222", COMP_POS::CLERK);
+	NameCard copy1 = manClerk;	// 복사 생성자 호출
+	NameCard manSENIOR("Hong", "OrangeEng", "010-3333-4444", COMP_POS::SENIOR);
+	NameCard copy2 = manSENIOR;  // 복사 생성자 호출
+	copy1.ShowNameCardInfo();
+	copy2.ShowNameCardInfo();
+	return 0;
+}
