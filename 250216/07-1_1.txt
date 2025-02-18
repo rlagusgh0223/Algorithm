@@ -1,0 +1,43 @@
+// 1
+#include<iostream>
+using namespace std;
+class Car {
+private:
+	int gasolineGauge;
+public:
+	Car(int gas) :gasolineGauge(gas) {}  // 생성자에서 초기화
+	int GetGasGauge() {
+		return gasolineGauge;
+	}
+};
+
+class HybridCar :public Car {
+private:
+	int electricGauge;
+public:
+	HybridCar(int gas, int elec) :Car(gas), electricGauge(elec){}  // 부모 생성자 호출
+	int GetElecGauge() {
+		return electricGauge;
+	}
+};
+
+class HybridWaterCar :public HybridCar {
+private:
+	int waterGauge;
+public:
+	HybridWaterCar(int gas, int elec, int water): HybridCar(gas, elec), waterGauge(water){}  // 부모 생성자 호출
+	int GetWaterGauge() {
+		return waterGauge;
+	}
+	void ShowCurrentGauge() {
+		cout << "잔여 가솔린 : " << GetGasGauge() << endl;
+		cout << "잔여 전기량 : " << GetElecGauge() << endl;
+		cout << "잔여 워터량 : " << waterGauge << endl;
+	}
+};
+
+int main() {
+	HybridWaterCar car(17, 18, 23);
+	car.ShowCurrentGauge();
+	return 0;
+}
