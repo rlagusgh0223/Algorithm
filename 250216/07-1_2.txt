@@ -1,0 +1,49 @@
+// 2
+#include<iostream>
+#include<cstring>
+using namespace std;
+class MyFriendInfo {
+private:
+	char* name;
+	int age;
+public:
+	MyFriendInfo(const char* n, int a) : age(a) {
+		name = new char[strlen(n) + 1];
+		strcpy(name, n);
+	}
+	void ShowMyFriendInfo() {
+		cout << "이름 : " << name << endl;
+		cout << "나이 : " << age << endl;
+	}
+	~MyFriendInfo() {
+		delete[] name;
+	}
+};
+
+class MyFriendDetailInfo : public MyFriendInfo {
+private:
+	char* addr;
+	char* phone;
+public:
+	MyFriendDetailInfo(const char* n, int a, const char* ad, const char* ph) :MyFriendInfo(n, a){
+		addr = new char[strlen(ad) + 1];
+		phone = new char[strlen(ph) + 1];
+		strcpy(addr, ad);
+		strcpy(phone, ph);
+	}
+	void ShowMyFriendDetailInfo() {
+		ShowMyFriendInfo();
+		cout << "주소 : " << addr << endl;
+		cout << "전화 : " << phone << endl;
+	}
+	~MyFriendDetailInfo() {
+		delete[] addr;
+		delete[] phone;
+	}
+};
+
+int main() {
+	MyFriendDetailInfo myFriend("가", 17, "나", "다");
+	myFriend.ShowMyFriendDetailInfo();
+	return 0;
+}
