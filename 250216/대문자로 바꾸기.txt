@@ -1,0 +1,31 @@
+#include<iostream>
+using namespace std;
+class Up{
+private:
+	char* str;
+public:
+	Up(const char* s) {
+		str = new char[strlen(s) + 1];
+		for (int i = 0; i < strlen(str); i++) {
+			str[i] = toupper(s[i]);
+		}
+	}
+	void show() {
+		cout << str << endl;
+	}
+
+	~Up() {
+		delete[] str;
+	}
+};
+
+int main() {
+	char input[1000];
+	cout << "문자열 입력 : ";
+	// cin은 공백, 탭, 개행을 만나면 입력을 종료하기 때문에
+	// 띄어쓰기도 입력하려면 cin.getline()을 써야한다
+	cin.getline(input, 1000);
+	Up u(input);
+	u.show();
+	return 0;
+}
