@@ -1,0 +1,46 @@
+//1
+#include<iostream>
+using namespace std;
+
+class Car {
+private:
+	int gasolineGauge;
+public:
+	Car(int gas) {
+		gasolineGauge = gas;
+	}
+	int GetGasGauge() {
+		return gasolineGauge;
+	}
+};
+
+class HybirdCar :public Car {
+private:
+	int electricGauge;
+public:
+	HybirdCar(int gas, int ele):Car(gas), electricGauge(ele){}
+	int GetElecGauge() {
+		return electricGauge;
+	}
+};
+
+class HybridWaterCar :public HybirdCar {
+private:
+	int waterGauge;
+public:
+	HybridWaterCar(int gas, int ele, int wat):HybirdCar(gas, ele), waterGauge(wat){}
+	void ShowCurrentGauge() {
+		cout << "잔여 가솔린 : " << GetGasGauge() << endl;
+		cout << "잔여 전기량 : " << GetElecGauge() << endl;
+		cout << "잔여 워터량 : " << waterGauge << endl;
+	}
+};
+
+int main() {
+	// 위의 코드는 스택 영역에 저장되도록 만들었다
+	// HybridWaterCar h = new HybridWaterCar(...);는 동적으로 메모리를 할당하며
+	// 힙 영역에 저장된다
+	HybridWaterCar h(17, 18, 23);
+	h.ShowCurrentGauge();
+	return 0;
+}
