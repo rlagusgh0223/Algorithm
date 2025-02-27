@@ -1,0 +1,45 @@
+#include<iostream>
+#include<cstring>
+using namespace std;
+
+class Book {
+private:
+	char* title;
+	char* isbn;
+	int price;
+public:
+	Book(const char* name, const char* isbn, int money) :price(money) {
+		title = new char[strlen(name) + 1];
+		this->isbn = new char[strlen(isbn) + 1];
+		strcpy(title, name);
+		strcpy(this->isbn, isbn);
+	}
+	void ShowBookInfo() {
+		cout << "제목 : " << title << endl;
+		cout << "ISBN : " << isbn << endl;
+		cout << "가격 : " << price << endl;
+	}
+};
+
+class EBook :public Book {
+private:
+	char* DRMKey;
+public:
+	EBook(const char* title, const char* isbn, int price, const char* drm) :Book(title, isbn, price) {
+		DRMKey = new char[strlen(drm) + 1];
+		strcpy(DRMKey, drm);
+	}
+	void ShowEBookInfo() {
+        ShowBookInfo();
+		cout<<"인증키 : " << DRMKey << endl;
+	}
+};
+
+int main() {
+	Book book("좋은 C++", "555-12345-678", 20000);
+	book.ShowBookInfo();
+	cout << endl;
+	EBook ebook("좋은 C++ ebook", "555-23456-789", 10000, "fsd9w0");
+	ebook.ShowEBookInfo();
+	return 0;
+}
