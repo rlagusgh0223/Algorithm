@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+class Point{
+private:
+    int xpos, ypos;
+public:
+    Point(int x=0, int y=0):xpos(x), ypos(y){}
+    void ShowPosition() const{
+        cout<<'['<<xpos<<", "<<ypos<<']'<<endl;
+    }
+};
+
+template <typename T>
+void SwapData(T& x, T& y){
+    T temp = x;
+    x = y;
+    y = temp;
+}
+
+int main() {
+    Point point(3, 4);
+    Point point2(17, 23);
+    SwapData(point, point2);
+    point.ShowPosition();
+    point2.ShowPosition();
+    return 0;
+}
